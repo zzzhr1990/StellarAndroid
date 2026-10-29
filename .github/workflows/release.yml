@@ -64,8 +64,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends build-essential cmake pkg-config perl
           python -m pip install -r native/requirements.txt
-          { yes || true; } | sdkmanager --licenses > /dev/null
-          sdkmanager 'platforms;android-37.1' 'build-tools;37.0.0' 'ndk;29.0.14206865' 'cmake;4.1.2'
+          sdkmanager="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          { yes 2>/dev/null || true; } | "$sdkmanager" --licenses > /dev/null
+          "$sdkmanager" 'platforms;android-37.1' 'build-tools;37.0.0' 'ndk;29.0.14206865' 'cmake;4.1.2'
           echo "$ANDROID_HOME/cmake/4.1.2/bin" >> "$GITHUB_PATH"
 
       - name: Cache native libraries
