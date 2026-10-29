@@ -9,12 +9,12 @@ A native Kotlin / Jetpack Compose media player. This independent open-source edi
 - Local and network playback with MPV, official FFmpeg and the upstream libplacebo dependency required by MPV.
 - Subtitles, tracks, playlists, equalizer, picture-in-picture, screenshots and clip export.
 - SMB, NFS, WebDAV, Google Drive, OneDrive and your own Emby / Jellyfin libraries.
-- Unencrypted DVD / Blu-ray files and images, DVD and HDMV menus. No BD-J, AACS, BD+ or CSS decryption components.
+- Unencrypted DVD / Blu-ray files and images, DVD and HDMV menus.
 - Movie, show, season, episode and cast information directly from the official TMDB API; no Stellar metadata server.
 - Optional aggregate ratings directly from `apiz.trakt.tv`. Episode ratings use the show's IMDb ID plus season and episode numbers.
 - DLNA casting through this project's SSDP / SOAP implementation.
 
-This edition contains no Stellar Pro, account/membership gates, AV3A, custom super-resolution or Google Cast SDK. Upstream libplacebo is retained for MPV and uses the OpenGL backend.
+Upstream libplacebo is retained for MPV and uses the OpenGL backend.
 
 ## Build
 

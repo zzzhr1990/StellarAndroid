@@ -9,12 +9,12 @@
 - 使用 MPV、官方 FFmpeg 和 MPV 必需的上游 libplacebo 播放本地与网络媒体。
 - 字幕、音轨、播放列表、均衡器、画中画、截图与片段导出。
 - SMB、NFS、WebDAV、Google Drive、OneDrive，以及用户自己的 Emby / Jellyfin 媒体库。
-- 未加密 DVD / Blu-ray 文件及镜像、DVD 和 HDMV 菜单；不包含 BD-J、AACS、BD+ 或 CSS 解密组件。
+- 未加密 DVD / Blu-ray 文件及镜像、DVD 和 HDMV 菜单。
 - 通过 TMDB 官方 API 直接搜索和获取影片、剧集、季、单集、演职员资料；无需恒星元数据服务器。
 - 可选 Trakt 聚合评分，直接访问 `apiz.trakt.tv`；单集评分使用剧集 IMDb ID、季号和集号。
 - DLNA 投屏，使用项目自己的 SSDP / SOAP 实现。
 
-开源版没有恒星 Pro、账户/会员限制、AV3A、自定义超分辨率或 Google Cast SDK。libplacebo 仅作为 MPV 依赖保留，使用 OpenGL 后端。
+libplacebo 仅作为 MPV 依赖保留，使用 OpenGL 后端。
 
 ## 编译
 
