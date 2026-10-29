@@ -96,7 +96,7 @@ if not (build/'ffbuild/config.mak').exists():
         '--extra-cflags=-O2 -fPIC -I'+str(prefix/'include'),
         '--extra-ldflags=-L'+str(prefix/'lib')+' -Wl,-z,max-page-size=16384 -Wl,--exclude-libs,ALL',cwd=build)
 run('make','-j'+jobs,cwd=build);run('make','install',cwd=build)
-# Unmodified upstream libplacebo, with Dolby Vision reshaping and Vulkan disabled.
+# Unmodified upstream libplacebo, using the OpenGL backend.
 meson('libplacebo','-Dopengl=enabled','-Dgl-proc-addr=enabled','-Dvulkan=disabled',
       '-Ddovi=disabled','-Dlibdovi=disabled','-Ddemos=false','-Dtests=false','-Dbench=false')
 meson('mpv','-Dlibmpv=true','-Dcplayer=false','-Dgpl=true','-Dandroid-media-ndk=enabled',

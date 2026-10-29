@@ -1,4 +1,4 @@
 <resources>
     <string name="playback_force_sdr">Force SDR output</string>
-    <string name="playback_force_sdr_hint">Map HDR and Dolby Vision to SDR. Off by default. Takes effect when you reopen a video.</string>
+    <string name="playback_force_sdr_hint">Map HDR to SDR. Off by default. Takes effect when you reopen a video.</string>
 </resources>

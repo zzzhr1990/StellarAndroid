@@ -106,7 +106,7 @@ internal fun embyFallbackRatings(item: EmbyItem) = buildList {
     item.criticRating?.let { add(cn.coldlake.stellar.opensource.medialibrary.catalog.LibraryRating("critic", it, 100.0)) }
 }
 
-/** Source capabilities only. Bit depth alone never implies HDR or Dolby Vision. */
+/** Source capabilities only. Bit depth alone does not establish HDR capabilities. */
 internal fun embyVideoBadges(track: EmbyTrack): List<String> = buildList {
     when {
         track.width >= 7600 || track.height >= 4320 -> add("8K")

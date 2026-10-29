@@ -14,7 +14,7 @@
 - 可选 Trakt 聚合评分，直接访问 `apiz.trakt.tv`；单集评分使用剧集 IMDb ID、季号和集号。
 - DLNA 投屏，使用项目自己的 SSDP / SOAP 实现。
 
-开源版没有恒星 Pro、账户/会员限制、MDK、AV3A、自定义超分辨率、杜比增强或 Google Cast SDK。libplacebo 仅作为 MPV 依赖保留，不启用其 Dolby Vision 重塑或 Vulkan 后端。
+开源版没有恒星 Pro、账户/会员限制、AV3A、自定义超分辨率或 Google Cast SDK。libplacebo 仅作为 MPV 依赖保留，使用 OpenGL 后端。
 
 ## 编译
 

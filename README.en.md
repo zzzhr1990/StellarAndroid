@@ -14,7 +14,7 @@ A native Kotlin / Jetpack Compose media player. This independent open-source edi
 - Optional aggregate ratings directly from `apiz.trakt.tv`. Episode ratings use the show's IMDb ID plus season and episode numbers.
 - DLNA casting through this project's SSDP / SOAP implementation.
 
-This edition contains no Stellar Pro, account/membership gates, MDK, AV3A, custom super-resolution, Dolby enhancements or Google Cast SDK. Upstream libplacebo is retained for MPV; its Dolby Vision reshaping and Vulkan backend are disabled.
+This edition contains no Stellar Pro, account/membership gates, AV3A, custom super-resolution or Google Cast SDK. Upstream libplacebo is retained for MPV and uses the OpenGL backend.
 
 ## Build
 

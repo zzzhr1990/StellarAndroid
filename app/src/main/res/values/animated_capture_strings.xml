@@ -12,7 +12,7 @@
     <string name="capture_start">Start capture</string>
     <string name="capture_cancel">Cancel</string>
     <string name="capture_play_first">Play a video to start capture.</string>
-    <string name="capture_sdr_only">HDR and Dolby Vision capture are not supported. Use an SDR video.</string>
+    <string name="capture_sdr_only">HDR capture is not supported. Use an SDR video.</string>
     <string name="capture_real_video">Capture is available for real video playback.</string>
     <string name="capture_recording">Recording %1$d / %2$d s</string>
     <string name="capture_saving">Saving…</string>

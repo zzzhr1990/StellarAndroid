@@ -8,7 +8,7 @@ The retained MPV and DVD components permit GPL version 2 **or later**. This dist
 
 References: [GNU license compatibility](https://www.gnu.org/licenses/license-list.en.html), [Apache/GPL compatibility](https://www.apache.org/licenses/GPL-compatibility), [FFmpeg licensing](https://ffmpeg.org/legal.html).
 
-The old proprietary playback SDK and codec integrations, CDDL jUPnP implementation, Google Cast SDK and Google authentication SDKs are absent. The DLNA implementation is project-owned. Drive and OneDrive use user-provided OAuth tokens, with no proprietary authentication runtime dependency.
+The CDDL jUPnP implementation, Google Cast SDK and Google authentication SDKs are absent. The DLNA implementation is project-owned. Drive and OneDrive use user-provided OAuth tokens, with no proprietary authentication runtime dependency.
 
 ## Native components
 

@@ -1,4 +1,4 @@
 <resources>
     <string name="playback_force_sdr">强制使用SDR</string>
-    <string name="playback_force_sdr_hint">将HDR和杜比视界映射为SDR。默认关闭，重新打开视频后生效。</string>
+    <string name="playback_force_sdr_hint">将 HDR 映射为 SDR。默认关闭，重新打开视频后生效。</string>
 </resources>

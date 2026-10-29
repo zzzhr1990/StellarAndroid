@@ -12,7 +12,7 @@
     <string name="capture_start">開始擷取</string>
     <string name="capture_cancel">取消</string>
     <string name="capture_play_first">請先播放影片再開始擷取。</string>
-    <string name="capture_sdr_only">暫不支援 HDR 和杜比視界擷取，請使用 SDR 影片。</string>
+    <string name="capture_sdr_only">暫不支援 HDR 擷取，請使用 SDR 影片。</string>
     <string name="capture_real_video">僅支援真實影片播放時擷取。</string>
     <string name="capture_recording">正在擷取 %1$d / %2$d 秒</string>
     <string name="capture_saving">正在儲存…</string>
