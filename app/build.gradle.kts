@@ -13,6 +13,15 @@ val localConfig = Properties().apply {
 fun config(name: String) = providers.environmentVariable(name).orNull ?: localConfig.getProperty(name, "")
 fun quoted(value: String) = "\"" + value.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r") + "\""
 
+val releaseSigning = listOf("ANDROID_KEYSTORE_PATH", "ANDROID_KEYSTORE_PASSWORD", "ANDROID_KEY_ALIAS", "ANDROID_KEY_PASSWORD")
+    .associateWith(::config)
+val hasReleaseSigning = releaseSigning.values.any { it.isNotBlank() }
+if (hasReleaseSigning) {
+    require(releaseSigning.values.all { it.isNotBlank() }) { "All ANDROID_KEYSTORE_* / ANDROID_KEY_* signing settings are required." }
+    require(file(releaseSigning.getValue("ANDROID_KEYSTORE_PATH")).isFile) { "Release keystore does not exist." }
+}
+val appVersionCode = providers.gradleProperty("appVersionCode").get().toInt()
+require(appVersionCode in 1..2_100_000_000) { "appVersionCode must be between 1 and 2100000000." }
 
 android {
     namespace = "cn.coldlake.stellar.opensource"
@@ -22,8 +31,8 @@ android {
         applicationId = "cn.coldlake.stellar.opensource"
         minSdk = 26
         targetSdk = 37
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = appVersionCode
+        versionName = providers.gradleProperty("appVersionName").get()
         buildConfigField("String", "TMDB_API_KEY", quoted(config("TMDB_API_KEY")))
         buildConfigField("String", "TRAKT_API_KEY", quoted(config("TRAKT_API_KEY")))
         buildConfigField("String", "TMDB_READ_ACCESS_TOKEN", quoted(config("TMDB_READ_ACCESS_TOKEN")))
@@ -32,10 +41,23 @@ android {
     }
     buildFeatures { compose = true; buildConfig = true }
     externalNativeBuild { cmake { path = file("src/main/cpp/CMakeLists.txt"); version = "4.1.2" } }
-    // Debug uses Android's standard local debug keystore. Release is unsigned by default.
+    signingConfigs {
+        if (hasReleaseSigning) {
+            create("release") {
+                storeFile = file(releaseSigning.getValue("ANDROID_KEYSTORE_PATH"))
+                storePassword = releaseSigning.getValue("ANDROID_KEYSTORE_PASSWORD")
+                keyAlias = releaseSigning.getValue("ANDROID_KEY_ALIAS")
+                keyPassword = releaseSigning.getValue("ANDROID_KEY_PASSWORD")
+            }
+        }
+    }
+    // Local release builds remain unsigned unless all signing settings are supplied.
     buildTypes {
         getByName("debug") { isPseudoLocalesEnabled = true }
-        getByName("release") { isDebuggable = false }
+        getByName("release") {
+            isDebuggable = false
+            if (hasReleaseSigning) signingConfig = signingConfigs.getByName("release")
+        }
     }
     // Shared project modules link the same canonical native prefix.
     packaging { jniLibs { pickFirsts += setOf("**/libc++_shared.so", "**/libmpv.so", "**/libav*.so", "**/libsw*.so", "**/libsmb2.so", "**/libnfs.so") } }

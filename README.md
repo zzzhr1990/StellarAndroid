@@ -2,7 +2,7 @@
 <h1 align="center">恒星播放器（Android）</h1>
 <p align="center">StellarPlayer (Android) · <a href="README.en.md">English</a> · <a href="LICENSE">GPL-3.0-or-later</a></p>
 
-原生 Kotlin / Jetpack Compose Android 媒体播放器。此仓库是独立的开源版本，包名为 `cn.coldlake.stellar.opensource`，可以与其他恒星播放器版本同时安装。
+原生 Kotlin / Jetpack Compose Android 媒体播放器。
 
 ## 功能
 
@@ -79,7 +79,30 @@
    # 输出未签名 release APK，发布者须使用自己的密钥签名
    ```
 
-Debug 使用本机 Android 默认调试签名。发布者自行配置 release 签名及可选的服务凭据，并在公开发布前核对构建配置。
+Debug 使用本机 Android 默认调试签名。Release 签名可通过 `local.properties.example` 中的四个 `ANDROID_KEYSTORE_*` / `ANDROID_KEY_*` 配置或同名环境变量提供；未配置时仍输出未签名 APK。基础版本号位于 `gradle.properties`，可通过 `-PappVersionName=... -PappVersionCode=...` 覆盖。
+
+## 自动发布
+
+向远端 `release` 分支推送后，[Android Release](https://github.com/zzzhr1990/StellarAndroid/actions/workflows/release.yml) 会从固定源码编译原生依赖，再构建并发布到 [GitHub Releases](https://github.com/zzzhr1990/StellarAndroid/releases)：
+
+- 已签名的 ARM64 Release APK（直接安装）和 Release AAB（分发包）。
+- Debug APK，使用每次 CI 运行生成的调试签名，不能覆盖 Release，跨运行也可能需要卸载后安装。
+- 对应提交的仓库源码包（含随仓库提供的原生依赖源码）、许可证、构建信息及 `SHA256SUMS.txt`。
+
+每次推送产生独立版本：基础版本 `1.0.0`、工作流运行号 `42` 对应版本名 `1.0.0+42`、标签 `v1.0.0-build.42`、`versionCode=1042`（1000 + 运行号）。重跑沿用同一标签，不覆盖已公开版本。修改 `gradle.properties` 的 `appVersionName` 可调整基础版本；保持工作流身份和运行号连续，以保证 APK 升级版本号递增。构建或校验失败时不公开 Release；上传完成后才将草稿发布。
+
+仓库 Actions Secrets 必须配置：`ANDROID_KEYSTORE_BASE64`（密钥库 Base64）、`ANDROID_KEYSTORE_PASSWORD`、`ANDROID_KEY_ALIAS`、`ANDROID_KEY_PASSWORD`。同一发布密钥必须保留用于后续升级，不能每次重新生成。工作流仅在临时目录恢复密钥，构建后删除。可选服务凭据也可配置为同名 Secrets，缺省时留空。
+
+```sh
+git switch release
+git merge main
+git push origin release
+# 查看运行状态；失败后可在修复配置后重跑
+gh run list --branch release
+gh run rerun RUN_ID --failed
+```
+
+工作流配置保存在 `release` 分支，推送新的提交即可触发。当前只支持 `arm64-v8a`，不生成 ARMv7 / x86 包。
 
 ## 自行配置服务
 

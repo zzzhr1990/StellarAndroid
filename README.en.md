@@ -2,7 +2,7 @@
 <h1 align="center">StellarPlayer (Android)</h1>
 <p align="center">恒星播放器（Android） · <a href="README.md">简体中文</a> · <a href="LICENSE">GPL-3.0-or-later</a></p>
 
-A native Kotlin / Jetpack Compose media player. This independent open-source edition uses package `cn.coldlake.stellar.opensource` and can coexist with other StellarPlayer editions.
+A native Kotlin / Jetpack Compose media player.
 
 ## Features
 
@@ -60,7 +60,29 @@ python native/build.py
 
 The first native build takes time. Source versions and SHA-256 checksums are in [native/sources.json](native/sources.json). Build outputs go to ignored `native/prefix/arm64-v8a`. The native script reads the SDK path from `ANDROID_HOME`.
 
-The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. `./gradlew :app:assembleRelease` produces an unsigned release APK; sign it with your own key. Debug uses Android's local default debug keystore. Configure your release signing and optional service credentials, and review the build configuration before publishing.
+The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. Release builds are unsigned unless all four signing settings in `local.properties.example` are supplied through local properties or environment variables. Debug uses Android's local default debug keystore. Base versions live in `gradle.properties`; override them with `-PappVersionName=... -PappVersionCode=...`.
+
+## Automated releases
+
+Every push to `release` runs [Android Release](https://github.com/zzzhr1990/StellarAndroid/actions/workflows/release.yml), builds native dependencies from the pinned sources, and publishes a separate [GitHub Release](https://github.com/zzzhr1990/StellarAndroid/releases) containing:
+
+- Signed ARM64 Release APK and AAB. Install the APK directly; the AAB is a distribution bundle.
+- Debug APK signed with that run's generated debug key. It cannot upgrade a Release install, and upgrades between debug runs may require uninstalling first.
+- The exact repository source archive, including bundled native sources, plus license notices, build metadata and `SHA256SUMS.txt`.
+
+For base version `1.0.0` and workflow run number `42`, the version name is `1.0.0+42`, the tag is `v1.0.0-build.42`, and the version code is `1042` (1000 + run number). Reruns reuse the tag and never overwrite an already public release. Change `appVersionName` in `gradle.properties` for a new base version; preserve the workflow identity and its run-number sequence so Android upgrade version codes keep increasing. Failed builds or verification do not publish a release; all assets are uploaded to a draft before publication.
+
+Required repository Actions Secrets: `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, and `ANDROID_KEY_PASSWORD`. Back up the signing key and keep using it for updates. The workflow restores it only in a temporary directory and deletes it after building. Optional service credentials use the same secret names as the environment variables below and default to empty.
+
+```sh
+git switch release
+git merge main
+git push origin release
+gh run list --branch release
+gh run rerun RUN_ID --failed
+```
+
+The workflow lives on the `release` branch and is triggered by new commits. Only `arm64-v8a` is currently supported; ARMv7 / x86 packages are not generated.
 
 ## Configure your services
 

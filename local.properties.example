@@ -6,3 +6,9 @@ TMDB_READ_ACCESS_TOKEN=
 TMDB_API_KEY=
 # Optional aggregate detail ratings, requested directly from https://apiz.trakt.tv.
 TRAKT_API_KEY=
+# Optional release signing; provide all four settings together, or leave all empty.
+# Environment variables with the same names take priority.
+ANDROID_KEYSTORE_PATH=
+ANDROID_KEYSTORE_PASSWORD=
+ANDROID_KEY_ALIAS=
+ANDROID_KEY_PASSWORD=
