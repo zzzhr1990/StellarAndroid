@@ -6,19 +6,17 @@ A native Kotlin / Jetpack Compose media player. This independent open-source edi
 
 ## Features
 
-- Local and network playback with MPV, official FFmpeg and the upstream libplacebo dependency required by MPV.
+- Local and network playback with MPV, FFmpeg and libplacebo, using OpenGL for video rendering.
 - Subtitles, tracks, playlists, equalizer, picture-in-picture, screenshots and clip export.
 - SMB, NFS, WebDAV, Google Drive, OneDrive and your own Emby / Jellyfin libraries.
 - Unencrypted DVD / Blu-ray files and images, DVD and HDMV menus.
-- Movie, show, season, episode and cast information directly from the official TMDB API; no Stellar metadata server.
+- Movie, show, season, episode and cast information directly from the official TMDB API.
 - Optional aggregate ratings directly from `apiz.trakt.tv`. Episode ratings use the show's IMDb ID plus season and episode numbers.
 - DLNA casting through this project's SSDP / SOAP implementation.
 
-Upstream libplacebo is retained for MPV and uses the OpenGL backend.
-
 ## Build
 
-Only `arm64-v8a` is built, targeting Android 8.0 / API 26 and later. Native dependencies are built from pinned source archives bundled in this repository.
+The build targets `arm64-v8a` on Android 8.0 / API 26 and later. Native dependencies are built from pinned source archives bundled in this repository.
 
 Requirements: macOS or Linux, JDK 21, Python 3.12+, C/C++ build tools, CMake, pkg-config, Perl, Make and the Android SDK. On Windows, use a Linux / WSL native build environment. Gradle Wrapper, AGP, Kotlin and native source versions are pinned.
 
@@ -40,13 +38,13 @@ python native/build.py
 ./gradlew :app:assembleDebug
 ```
 
-The first native build takes time. Source versions and SHA-256 checksums are in [native/sources.json](native/sources.json). Build outputs go to ignored `native/prefix/arm64-v8a`. The native script uses `ANDROID_HOME`, not `local.properties`.
+The first native build takes time. Source versions and SHA-256 checksums are in [native/sources.json](native/sources.json). Build outputs go to ignored `native/prefix/arm64-v8a`. The native script reads the SDK path from `ANDROID_HOME`.
 
-The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. `./gradlew :app:assembleRelease` produces an unsigned release APK; sign it with your own key. Debug uses Android's local default debug keystore. No signing keys, API keys or access tokens are included in this repository. Never publish a build containing personal credentials.
+The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. `./gradlew :app:assembleRelease` produces an unsigned release APK; sign it with your own key. Debug uses Android's local default debug keystore. Configure your release signing and optional service credentials, and review the build configuration before publishing.
 
 ## Configure your services
 
-No third-party credentials are needed to compile or play local media. Optional values belong in ignored `local.properties` or environment variables of the same name (environment takes priority):
+The default configuration supports compilation and local media playback. Optional online service values belong in ignored `local.properties` or environment variables of the same name (environment takes priority):
 
 | Setting | Purpose |
 | --- | --- |
@@ -54,15 +52,15 @@ No third-party credentials are needed to compile or play local media. Optional v
 | `TMDB_API_KEY` | Alternatively, your TMDB v3 API key; only one TMDB credential is required |
 | `TRAKT_API_KEY` | Your Trakt API client ID for detail ratings |
 
-These values are compiled into your APK and are not secrets from its users. Without them, the corresponding online metadata/ratings are unavailable; existing local information and playback remain usable. Provider availability, quotas and authorization rules apply.
+Supplying the corresponding credentials enables online metadata and ratings. These values are compiled into the APK and can be extracted by its recipients. Provider availability, quotas and authorization rules apply.
 
-Enter your own OAuth access token in the Google Drive or OneDrive connection screen. Use Google Drive `drive.readonly` or Microsoft Graph delegated `Files.Read`, respectively. The project supplies no shared OAuth registration and does not manage refresh tokens. Replace expired tokens manually. Reauthorization verifies the same account/drive identity. Tokens are encrypted locally using Android Keystore; keep them out of source control, issue reports and public builds.
+Enter your own OAuth access token in the Google Drive or OneDrive connection screen. Use Google Drive `drive.readonly` or Microsoft Graph delegated `Files.Read`, respectively. Obtain a token through the provider's OAuth flow and update it in the connection screen when it expires. Reauthorization verifies the same account/drive identity. Tokens are encrypted locally using Android Keystore.
 
 ## License and attribution
 
-Project-owned code is **GPL-3.0-or-later**; see [LICENSE](LICENSE). This accommodates the retained GPL playback/disc components and Apache-2.0 dependencies. Third-party components retain their own licenses; trademarks and remotely retrieved data have separate terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the inventory, source locations and binary distribution obligations.
+Project-owned code is **GPL-3.0-or-later**; see [LICENSE](LICENSE). Third-party components follow their own licenses; trademarks and remotely retrieved data have separate terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the inventory, source locations and binary distribution obligations.
 
-The README links the [existing project logo](assets/logo.svg). The Jellyfin mark retains CC BY-SA 4.0 attribution. The TMDB mark is used under service attribution terms; it and remote posters are not relicensed under the project GPL. Other rating providers use text labels.
+The README links the [project logo](assets/logo.svg). The Jellyfin mark follows CC BY-SA 4.0. The TMDB mark and remote posters follow the provider's attribution and content terms. Other rating providers use text labels.
 
 This product uses the TMDB API but is not endorsed or certified by TMDB.
 

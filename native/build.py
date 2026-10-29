@@ -83,7 +83,7 @@ if not (build/'Makefile').exists():
     run(sources/'openssl/Configure','android-arm64','-D__ANDROID_API__=26','no-shared','no-tests',
         '--prefix='+str(prefix),'--libdir=lib', cwd=build)
 run('make','-j'+jobs,cwd=build);run('make','install_sw',cwd=build)
-# Official FFmpeg; no external codec SDKs, GPL codecs, or nonfree flags.
+# Build official FFmpeg with Android MediaCodec, OpenSSL and zlib support.
 build=work/'build-ffmpeg';build.mkdir(exist_ok=True)
 if not (build/'ffbuild/config.mak').exists():
     run(sources/'ffmpeg/configure','--prefix='+str(prefix),'--target-os=android','--arch=aarch64',

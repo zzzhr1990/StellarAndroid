@@ -1,6 +1,6 @@
 # Copy to local.properties (ignored). Never commit real credentials.
 sdk.dir=/absolute/path/to/Android/sdk
-# Optional TMDB API Read Access Token (v4 bearer token); no shared project key.
+# Optional: your TMDB API Read Access Token (v4 bearer token).
 TMDB_READ_ACCESS_TOKEN=
 # Or supply the v3 API key. Only one TMDB credential is needed.
 TMDB_API_KEY=
