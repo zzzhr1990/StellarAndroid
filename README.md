@@ -26,14 +26,6 @@
 
 [![视频详情：影片资料、评分与演职人员](assets/screenshots/video-details.png)](assets/screenshots/video-details.png)
 
-### 主题设置
-
-[![主题设置：主题模式、颜色、字体与导航栏](assets/screenshots/settings.png)](assets/screenshots/settings.png)
-
-### 添加媒体库
-
-[![添加媒体服务器：Emby 与 Jellyfin](assets/screenshots/add-media-library.png)](assets/screenshots/add-media-library.png)
-
 ## 编译
 
 构建目标为 `arm64-v8a`，最低 Android 8.0（API 26）。原生依赖从随仓库提供的固定源码构建。

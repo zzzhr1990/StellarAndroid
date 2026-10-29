@@ -26,14 +26,6 @@ Portrait views on an unfolded foldable display, captured at **1968 × 2184**. Se
 
 [![Video details with metadata, ratings and cast](assets/screenshots/video-details.png)](assets/screenshots/video-details.png)
 
-### Theme settings
-
-[![Theme settings for appearance, colors, fonts and navigation](assets/screenshots/settings.png)](assets/screenshots/settings.png)
-
-### Add a media library
-
-[![Add an Emby or Jellyfin media server](assets/screenshots/add-media-library.png)](assets/screenshots/add-media-library.png)
-
 ## Build
 
 The build targets `arm64-v8a` on Android 8.0 / API 26 and later. Native dependencies are built from pinned source archives bundled in this repository.
