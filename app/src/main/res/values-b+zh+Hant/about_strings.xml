@@ -23,5 +23,5 @@
     <string name="about_website_url">https://github.com/zzzhr1990/StellarAndroid</string>
     <string name="about_search">搜尋程式庫或授權條款</string>
     <string name="about_no_matches">沒有符合的程式庫。</string>
-    <string name="about_version_notice">本播放器只供學習、研究使用，版權歸 冷湖科技(武汉)有限公司所有。\n\n本播放器不提供任何影片、音樂，也不提供相應影片下載渠道。</string>
+    <string name="about_version_notice">本專案依照 GNU GPL-3.0-or-later 授權條款發布。再散布本專案或其修改版本時，須遵守該授權條款，包括保留適用的著作權及授權聲明，並按要求提供完整對應原始碼。\n\n本授權條款不授予「恆星播放器／StellarPlayer」等名稱、商標及品牌標識的商標使用權。第三方發行不得冒充官方版本，也不得虛假聲稱獲得官方授權或背書。\n\n本軟體按現狀提供，不提供擔保，適用法律另有規定的除外。</string>
 </resources>

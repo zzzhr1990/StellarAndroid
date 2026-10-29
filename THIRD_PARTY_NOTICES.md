@@ -45,6 +45,12 @@ Material Symbols retain Apache-2.0 notices. The converted Jellyfin mark remains 
 
 The TMDB logo is a **trademark/attribution asset**, governed by [TMDB's attribution requirements](https://developer.themoviedb.org/docs/faq). Remote posters, descriptions and provider data follow the providers' content terms. Other rating providers are identified by text. API access requires each developer's own credentials and compliance with provider terms. API, database, trademark and codec patent permissions are governed separately from the software license.
 
+## Optional Google Cast integration
+
+Google Cast is not included in the default build or its runtime inventory. The Cast framework's [published POM](https://dl.google.com/dl/android/maven2/com/google/android/gms/play-services-cast-framework/23.0.0/play-services-cast-framework-23.0.0.pom) declares the Android Software Development Kit License; use also falls under the [Google Cast SDK Additional Developer Terms](https://developers.google.com/cast/docs/terms). These are separate from the licenses of AndroidX and open-source sample code. Because of unresolved compatibility with the current GPL distribution, this project does not bundle the Cast SDK.
+
+The [self-integration guide](docs/GOOGLE_CAST_INTEGRATION.md) (Chinese) describes changes developers can make in their own branches. It grants no GPL linking exception or additional rights to third-party components. Anyone distributing a combined build must first resolve the applicable licensing requirements; adding notices or bypassing the license inventory checks does not resolve compatibility.
+
 ## Redistributing binaries
 
 The repository publishes source. A distributor publishing an APK must provide the complete corresponding source for that exact build, including modifications, build scripts, dependency sources and applicable installation information. Keep copyright notices and license texts; provide recipients the required ability to rebuild/relink modified LGPL components. Preserve recipients' GPL/LGPL rights in your distribution terms.

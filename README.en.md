@@ -90,6 +90,16 @@ Supplying the corresponding credentials enables online metadata and ratings. The
 
 Enter your own OAuth access token in the Google Drive or OneDrive connection screen. Use Google Drive `drive.readonly` or Microsoft Graph delegated `Files.Read`, respectively. Obtain a token through the provider's OAuth flow and update it in the connection screen when it expires. Reauthorization verifies the same account/drive identity. Tokens are encrypted locally using Android Keystore.
 
+**Because of unresolved license compatibility issues, we cannot directly include MSAL's default dependency combination or the Google native authorization SDK in the current GPL distribution.** Developers who need SDK sign-in and automatic token renewal must manually integrate the code, register their own service applications and build their own branch, following [Integrating MSAL and Google Drive](docs/CLOUD_SDK_INTEGRATION.md) (Chinese). Self-integration does not waive licensing obligations when distributing the resulting application.
+
+The open-source Google Drive API client uses the GPLv3-compatible Apache-2.0 license and is not subject to the licensing obstacle described above. It is separate from the Google native authorization SDK; optional integration steps are also included in the guide.
+
+## Integrating Google Cast (Chromecast)
+
+**Because of unresolved license compatibility issues, we cannot directly include the Google Cast SDK in the current GPL distribution.** The default build supports DLNA casting only; it does not include Google Cast (also referred to as Chrome Cast / Chromecast).
+
+Developers who need this feature must configure the SDK and receiver, integrate casting sessions and playback controls, and compile their own branch. See [Integrating Google Cast](docs/GOOGLE_CAST_INTEGRATION.md) (Chinese) for code examples, project integration points, media relay and subtitle limitations, and verification steps. Adding a dependency or an App ID alone does not enable casting. Self-integration does not waive licensing obligations when distributing the resulting application.
+
 ## License and attribution
 
 Project-owned code is **GPL-3.0-or-later**; see [LICENSE](LICENSE). Third-party components follow their own licenses; trademarks and remotely retrieved data have separate terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the inventory, source locations and binary distribution obligations.

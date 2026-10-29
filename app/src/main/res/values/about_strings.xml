@@ -26,5 +26,5 @@
     <string name="about_tmdb_notice" translatable="false">This product uses the TMDB API but is not endorsed or certified by TMDB.</string>
     <string name="about_search">Search libraries or licenses</string>
     <string name="about_no_matches">No matching libraries.</string>
-    <string name="about_version_notice">This player is intended only for learning and research. Copyright belongs to 冷湖科技(武汉)有限公司.\n\nThis player does not provide any videos or music, nor channels for downloading videos.</string>
+    <string name="about_version_notice">This project is distributed under the GNU GPL-3.0-or-later license. Redistribution of this project or modified versions must comply with that license, including retaining applicable copyright and license notices and providing the complete Corresponding Source as required.\n\nThis license does not grant trademark rights to use names, trademarks, or brand identifiers such as “恒星播放器／StellarPlayer”. Third-party distributions must not impersonate official versions or falsely claim official authorization or endorsement.\n\nThis software is provided as is, without warranty, except as otherwise required by applicable law.</string>
 </resources>

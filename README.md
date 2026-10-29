@@ -110,6 +110,16 @@ gh run rerun RUN_ID --failed
 
 Google Drive 和 OneDrive 在应用的连接页面输入**自己的 OAuth access token**，分别需要 Google Drive `drive.readonly` 与 Microsoft Graph `Files.Read` 委托权限。通过相应服务的 OAuth 流程取得访问令牌，过期后在连接页面更新。同一连接重新授权时会核对账户/网盘身份。令牌使用 Android Keystore 在设备上加密保存。
 
+**由于许可证兼容性问题，我们无法将 MSAL 的默认依赖组合及 Google 原生授权 SDK 直接集成到当前 GPL 公开发行版本中。** 需要 SDK 登录和自动刷新功能的开发者，须按[自行集成 MSAL 和 Google Drive](docs/CLOUD_SDK_INTEGRATION.md)在自己的分支中手动集成代码、注册服务应用并自行编译。自行集成不免除对外分发时的许可证义务。
+
+Google Drive 的开源 API 客户端采用与 GPLv3 兼容的 Apache-2.0 许可，不属于上述许可障碍；它与 Google 原生授权 SDK 是不同组件，可选接入步骤也见该指南。
+
+## 自行集成 Google Cast（Chromecast）
+
+**由于许可证兼容性问题，我们无法将 Google Cast SDK 直接集成到当前 GPL 公开发行版本中。** 默认构建仅提供 DLNA 投屏，不包含 Google Cast（也常被称为 Chrome Cast / Chromecast）支持。
+
+需要此功能的开发者，请按[自行集成 Google Cast](docs/GOOGLE_CAST_INTEGRATION.md)在自己的分支中配置 SDK 和接收端、接入投屏会话与播放控制，并自行编译。指南提供代码示例、项目接入位置、媒体转发与字幕限制及验证步骤；仅添加依赖或填写 App ID 不会自动启用。自行集成不免除对外分发时的许可证义务。
+
 ## 许可证与来源
 
 项目自有代码采用 **GPL-3.0-or-later**，详见 [LICENSE](LICENSE)。第三方代码遵循各自许可证，标志与第三方数据按各自条款使用。依赖清单、源码位置和二进制发布义务见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
