@@ -1,5 +1,7 @@
 # 自行集成 Google Cast（Chromecast / Chrome Cast）
 
+简体中文 · [English](GOOGLE_CAST_INTEGRATION.en.md)
+
 本指南面向自行修改和编译播放器的开发者，说明如何在自己的分支中接入 Google Cast Android Sender SDK。**由于许可证兼容性问题，项目无法在当前 GPL 公开发行版本中直接提供 Google Cast SDK。** 默认构建仅支持项目自行实现的 DLNA 投屏，没有 Google Cast 依赖、接收端配置或可直接开启的隐藏开关。
 
 核对日期：2026-10-29。下面的版本和代码片段用于说明集成方式，尚未作为完整 Google Cast 功能在本项目中编译和真机验证。完成配置后仍须实现会话和播放器适配，不能只添加依赖或填写 App ID 就开始投屏。

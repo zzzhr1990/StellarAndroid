@@ -1,5 +1,7 @@
 # 自行集成 MSAL 和 Google Drive
 
+简体中文 · [English](CLOUD_SDK_INTEGRATION.en.md)
+
 **由于许可证兼容性问题，本项目无法将 MSAL 的默认依赖组合及 Google 原生授权 SDK 直接集成到当前 GPL 公开发行版本中。** 具体而言，已核对的 MSAL 8.5.0 会间接引入专有 Google 组件，Google 原生授权组件 `play-services-auth` 本身也适用专有许可；这些组件与当前发行方案的兼容性尚未解决。
 
 因此，默认构建使用用户提供的 access token，不提供上述 SDK 的开箱即用登录和自动刷新功能。需要这些功能的开发者须按本指南，在自己的分支中手动集成代码、注册服务应用并自行编译；仅填写 client ID 不会启用 SDK 登录。自行集成后的对外分发仍须解决相应许可证问题，不能以“用户自行编译”为由免除义务。
