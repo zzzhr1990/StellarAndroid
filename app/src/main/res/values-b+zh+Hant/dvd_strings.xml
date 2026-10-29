@@ -1,0 +1,6 @@
+<resources>
+    <string name="dvd_title_name">標題 %2$d · %1$s</string>
+    <string name="dvd_open_failed">無法讀取支援的光碟標題。</string>
+    <string name="dvd_opening">正在讀取光碟標題…</string>
+    <string name="dvd_play">播放 DVD</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Full bleed: the launcher owns the final shape and outer shadow. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:pathData="M0,0H108V108H0Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear"
+                android:startX="18" android:startY="90"
+                android:endX="90" android:endY="18">
+                <item android:offset="0" android:color="#4B1FE8" />
+                <item android:offset="0.5" android:color="#3447EF" />
+                <item android:offset="1" android:color="#0CACF5" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

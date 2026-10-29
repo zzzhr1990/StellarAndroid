@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="casting_local_only">此工具僅適用於手機本機播放。</string>
+    <string name="casting_volume">接收裝置音量</string>
+    <string name="casting_title">投放媒體</string>
+    <string name="casting_hint">請連接同一區域網路。播放格式、字幕和畫質由接收裝置決定。</string>
+    <string name="casting_permission">允許存取區域網路，以探索裝置並分享媒體。</string>
+    <string name="casting_network">請連接 Wi-Fi 或乙太網路後投放。</string>
+    <string name="casting_unavailable">無法啟動裝置探索，請重試。</string>
+    <string name="casting_source">此來源還需要額外的投放支援，請先使用本機 MP4 或媒體直連網址。</string>
+    <string name="casting_load_error">接收裝置無法載入媒體，請檢查格式和網路連線。</string>
+    <string name="casting_control_error">接收裝置未確認操作，手機播放保持暫停。</string>
+    <string name="casting_disconnected">與接收裝置的連線已中斷，手機播放保持暫停。</string>
+    <string name="casting_allow">允許存取區域網路</string>
+    <string name="casting_return">停止投放並在手機播放</string>
+    <string name="casting_stop">停止投放</string>
+    <string name="casting_dlna_device">%1$s · DLNA</string>
+    <string name="casting_empty">未找到 DLNA 播放裝置。</string>
+    <string name="casting_refresh">重新整理裝置</string>
+    <string name="casting_close">關閉</string>
+    <string name="casting_on_device">正在投放至 %1$s</string>
+    <string name="casting_vpn_blocked">未能完成裝置探索或連線，且 VPN 不允許直接存取區域網路。請在 VPN 應用程式中開啟「允許應用程式繞過 VPN」，重新連線 VPN 後重新整理裝置清單；也可以關閉 VPN 後重試。</string>
+</resources>

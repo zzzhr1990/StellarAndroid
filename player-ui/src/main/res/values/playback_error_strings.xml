@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_audio_output">Could not initialize audio output</string>
+    <string name="error_video_output">Could not initialize video output</string>
+    <string name="error_no_playable_tracks">No playable audio or video track</string>
+    <string name="error_playback">Playback failed. Please try again.</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subtitle_seek_on_switch">Show subtitles immediately on switch</string>
+    <string name="subtitle_seek_on_switch_hint">Seek when switching subtitles to display them immediately</string>
+    <string name="subtitle_url_title">Load subtitles from URL</string>
+    <string name="subtitle_url_label">HTTP or HTTPS subtitle URL</string>
+    <string name="subtitle_load">Load</string>
+    <string name="subtitle_cancel">Cancel</string>
+    <string name="subtitle_loading">Loading subtitles…</string>
+    <string name="subtitle_load_failed">Could not load subtitles. Check the file format or URL and try again.</string>
+    <string name="subtitle_file">External subtitles</string>
+    <string name="subtitle_url_invalid">Enter a valid HTTP or HTTPS URL</string>
+</resources>

@@ -1,0 +1,3 @@
+-keepclasseswithmembernames,includedescriptorclasses class * { native <methods>; }
+-keep class com.stellar.player.nativeio.NativeDirectoryProbe$Entry { *; }
+-keep class com.stellar.player.nativeio.NativeLibraryIo$Entry { *; }

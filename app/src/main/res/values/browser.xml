@@ -1,0 +1,11 @@
+<resources>
+    <string name="browser_open_server">Browse %1$s</string>
+    <string name="browser_back">Back</string>
+    <string name="browser_refresh">Refresh</string>
+    <string name="browser_root">Root folder</string>
+    <string name="browser_empty">This folder is empty</string>
+    <string name="browser_folder">Folder</string>
+    <string name="browser_file">File</string>
+    <string name="browser_unsupported">This file is not a supported video or audio file.</string>
+    <string name="browser_limit">This folder contains too many items to display. Open a smaller folder through the server settings.</string>
+</resources>

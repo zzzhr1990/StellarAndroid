@@ -1,0 +1,1831 @@
+[
+  {
+    "id": "libplacebo",
+    "name": "libplacebo",
+    "version": "7.387.0",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://codeload.github.com/haasn/libplacebo/tar.gz/refs/tags/v7.387.0",
+    "licenseUrl": "https://codeload.github.com/haasn/libplacebo/tar.gz/refs/tags/v7.387.0",
+    "notices": [
+      "native/libplacebo-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libass",
+    "name": "libass",
+    "version": "0.17.5",
+    "license": "ISC",
+    "url": "https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz",
+    "licenseUrl": "https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz",
+    "notices": [
+      "native/libass-COPYING.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "fribidi",
+    "name": "fribidi",
+    "version": "1.0.17",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://github.com/fribidi/fribidi/releases/download/v1.0.17/fribidi-1.0.17.tar.xz",
+    "licenseUrl": "https://github.com/fribidi/fribidi/releases/download/v1.0.17/fribidi-1.0.17.tar.xz",
+    "notices": [
+      "native/fribidi-COPYING.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "freetype",
+    "name": "freetype",
+    "version": "2.15.0",
+    "license": "FTL OR GPL-2.0-or-later",
+    "url": "https://codeload.github.com/freetype/freetype/tar.gz/refs/tags/VER-2-15-0",
+    "licenseUrl": "https://codeload.github.com/freetype/freetype/tar.gz/refs/tags/VER-2-15-0",
+    "notices": [
+      "native/freetype-LICENSE-TXT.txt",
+      "native/freetype-FTL-TXT.txt",
+      "native/freetype-GPLv2-TXT.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "mpv",
+    "name": "mpv",
+    "version": "0.41.0",
+    "license": "GPL-2.0-or-later",
+    "url": "https://codeload.github.com/mpv-player/mpv/tar.gz/refs/tags/v0.41.0",
+    "licenseUrl": "https://codeload.github.com/mpv-player/mpv/tar.gz/refs/tags/v0.41.0",
+    "notices": [
+      "native/mpv-Copyright.txt",
+      "native/mpv-LICENSE-GPL.txt",
+      "native/mpv-LICENSE-LGPL.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "openssl",
+    "name": "openssl",
+    "version": "4.1.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/openssl/openssl/releases/download/openssl-4.1.0/openssl-4.1.0.tar.gz",
+    "licenseUrl": "https://github.com/openssl/openssl/releases/download/openssl-4.1.0/openssl-4.1.0.tar.gz",
+    "notices": [
+      "native/openssl-LICENSE-txt.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "harfbuzz",
+    "name": "harfbuzz",
+    "version": "15.0.0",
+    "license": "MIT",
+    "url": "https://github.com/harfbuzz/harfbuzz/releases/download/15.0.0/harfbuzz-15.0.0.tar.xz",
+    "licenseUrl": "https://github.com/harfbuzz/harfbuzz/releases/download/15.0.0/harfbuzz-15.0.0.tar.xz",
+    "notices": [
+      "native/harfbuzz-COPYING.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "ffmpeg",
+    "name": "ffmpeg",
+    "version": "9.0.2",
+    "license": "LGPL-3.0-or-later",
+    "url": "https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz",
+    "licenseUrl": "https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz",
+    "notices": [
+      "native/ffmpeg-LICENSE-md.txt",
+      "native/ffmpeg-COPYING-LGPLv3.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-fast_float",
+    "name": "libplacebo-fast_float",
+    "version": "97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "license": "MIT",
+    "url": "https://codeload.github.com/fastfloat/fast_float/tar.gz/97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "licenseUrl": "https://codeload.github.com/fastfloat/fast_float/tar.gz/97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "notices": [
+      "native/libplacebo-fast_float-LICENSE-MIT.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-glad",
+    "name": "libplacebo-glad",
+    "version": "73db193f853e2ee079bf3ca8a64aa2eaf6459043",
+    "license": "MIT AND Apache-2.0",
+    "url": "https://codeload.github.com/Dav1dde/glad/tar.gz/73db193f853e2ee079bf3ca8a64aa2eaf6459043",
+    "licenseUrl": "https://codeload.github.com/Dav1dde/glad/tar.gz/73db193f853e2ee079bf3ca8a64aa2eaf6459043",
+    "notices": [
+      "native/libplacebo-glad-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-jinja",
+    "name": "libplacebo-jinja",
+    "version": "15206881c006c79667fe5154fe80c01c65410679",
+    "license": "BSD-3-Clause",
+    "url": "https://codeload.github.com/pallets/jinja/tar.gz/15206881c006c79667fe5154fe80c01c65410679",
+    "licenseUrl": "https://codeload.github.com/pallets/jinja/tar.gz/15206881c006c79667fe5154fe80c01c65410679",
+    "notices": [
+      "native/libplacebo-jinja-LICENSE-txt.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-markupsafe",
+    "name": "libplacebo-markupsafe",
+    "version": "297fc8e356e6836a62087949245d09a28e9f1b13",
+    "license": "BSD-3-Clause",
+    "url": "https://codeload.github.com/pallets/markupsafe/tar.gz/297fc8e356e6836a62087949245d09a28e9f1b13",
+    "licenseUrl": "https://codeload.github.com/pallets/markupsafe/tar.gz/297fc8e356e6836a62087949245d09a28e9f1b13",
+    "notices": [
+      "native/libplacebo-markupsafe-LICENSE-txt.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libsmb2",
+    "name": "libsmb2",
+    "version": "6.2",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://github.com/sahlberg/libsmb2",
+    "licenseUrl": "https://github.com/sahlberg/libsmb2",
+    "notices": [
+      "native/libsmb2.txt",
+      "LGPL-2.1.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libnfs",
+    "name": "libnfs",
+    "version": "8.0.0",
+    "license": "LGPL-2.1-or-later / BSD-2-Clause",
+    "url": "https://github.com/sahlberg/libnfs",
+    "licenseUrl": "https://github.com/sahlberg/libnfs",
+    "notices": [
+      "native/libnfs.txt",
+      "LGPL-2.1.txt",
+      "native/libnfs-BSD.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libbluray",
+    "name": "libbluray",
+    "version": "1.5.0",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://www.videolan.org/developers/libbluray.html",
+    "licenseUrl": "https://www.videolan.org/developers/libbluray.html",
+    "notices": [
+      "native/libbluray.txt",
+      "LGPL-2.1.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libudfread",
+    "name": "libudfread",
+    "version": "1.2.0",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://code.videolan.org/videolan/libudfread",
+    "licenseUrl": "https://code.videolan.org/videolan/libudfread",
+    "notices": [
+      "native/libudfread.txt",
+      "LGPL-2.1.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libdvdread",
+    "name": "libdvdread",
+    "version": "7.1.1",
+    "license": "GPL-2.0-or-later",
+    "url": "https://www.videolan.org/developers/libdvdnav.html",
+    "licenseUrl": "https://www.videolan.org/developers/libdvdnav.html",
+    "notices": [
+      "native/libdvdread.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libdvdnav",
+    "name": "libdvdnav",
+    "version": "7.0.0",
+    "license": "GPL-2.0-or-later",
+    "url": "https://www.videolan.org/developers/libdvdnav.html",
+    "licenseUrl": "https://www.videolan.org/developers/libdvdnav.html",
+    "notices": [
+      "native/libdvdnav.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "material-symbols",
+    "name": "Material Symbols",
+    "version": "",
+    "license": "Apache-2.0",
+    "url": "https://github.com/google/material-design-icons",
+    "licenseUrl": "https://github.com/google/material-design-icons",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "jellyfin-logo",
+    "name": "Jellyfin logo",
+    "version": "",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://github.com/jellyfin/jellyfin-ux",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "notices": [
+      "jellyfin-logo.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "tmdb-brand",
+    "name": "TMDB attribution mark",
+    "version": "",
+    "license": "TMDB attribution and logo terms (trademark asset)",
+    "url": "https://www.themoviedb.org/about/logos-attribution",
+    "licenseUrl": "https://developer.themoviedb.org/docs/faq",
+    "notices": [
+      "tmdb-attribution.txt"
+    ],
+    "other": true
+  },
+  {
+    "id": "ndk-runtime",
+    "name": "Android NDK C++ runtime",
+    "version": "29.0.14206865",
+    "license": "Apache-2.0 WITH LLVM-exception and bundled permissive notices",
+    "url": "https://android.googlesource.com/toolchain/llvm-project/",
+    "licenseUrl": "https://llvm.org/LICENSE.txt",
+    "notices": [
+      "native/ndk-runtime.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.activity:activity-compose",
+    "name": "Activity Compose",
+    "version": "1.13.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/activity#1.13.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.activity:activity-ktx",
+    "name": "Activity Kotlin Extensions",
+    "version": "1.13.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/activity#1.13.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.activity:activity",
+    "name": "Activity",
+    "version": "1.13.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/activity#1.13.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.annotation:annotation-experimental",
+    "name": "Experimental annotation",
+    "version": "1.6.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/annotation#1.6.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.annotation:annotation-jvm",
+    "name": "Annotation",
+    "version": "1.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/annotation#1.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.appcompat:appcompat-resources",
+    "name": "AppCompat Resources",
+    "version": "1.8.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/appcompat#1.8.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.arch.core:core-common",
+    "name": "Android Arch-Common",
+    "version": "2.2.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/arch-core#2.2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.arch.core:core-runtime",
+    "name": "Android Arch-Runtime",
+    "version": "2.2.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/arch-core#2.2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.autofill:autofill",
+    "name": "Autofill",
+    "version": "1.3.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/autofill#1.3.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.browser:browser",
+    "name": "Browser",
+    "version": "1.10.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/browser#1.10.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.collection:collection-jvm",
+    "name": "collections",
+    "version": "1.6.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/collection#1.6.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.collection:collection-ktx",
+    "name": "Collections Kotlin Extensions",
+    "version": "1.6.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/collection#1.6.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.animation:animation-android",
+    "name": "Compose Animation",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.animation:animation-core-android",
+    "name": "Compose Animation Core",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-animation#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.foundation:foundation-android",
+    "name": "Compose Foundation",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.foundation:foundation-layout-android",
+    "name": "Compose Layouts",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-foundation#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.material3:material3-android",
+    "name": "Compose Material3 Components",
+    "version": "1.5.0-alpha29",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.5.0-alpha29",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.material3:material3-ripple-android",
+    "name": "Compose Material3 Ripple",
+    "version": "1.5.0-alpha29",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-material3#1.5.0-alpha29",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.material:material-ripple-android",
+    "name": "Compose Material Ripple",
+    "version": "1.12.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-material#1.12.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.runtime:runtime-android",
+    "name": "Compose Runtime",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.runtime:runtime-annotation-android",
+    "name": "Compose Runtime Annotation",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.runtime:runtime-retain-android",
+    "name": "Compose Runtime Retain",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.runtime:runtime-saveable-android",
+    "name": "Compose Saveable",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-runtime#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.ui:ui-android",
+    "name": "Compose UI",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.ui:ui-geometry-android",
+    "name": "Compose Geometry",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.ui:ui-graphics-android",
+    "name": "Compose Graphics",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.ui:ui-text-android",
+    "name": "Compose UI Text",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.ui:ui-unit-android",
+    "name": "Compose Unit",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.compose.ui:ui-util-android",
+    "name": "Compose Util",
+    "version": "1.13.0-alpha01",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/compose-ui#1.13.0-alpha01",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.concurrent:concurrent-futures",
+    "name": "Futures",
+    "version": "1.3.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/concurrent#1.3.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.core:core-ktx",
+    "name": "Core Kotlin Extensions",
+    "version": "1.19.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/core#1.19.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.core:core-viewtree",
+    "name": "androidx.core:core-viewtree",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/core#1.0.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.core:core",
+    "name": "Core",
+    "version": "1.19.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/core#1.19.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.customview:customview-poolingcontainer",
+    "name": "CustomView Pooling Container",
+    "version": "1.1.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/customview#1.1.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.emoji2:emoji2",
+    "name": "Emoji2",
+    "version": "1.7.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/emoji2#1.7.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.exifinterface:exifinterface",
+    "name": "ExifInterface",
+    "version": "1.4.2",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/exifinterface#1.4.2",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.graphics:graphics-path",
+    "name": "Android Graphics Path",
+    "version": "1.1.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/graphics#1.1.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.graphics:graphics-shapes-android",
+    "name": "Graphics Shapes",
+    "version": "1.1.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/graphics#1.1.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.interpolator:interpolator",
+    "name": "Android Support Library Interpolators",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "url": "http://developer.android.com/tools/extras/support-library.html",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-common-java8",
+    "name": "Lifecycle-Common for Java 8",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-common-jvm",
+    "name": "Lifecycle-Common",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-livedata-core",
+    "name": "Lifecycle LiveData Core",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-process",
+    "name": "Lifecycle Process",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-runtime-android",
+    "name": "Lifecycle Runtime",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-runtime-compose-android",
+    "name": "Lifecycle Runtime Compose",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-runtime-ktx-android",
+    "name": "Lifecycle Kotlin Extensions",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-viewmodel-android",
+    "name": "Lifecycle ViewModel",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-viewmodel-compose-android",
+    "name": "Lifecycle ViewModel Compose",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-viewmodel-ktx",
+    "name": "Lifecycle ViewModel Kotlin Extensions",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-viewmodel-navigation3-android",
+    "name": "Androidx Lifecycle Navigation3 ViewModel",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.lifecycle:lifecycle-viewmodel-savedstate-android",
+    "name": "Lifecycle ViewModel with SavedState",
+    "version": "2.11.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.navigation3:navigation3-runtime-android",
+    "name": "Androidx Navigation 3 Runtime",
+    "version": "1.2.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/navigation3#1.2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.navigation3:navigation3-ui-android",
+    "name": "Androidx Navigation 3 UI",
+    "version": "1.2.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/navigation3#1.2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.navigationevent:navigationevent-android",
+    "name": "Navigation Event",
+    "version": "1.1.2",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/navigationevent#1.1.2",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.navigationevent:navigationevent-compose-android",
+    "name": "NavigationEvent Compose",
+    "version": "1.1.2",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/navigationevent#1.1.2",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.profileinstaller:profileinstaller",
+    "name": "Profile Installer",
+    "version": "1.4.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/profileinstaller#1.4.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.savedstate:savedstate-android",
+    "name": "Saved State",
+    "version": "1.5.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/savedstate#1.5.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.savedstate:savedstate-compose-android",
+    "name": "Saved State Compose",
+    "version": "1.5.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/savedstate#1.5.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.savedstate:savedstate-ktx",
+    "name": "SavedState Kotlin Extensions",
+    "version": "1.5.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/savedstate#1.5.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.sqlite:sqlite-android",
+    "name": "SQLite",
+    "version": "2.7.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/sqlite#2.7.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.sqlite:sqlite-bundled-android",
+    "name": "SQLite Bundled Integration",
+    "version": "2.7.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/sqlite#2.7.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.startup:startup-runtime",
+    "name": "Startup Runtime",
+    "version": "1.2.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/startup#1.2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.tracing:tracing-android",
+    "name": "Tracing",
+    "version": "2.0.3",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/tracing#2.0.3",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.vectordrawable:vectordrawable-animated",
+    "name": "AnimatedVectorDrawable",
+    "version": "1.2.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/vectordrawable#1.2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.vectordrawable:vectordrawable",
+    "name": "VectorDrawable",
+    "version": "1.2.0",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/vectordrawable#1.2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.versionedparcelable:versionedparcelable",
+    "name": "VersionedParcelable",
+    "version": "1.2.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/versionedparcelable#1.2.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.window:window-core-android",
+    "name": "WindowManager Core",
+    "version": "1.5.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/window#1.5.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "androidx.window:window",
+    "name": "WindowManager",
+    "version": "1.5.1",
+    "license": "Apache-2.0",
+    "url": "https://developer.android.com/jetpack/androidx/releases/window#1.5.1",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.github.bitfireAT:dav4jvm",
+    "name": "bitfireAT/dav4jvm",
+    "version": "4.1.0",
+    "license": "MPL-2.0",
+    "url": "https://github.com/bitfireAT/dav4jvm",
+    "licenseUrl": "https://api.github.com/licenses/mpl-2.0",
+    "notices": [
+      "MPL-2.0.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.github.spotbugs:spotbugs-annotations",
+    "name": "SpotBugs Annotations",
+    "version": "4.10.4",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://spotbugs.github.io/",
+    "licenseUrl": "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html",
+    "notices": [
+      "LGPL-2.1.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.google.accompanist:accompanist-drawablepainter",
+    "name": "Accompanist Drawable Painter library",
+    "version": "0.37.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/google/accompanist/",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.google.code.findbugs:jsr305",
+    "name": "FindBugs-jsr305",
+    "version": "3.0.2",
+    "license": "Apache-2.0",
+    "url": "http://findbugs.sourceforge.net/",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.google.errorprone:error_prone_annotations",
+    "name": "error-prone annotations",
+    "version": "2.50.0",
+    "license": "Apache-2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.google.guava:failureaccess",
+    "name": "Guava InternalFutureFailureAccess and InternalFutures",
+    "version": "1.0.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/google/guava",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/cfc7749b96f63bd31c3c42b5.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.google.guava:guava",
+    "name": "Guava: Google Core Libraries for Java",
+    "version": "33.7.1-android",
+    "license": "Apache-2.0",
+    "url": "https://github.com/google/guava",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/cfc7749b96f63bd31c3c42b5.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.google.guava:listenablefuture",
+    "name": "Guava ListenableFuture only",
+    "version": "9999.0-empty-to-avoid-conflict-with-guava",
+    "license": "Apache-2.0",
+    "url": "https://github.com/google/guava",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.google.j2objc:j2objc-annotations",
+    "name": "J2ObjC Annotations",
+    "version": "3.1",
+    "license": "Apache-2.0",
+    "url": "https://github.com/google/j2objc/",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.materialkolor:material-color-utilities-android",
+    "name": "MaterialKolor",
+    "version": "6.0.0",
+    "license": "The MIT License / Apache-2.0",
+    "url": "https://github.com/jordond/materialkolor",
+    "licenseUrl": "https://github.com/jordond/materialkolor/blob/master/LICENSE",
+    "notices": [
+      "notices/3a67e69687ccd8cfdb7f184d.txt",
+      "notices/e662e6c2fc7ba7bc613c7e4d.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.squareup.okhttp3:okhttp-android",
+    "name": "okhttp",
+    "version": "5.5.0",
+    "license": "Apache-2.0",
+    "url": "https://lysine.dev/okhttp/",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "com.squareup.okio:okio-jvm",
+    "name": "okio",
+    "version": "3.18.2",
+    "license": "Apache-2.0",
+    "url": "https://github.com/lysine-dev/okio/",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "dev.drewhamilton.poko:poko-annotations-jvm",
+    "name": "Poko Annotations",
+    "version": "0.23.2",
+    "license": "Apache-2.0",
+    "url": "https://github.com/drewhamilton/Poko",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.coil-kt.coil3:coil-android",
+    "name": "coil",
+    "version": "3.6.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/coil-kt/coil",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.coil-kt.coil3:coil-compose-android",
+    "name": "coil-compose",
+    "version": "3.6.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/coil-kt/coil",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.coil-kt.coil3:coil-compose-core-android",
+    "name": "coil-compose-core",
+    "version": "3.6.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/coil-kt/coil",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.coil-kt.coil3:coil-core-android",
+    "name": "coil-core",
+    "version": "3.6.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/coil-kt/coil",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.coil-kt.coil3:coil-network-core-android",
+    "name": "coil-network-core",
+    "version": "3.6.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/coil-kt/coil",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.coil-kt.coil3:coil-network-okhttp-android",
+    "name": "coil-network-okhttp",
+    "version": "3.6.3",
+    "license": "Apache-2.0",
+    "url": "https://github.com/coil-kt/coil",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-client-auth-jvm",
+    "name": "ktor-client-auth",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-client-core-jvm",
+    "name": "ktor-client-core",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-client-encoding-jvm",
+    "name": "ktor-client-encoding",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-client-okhttp-jvm",
+    "name": "ktor-client-okhttp",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-events-jvm",
+    "name": "ktor-events",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-http-cio-jvm",
+    "name": "ktor-http-cio",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-http-jvm",
+    "name": "ktor-http",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-io-jvm",
+    "name": "ktor-io",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-network-jvm",
+    "name": "ktor-network",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-serialization-jvm",
+    "name": "ktor-serialization",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-sse-jvm",
+    "name": "ktor-sse",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-utils-jvm",
+    "name": "ktor-utils",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-websocket-serialization-jvm",
+    "name": "ktor-websocket-serialization",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "io.ktor:ktor-websockets-jvm",
+    "name": "ktor-websockets",
+    "version": "3.6.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/ktorio/ktor",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.animation:animation-android",
+    "name": "Compose Animation",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.animation:animation-core-android",
+    "name": "Compose Animation Core",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.foundation:foundation-android",
+    "name": "Compose Foundation",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.foundation:foundation-layout-android",
+    "name": "Compose Layouts",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.runtime:runtime-android",
+    "name": "Compose Runtime",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.runtime:runtime-saveable-android",
+    "name": "Compose Saveable",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.ui:ui-android",
+    "name": "Compose UI",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.ui:ui-geometry-android",
+    "name": "Compose Geometry",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.ui:ui-graphics-android",
+    "name": "Compose Graphics",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.ui:ui-text-android",
+    "name": "Compose UI Text",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.ui:ui-unit-android",
+    "name": "Compose Unit",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.compose.ui:ui-util-android",
+    "name": "Compose Util",
+    "version": "1.12.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/compose-multiplatform",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "notices/809fa1ed21450f59827d1e9a.txt",
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.kotlin:kotlin-stdlib",
+    "name": "Kotlin Stdlib",
+    "version": "2.4.21",
+    "license": "Apache-2.0",
+    "url": "https://kotlinlang.org/",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.kotlinx:kotlinx-coroutines-android",
+    "name": "kotlinx-coroutines-android",
+    "version": "1.11.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/Kotlin/kotlinx.coroutines",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm",
+    "name": "kotlinx-coroutines-core",
+    "version": "1.11.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/Kotlin/kotlinx.coroutines",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.kotlinx:kotlinx-coroutines-slf4j",
+    "name": "kotlinx-coroutines-slf4j",
+    "version": "1.11.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/Kotlin/kotlinx.coroutines",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm",
+    "name": "kotlinx-io-bytestring",
+    "version": "0.9.1",
+    "license": "Apache-2.0",
+    "url": "https://github.com/Kotlin/kotlinx-io",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.kotlinx:kotlinx-io-core-jvm",
+    "name": "kotlinx-io-core",
+    "version": "0.9.1",
+    "license": "Apache-2.0",
+    "url": "https://github.com/Kotlin/kotlinx-io",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm",
+    "name": "kotlinx-serialization-core",
+    "version": "1.11.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/Kotlin/kotlinx.serialization",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jetbrains:annotations",
+    "name": "JetBrains Java Annotations",
+    "version": "26.1.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/java-annotations",
+    "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.jspecify:jspecify",
+    "name": "JSpecify annotations",
+    "version": "1.0.1",
+    "license": "Apache-2.0",
+    "url": "https://jspecify.dev/",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "org.slf4j:slf4j-api",
+    "name": "SLF4J API Module",
+    "version": "2.0.20",
+    "license": "MIT",
+    "url": "http://www.slf4j.org",
+    "licenseUrl": "https://opensource.org/license/mit",
+    "notices": [
+      "notices/6632f550c207be8d7d6b5e87.txt"
+    ],
+    "other": false
+  }
+]

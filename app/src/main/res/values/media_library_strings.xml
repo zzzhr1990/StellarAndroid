@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="media_library_local_url">Local &amp; URL</string>
+    <string name="media_library_remote">Storage services</string>
+    <string name="media_library_media_servers">Media servers</string>
+    <string name="media_library_section_files">Files</string>
+    <string name="media_library_section_network">Network</string>
+    <string name="media_library_section_scan">Scan</string>
+    <string name="media_library_add_folder">Add folder to media library</string>
+    <string name="media_library_open_local">Open device files</string>
+    <string name="media_library_open_url">Open network address</string>
+    <string name="media_library_url_label">Network address</string>
+    <string name="media_library_url_example">https://example.com/video.mp4</string>
+    <string name="media_library_url_hint">Enter an HTTP or HTTPS media address.</string>
+    <string name="media_library_url_error">Enter a valid HTTP or HTTPS address.</string>
+    <string name="media_library_cancel">Cancel</string>
+    <string name="media_library_open">Open</string>
+    <string name="media_library_settings">Media library settings</string>
+    <string name="library_quick_hash">Allow quick hash file identification</string>
+    <string name="library_quick_hash_hint">Quick hash samples a small part of the file content to match the correct filename.</string>
+    <string name="library_scan_threads">Scan threads</string>
+    <string name="library_scan_threads_hint">Applies to the next scan. Sets how many scan tasks can run at once.</string>
+    <plurals name="library_scan_threads_count">
+        <item quantity="one">%1$d thread</item>
+        <item quantity="other">%1$d threads</item>
+    </plurals>
+</resources>

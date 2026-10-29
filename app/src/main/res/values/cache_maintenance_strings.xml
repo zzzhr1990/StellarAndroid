@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cache_data_hint">Reuse library data. Turning this off also removes saved data; current content stays visible until you refresh or leave.</string>
+    <string name="cache_retention_hint">%1$s without use; freshness is checked separately.</string>
+    <string name="cache_calculating">Calculating…</string>
+    <string name="cache_clearing">Clearing…</string>
+    <string name="cache_failed">Could not complete. Tap to retry.</string>
+    <string name="cache_cleared_size">Cleared · %1$s remaining</string>
+    <string name="cache_size">Using %1$s</string>
+    <string name="cache_usage_hint">Only library data and artwork are cleared. Accounts, settings and history are kept. Storage includes cache housekeeping files, so it may remain above zero or grow as you browse.</string>
+    <string name="cache_refresh_size">Refresh storage usage</string>
+    <string name="cache_library_preview_note">Cache, quick hash, and scan thread controls work on this device. Other library options are layout previews.</string>
+</resources>

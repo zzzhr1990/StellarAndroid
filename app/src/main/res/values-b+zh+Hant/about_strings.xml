@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_terms">服務協議</string>
+    <string name="about_website">產品官網</string>
+    <string name="about_licenses">開源授權條款</string>
+    <string name="about_source">原始碼及資料</string>
+    <string name="about_link_failed">沒有可開啟此連結的應用程式。</string>
+    <string name="about_tmdb_source">部分影片資料與圖片由 TMDB 提供。</string>
+    <string name="about_licenses_intro">恆星播放器使用的第三方程式庫與資源。點選項目可查看授權條款及原始聲明。</string>
+    <string name="about_libraries">開源程式庫與資源</string>
+    <string name="about_other_components">其他元件與服務</string>
+    <string name="about_other_license">上游使用條款</string>
+    <string name="about_project">專案網站</string>
+    <string name="about_license_link">授權條款</string>
+    <string name="about_close">關閉</string>
+    <string name="about_load_failed">無法載入授權資訊。</string>
+    <string name="about_retry">重試</string>
+    <string name="about_component_version">版本：%1$s</string>
+    <string name="about_terms_notice">此元件適用獨立條款，請查看原始聲明與專案網站。</string>
+    <string name="about_loading">正在載入授權條款…</string>
+    <string name="about_privacy_url">https://github.com/zzzhr1990/StellarAndroid/blob/main/PRIVACY.md</string>
+    <string name="about_terms_url">https://github.com/zzzhr1990/StellarAndroid/blob/main/LICENSE</string>
+    <string name="about_website_url">https://github.com/zzzhr1990/StellarAndroid</string>
+    <string name="about_search">搜尋程式庫或授權條款</string>
+    <string name="about_no_matches">沒有符合的程式庫。</string>
+</resources>

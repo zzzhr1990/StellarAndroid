@@ -1,0 +1,212 @@
+libdvdnav (7.0.0)
+ * add dvdnav_get_volid_string to obtain the volume id of the disc
+ * add dvdnav_get_number_of_streams API to list tracks
+ * add dvdnav_set_active_stream API to activate a stream
+ * add dvdnav_toggle_spu_stream API to enable/disable the current SPU stream
+ * add dvdnav_get_disk_region_mask API to get the reported version from the disk
+ * expose dvdnav_jump_to_sector_by_time to the API
+ * switch build system to Meson (and remove autotools)
+ * fix crashes and avoid asserts
+
+libdvdnav (6.1.1)
+ * fix build issues
+ * improve CI
+
+libdvdnav (6.1.0)
+ * add a dvdnav_open2 API to setup a logging mechanism, similar to libdvdread
+ * add a dvdnav_get_number_of_angles API
+ * add a dvdnav_version API
+ * rework the logs in the library and remove direct printf calls
+ * handle out-of-order ADMAP entries blocking playback
+ * fix crashes in dvdnav_describe_title_chapters in broken DVDs
+ * cleanup old code and buildsystem
+
+libdvdnav (6.0.1)
+ * improve random playback mode, to work-around broken discs
+ * fix divide-by-zerop issue in tmap search
+ * fix pthread on OS/2
+
+libdvdnav (6.0.0)
+ * fix crashes on some DVD on describe_title call
+ * fix various crashes related to PGC validity
+ * fix compilation issues
+ * fix API return codes (and bump release)
+
+libdvdnav (5.0.3)
+ * added dvdnav_open_stream to read from external read/seek callbacks
+ * fixed reading DVD label regression
+
+libdvdnav (5.0.2)
+ * fixed 2 wrong asserts (LP #1236939, #570790)
+ * fixed 2 crashes (in dvdnav_get_position and dvdnav_get_position_in_title)
+
+libdvdnav (5.0.1)
+ * removed assert on unknown VM commands, fixing playback of some DVDs
+ * fixed a double free in dvdnav_free_dup
+ * fixed an integer overflow, a data race condition and return inconsistency
+
+libdvdnav (5.0.0)
+ * Android support
+ * fixed numerous crashes, assertions and corruptions
+ * rewrite of the build-system, including silent rules
+ * clean code, simplify and remove warnings
+ * fix compilation in C++ applications
+ * removal of remap .MAP files unused feature
+ * remove the dvdnavmini library
+ * fix compilation on OS/2 and Hurd
+
+libdvdnav (4.2.1)
+ * fixed failed assertion on menu-less DVDs
+ * fixed playback issues on multi-angle DVDs
+ * fixed crash when playing a DVD from different region than currently set
+   in the DVD drive
+ * fixed segfaults when reading certain DVDs (including "Jack Reacher",
+   "Ghost Protocol", "Inside Man", "The Dictator" and "Tangled")
+
+libdvdnav (4.2.0)
+  * OS/2 support
+  * added dvdnav_get_serial_string() function
+  * fixed ifo leak in dvdnav_describe_chapters()
+  * added dvdnav_get_video_resolution() to retrieve video resolution
+  * added dvdnav_program_play() & dvdnav_current_title_program() for
+    more reliable playback
+  * fixed deadlock between dvdnav_reset() and dvd_clear()
+  * fixed pthread_mutex_destroy macro for Win32
+  * fixed numerous assertion failures occurring when playing DVDs with
+    new "copy protection" schemes
+  * fixed forward seeks to always move forward
+
+libdvdnav (4.1.3)
+  * an embarrassing amount of fixes regarding potential memory and resource leaks
+    (patches contributed by Erik Hovland)
+  * added dvdread-config (dvdnav-config's younger brother)
+  * added pkg-config support
+  * split dvdread to a separate tree; now you need to check it out
+    and install it before building libdvdnav.
+    In order to configure libdvdnav We need the executable dvdread-config
+    somewhere in the PATH or explicitly specified to configure[2] with
+    --with-dvdread-config=~/bin/dvdread-config
+
+libdvdnav (4.1.2)
+  * multiple build system fixes
+  * added dvdnav_describe_title_chapters(title) to get title and chapters
+    duration
+
+libdvdnav (4.1.1)
+  * added dvdnav_audio_stream_channels() to return number of channels
+  * fixed dvdnav_time_search() in multi-angle dvds (but it still needs
+    improvements)
+  * added dvdnav_audio_stream_format() to identify the codec used
+    in audio streams
+  * starting DVD playback at specific title/part positions with
+    dvdnav_{title,part}_play() works again
+  * removed wrong SPU stream change event filter
+    (fixes unwanted subtitles in the trailer of "Girl, interrupted", RC2)
+  * fixed error "Expected NAV packet but none found." occurring sometimes
+    on resume from menu
+
+libdvdnav (0.1.10)
+  * filter the symbols that we export.
+  * fix LinkNextC assertion failure (fixes LotR-SEE bonus disc image gallery)
+  * detect zero stilltime still cells inside PGCs, not only at the end
+    (fixes "Red Dragon" RC2 scene selection)
+  * PGC stills seem to work, assertion removed
+  * fix rare race condition after Exit commands
+  * fix wrong JumpSS_VTSM execution in German RC2 "Anatomie"
+    (fix ported from Ogle)
+
+libdvdnav (0.1.9)
+  * libdvdnav does not depend on libdvdread any more. It has it's own version.
+  * fix some situations where an unlucky user could trigger assertions
+
+libdvdnav (0.1.8)
+  * more timing info in cell change event struct
+  * documentation review
+
+libdvdnav (0.1.7)
+  * fixed a bug in title jumping, where the title number would not be
+    converted from TTN to VTS_TTN properly
+  * some minor sanity checks added to prevent segfaults
+
+libdvdnav (0.1.6) unstable; urgency=low
+  * new event DVDNAV_WAIT to fix consistency problems in applications with fifos
+    where libdvdnav is always a bit ahead in the stream, the event forces
+    the application to wait for its fifos to get empty
+  * correct HIGHLIGHT reporting when a button is activated
+  * method to try-run VM operations, now used for safer chapter skipping and menu jumps
+  * fixed detection of current PTT to not assume a 1:1 mapping between PTTs and PGs
+  * releasing stills when jumping to menu fixes some state inconsistencies
+  * do not assume PGs to be physically laid out in sequence on the disc
+  * optional PGC based seeking
+  * new event on cell changes for timing info
+
+libdvdnav (0.1.5) unstable; urgency=low
+  * some bugfixes
+  * code cleanup
+  * build process polishing
+  * more sensible event order in get_next_block to ensure useful event delivery
+  * VOBU level resume
+  * fixed: seeking in a multiangle feature briefly showed the wrong angle
+
+libdvdnav (0.1.4) unstable; urgency=low
+  * more read cache improvements
+  * minor fixes for some problematic DVDs
+
+libdvdnav (0.1.3-1) unstable; urgency=low
+  * Zero-copy read cache.
+  * More support for alternative Menu languages.
+
+ -- Rich Wareham <richwareham@users.sourceforge.net> Fri,  2 Aug 2002 08:52:24 +0100
+
+libdvdnav (0.1.2-1) unstable; urgency=low
+  * Read Cache changes. Recommended setting for read_cache is OFF.
+    Unless one's DVD drive has too small a buffer.
+  * Should work with xine 0.9.10 or above.
+
+ -- James Courtier-Dutton <jcdutton@users.sourceforge.net> Sun, 3 Jul 2002 15:30:00 +0000
+
+libdvdnav (0.1.1-1) unstable; urgency=low
+
+  * New upstream version. (closes: #148495)
+  * Include TODO
+  * Fix config.h problem
+  * Threaded cache
+
+ -- Philipp Matthias Hahn <pmhahn@titan.lahn.de>  Sat,  1 Jun 2002 17:47:59 +0200
+
+libdvdnav (0.1.0-2) unstable; urgency=low
+
+  * Add manual page dvdnav-config.1
+  * Add bug-presubj on Daniel's request
+  * Get dvdnav.c:1.17 from CVS to fix angle support
+  * Merge patch from Jamie Wilkinson (#146699)
+  * Rerun automake to fix dependencies
+  * Ack NMU from siggi
+  * Fix include in examples/menus.c
+
+ -- Philipp Hahn <pmhahn@titan.lahn.de>  Thu, 23 May 2002 09:41:15 +0200
+
+libdvdnav (0.1.0-1.1) unstable; urgency=low
+
+  * Prepared for first 'real' release.
+  * Bug fixes
+  * Changes to allow apps to 'roll-their-own' dvdnav_get_next_block functions.
+  * NMU in order to get xine-dvdnav running again
+    - changed package name to libdvdnav0
+      (see patch from Jamie Wilkinson for a better solution)
+
+ -- Siggi Langauf <siggi@debian.org>  Mon, 20 May 2002 15:57:40 +0200
+
+libdvdnav (0.0.1-1) unstable; urgency=low
+
+  * Repackaged using dh-make.
+
+ -- Philipp Matthias Hahn <pmhahn@titan.lahn.de>  Sun,  7 Apr 2002 16:29:35 +0200
+
+libdvdnav (0.0.1) unstable; urgency=low
+
+  * Initial release.
+  * Split from xine-dvdnav
+
+ -- rjw57 <rjw57@hermes.cam.ac.uk>  Tue, 12 Mar 2002 19:41:13 +0000
+

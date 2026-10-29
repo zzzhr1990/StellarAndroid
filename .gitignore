@@ -1,0 +1,17 @@
+*.iml
+.idea/
+.gradle/
+.kotlin/
+**/build/
+**/.cxx/
+local.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.apk
+*.aab
+.DS_Store
+native/.work/
+native/prefix/
+**/src/main/jniLibs/

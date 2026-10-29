@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="server_onedrive">OneDrive</string>
+    <string name="onedrive_hint">填寫你自己的 Microsoft Graph Files.Read 存取權杖，瀏覽檔案並播放。</string>
+    <string name="onedrive_account">Microsoft 帳號：%1$s</string>
+    <string name="onedrive_connect">連接 OneDrive</string>
+    <string name="onedrive_auth_error">需要 Microsoft 授權，請重新連接 OneDrive。</string>
+    <string name="onedrive_config_error">無法為此應用程式設定 Microsoft 登入。</string>
+    <string name="onedrive_account_error">請使用此連接原先綁定的 Microsoft 帳號登入。如需使用其他帳號，請新增 OneDrive 連接。</string>
+    <string name="onedrive_service_error">Microsoft 登入服務傳回錯誤，請稍後重試。</string>
+    <string name="onedrive_signin_error">Microsoft 登入未成功，請重試。</string>
+</resources>

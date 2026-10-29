@@ -1,0 +1,11 @@
+<resources>
+    <string name="audio_and_subtitles">音軌與字幕</string>
+    <string name="playback_tab">播放</string>
+    <string name="video_tracks">影片軌道</string>
+    <string name="no_available_tracks">暫無可用軌道</string>
+    <string name="load_local_subtitle">載入本機字幕</string>
+    <string name="load_url_subtitle">載入遠端 URL 字幕</string>
+    <string name="search_subtitles">搜尋字幕</string>
+    <string name="second_subtitle">第二字幕</string>
+    <string name="subtitle_not_implemented">暫未實作</string>
+</resources>

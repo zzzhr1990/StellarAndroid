@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="diagnostics">诊断信息</string>
+    <string name="diag_unknown">未知</string>
+    <string name="diag_backend">播放内核</string>
+    <string name="diag_video">视频</string>
+    <string name="diag_fps">源／呈现帧率</string>
+    <string name="diag_network">网络读取</string>
+    <string name="diag_bitrate">媒体码率</string>
+    <string name="diag_color">源颜色</string>
+    <string name="diag_screen">显示模式／视口</string>
+    <string name="diag_file">文件大小</string>
+    <string name="diag_decoder">解码方式</string>
+    <string name="diag_buffer">缓冲</string>
+    <string name="diag_cpu">CPU（单核）</string>
+    <string name="diag_gpu">GPU占用</string>
+    <string name="diag_hardware">硬件解码</string>
+    <string name="diag_software">软件解码</string>
+</resources>

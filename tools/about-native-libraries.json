@@ -1,0 +1,276 @@
+[
+  {
+    "id": "libplacebo",
+    "name": "libplacebo",
+    "version": "7.387.0",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://codeload.github.com/haasn/libplacebo/tar.gz/refs/tags/v7.387.0",
+    "licenseUrl": "https://codeload.github.com/haasn/libplacebo/tar.gz/refs/tags/v7.387.0",
+    "notices": [
+      "native/libplacebo-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libass",
+    "name": "libass",
+    "version": "0.17.5",
+    "license": "ISC",
+    "url": "https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz",
+    "licenseUrl": "https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz",
+    "notices": [
+      "native/libass-COPYING.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "fribidi",
+    "name": "fribidi",
+    "version": "1.0.17",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://github.com/fribidi/fribidi/releases/download/v1.0.17/fribidi-1.0.17.tar.xz",
+    "licenseUrl": "https://github.com/fribidi/fribidi/releases/download/v1.0.17/fribidi-1.0.17.tar.xz",
+    "notices": [
+      "native/fribidi-COPYING.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "freetype",
+    "name": "freetype",
+    "version": "2.15.0",
+    "license": "FTL OR GPL-2.0-or-later",
+    "url": "https://codeload.github.com/freetype/freetype/tar.gz/refs/tags/VER-2-15-0",
+    "licenseUrl": "https://codeload.github.com/freetype/freetype/tar.gz/refs/tags/VER-2-15-0",
+    "notices": [
+      "native/freetype-LICENSE-TXT.txt",
+      "native/freetype-FTL-TXT.txt",
+      "native/freetype-GPLv2-TXT.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "mpv",
+    "name": "mpv",
+    "version": "0.41.0",
+    "license": "GPL-2.0-or-later",
+    "url": "https://codeload.github.com/mpv-player/mpv/tar.gz/refs/tags/v0.41.0",
+    "licenseUrl": "https://codeload.github.com/mpv-player/mpv/tar.gz/refs/tags/v0.41.0",
+    "notices": [
+      "native/mpv-Copyright.txt",
+      "native/mpv-LICENSE-GPL.txt",
+      "native/mpv-LICENSE-LGPL.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "openssl",
+    "name": "openssl",
+    "version": "4.1.0",
+    "license": "Apache-2.0",
+    "url": "https://github.com/openssl/openssl/releases/download/openssl-4.1.0/openssl-4.1.0.tar.gz",
+    "licenseUrl": "https://github.com/openssl/openssl/releases/download/openssl-4.1.0/openssl-4.1.0.tar.gz",
+    "notices": [
+      "native/openssl-LICENSE-txt.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "harfbuzz",
+    "name": "harfbuzz",
+    "version": "15.0.0",
+    "license": "MIT",
+    "url": "https://github.com/harfbuzz/harfbuzz/releases/download/15.0.0/harfbuzz-15.0.0.tar.xz",
+    "licenseUrl": "https://github.com/harfbuzz/harfbuzz/releases/download/15.0.0/harfbuzz-15.0.0.tar.xz",
+    "notices": [
+      "native/harfbuzz-COPYING.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "ffmpeg",
+    "name": "ffmpeg",
+    "version": "9.0.2",
+    "license": "LGPL-3.0-or-later",
+    "url": "https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz",
+    "licenseUrl": "https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz",
+    "notices": [
+      "native/ffmpeg-LICENSE-md.txt",
+      "native/ffmpeg-COPYING-LGPLv3.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-fast_float",
+    "name": "libplacebo-fast_float",
+    "version": "97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "license": "MIT",
+    "url": "https://codeload.github.com/fastfloat/fast_float/tar.gz/97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "licenseUrl": "https://codeload.github.com/fastfloat/fast_float/tar.gz/97b54ca9e75f5303507699d27c6b4f4efe4641a1",
+    "notices": [
+      "native/libplacebo-fast_float-LICENSE-MIT.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-glad",
+    "name": "libplacebo-glad",
+    "version": "73db193f853e2ee079bf3ca8a64aa2eaf6459043",
+    "license": "MIT AND Apache-2.0",
+    "url": "https://codeload.github.com/Dav1dde/glad/tar.gz/73db193f853e2ee079bf3ca8a64aa2eaf6459043",
+    "licenseUrl": "https://codeload.github.com/Dav1dde/glad/tar.gz/73db193f853e2ee079bf3ca8a64aa2eaf6459043",
+    "notices": [
+      "native/libplacebo-glad-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-jinja",
+    "name": "libplacebo-jinja",
+    "version": "15206881c006c79667fe5154fe80c01c65410679",
+    "license": "BSD-3-Clause",
+    "url": "https://codeload.github.com/pallets/jinja/tar.gz/15206881c006c79667fe5154fe80c01c65410679",
+    "licenseUrl": "https://codeload.github.com/pallets/jinja/tar.gz/15206881c006c79667fe5154fe80c01c65410679",
+    "notices": [
+      "native/libplacebo-jinja-LICENSE-txt.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libplacebo-markupsafe",
+    "name": "libplacebo-markupsafe",
+    "version": "297fc8e356e6836a62087949245d09a28e9f1b13",
+    "license": "BSD-3-Clause",
+    "url": "https://codeload.github.com/pallets/markupsafe/tar.gz/297fc8e356e6836a62087949245d09a28e9f1b13",
+    "licenseUrl": "https://codeload.github.com/pallets/markupsafe/tar.gz/297fc8e356e6836a62087949245d09a28e9f1b13",
+    "notices": [
+      "native/libplacebo-markupsafe-LICENSE-txt.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libsmb2",
+    "name": "libsmb2",
+    "version": "6.2",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://github.com/sahlberg/libsmb2",
+    "licenseUrl": "https://github.com/sahlberg/libsmb2",
+    "notices": [
+      "native/libsmb2.txt",
+      "LGPL-2.1.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libnfs",
+    "name": "libnfs",
+    "version": "8.0.0",
+    "license": "LGPL-2.1-or-later / BSD-2-Clause",
+    "url": "https://github.com/sahlberg/libnfs",
+    "licenseUrl": "https://github.com/sahlberg/libnfs",
+    "notices": [
+      "native/libnfs.txt",
+      "LGPL-2.1.txt",
+      "native/libnfs-BSD.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libbluray",
+    "name": "libbluray",
+    "version": "1.5.0",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://www.videolan.org/developers/libbluray.html",
+    "licenseUrl": "https://www.videolan.org/developers/libbluray.html",
+    "notices": [
+      "native/libbluray.txt",
+      "LGPL-2.1.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libudfread",
+    "name": "libudfread",
+    "version": "1.2.0",
+    "license": "LGPL-2.1-or-later",
+    "url": "https://code.videolan.org/videolan/libudfread",
+    "licenseUrl": "https://code.videolan.org/videolan/libudfread",
+    "notices": [
+      "native/libudfread.txt",
+      "LGPL-2.1.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libdvdread",
+    "name": "libdvdread",
+    "version": "7.1.1",
+    "license": "GPL-2.0-or-later",
+    "url": "https://www.videolan.org/developers/libdvdnav.html",
+    "licenseUrl": "https://www.videolan.org/developers/libdvdnav.html",
+    "notices": [
+      "native/libdvdread.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "libdvdnav",
+    "name": "libdvdnav",
+    "version": "7.0.0",
+    "license": "GPL-2.0-or-later",
+    "url": "https://www.videolan.org/developers/libdvdnav.html",
+    "licenseUrl": "https://www.videolan.org/developers/libdvdnav.html",
+    "notices": [
+      "native/libdvdnav.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "material-symbols",
+    "name": "Material Symbols",
+    "version": "",
+    "license": "Apache-2.0",
+    "url": "https://github.com/google/material-design-icons",
+    "licenseUrl": "https://github.com/google/material-design-icons",
+    "notices": [
+      "material-symbols-LICENSE.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "jellyfin-logo",
+    "name": "Jellyfin logo",
+    "version": "",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://github.com/jellyfin/jellyfin-ux",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "notices": [
+      "jellyfin-logo.txt"
+    ],
+    "other": false
+  },
+  {
+    "id": "tmdb-brand",
+    "name": "TMDB attribution mark",
+    "version": "",
+    "license": "TMDB attribution and logo terms (trademark asset)",
+    "url": "https://www.themoviedb.org/about/logos-attribution",
+    "licenseUrl": "https://developer.themoviedb.org/docs/faq",
+    "notices": [
+      "tmdb-attribution.txt"
+    ],
+    "other": true
+  },
+  {
+    "id": "ndk-runtime",
+    "name": "Android NDK C++ runtime",
+    "version": "29.0.14206865",
+    "license": "Apache-2.0 WITH LLVM-exception and bundled permissive notices",
+    "url": "https://android.googlesource.com/toolchain/llvm-project/",
+    "licenseUrl": "https://llvm.org/LICENSE.txt",
+    "notices": [
+      "native/ndk-runtime.txt"
+    ],
+    "other": false
+  }
+]

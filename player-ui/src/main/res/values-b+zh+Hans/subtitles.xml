@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subtitle_delay_short">延时</string>
+    <string name="subtitle_delay_decrease">字幕延时减少0.1秒</string>
+    <string name="subtitle_delay_increase">字幕延时增加0.1秒</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="casting_subtitle_error">The SRT subtitle could not be sent. Use a valid UTF-8 or UTF-16 SRT file. The last confirmed subtitle request is retained if playback could be restored.</string>
+    <string name="casting_subtitle_hint">Use the subtitle menu to send an SRT file. Selection confirms the request only; check the TV for display. Embedded subtitles are controlled by the TV.</string>
+</resources>

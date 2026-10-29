@@ -1,0 +1,5 @@
+<resources>
+    <string name="subtitle_language_off">Off</string>
+    <string name="subtitle_language_current">Load current language</string>
+    <string name="subtitle_language_hint">Applies when opening media. Current language follows the app language. Subtitles stay off if no match is found.</string>
+</resources>

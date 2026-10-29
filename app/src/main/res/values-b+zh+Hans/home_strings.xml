@@ -1,0 +1,30 @@
+<resources>
+    <string name="home_versions_sources">版本与来源</string>
+    <string name="home_episodes">第 %1$d 季 · 第 %2$s 集</string>
+    <string name="home_episode_separator">、</string>
+    <string name="home_continue">继续观看</string>
+    <string name="home_recent">最近加入</string>
+    <string name="home_movies">电影</string>
+    <string name="home_series">电视剧</string>
+    <string name="home_manage">管理</string>
+    <string name="home_all_sources">全部来源</string>
+    <string name="home_refresh">刷新</string>
+    <string name="home_view_all">查看全部</string>
+    <string name="home_refresh_failed">更新失败，已有媒体仍可使用</string>
+    <string name="home_load_failed">媒体库加载失败，请重试</string>
+    <string name="home_loading">正在加载媒体库…</string>
+    <string name="home_no_progress">开始观看后，可在这里继续播放</string>
+    <string name="home_empty_section">暂无视频，添加来源或扫描后将在这里显示</string>
+    <string name="home_episode_count">可用集数：%1$d</string>
+    <string name="home_version_count">可用版本：%1$d</string>
+    <string name="home_mark_watched">标为已看</string>
+    <string name="home_mark_unwatched">标为未看</string>
+    <string name="home_watched">已看</string>
+    <string name="home_all_seasons">全部季</string>
+    <string name="home_season">第 %1$d 季</string>
+    <string name="home_rating_community">观众评分</string>
+    <string name="home_credit_actor">演员</string>
+    <string name="home_credit_writer">编剧</string>
+    <string name="home_credit_crew">职员</string>
+    <plurals name="home_credits_limited"><item quantity="other">显示前 %1$d 位演职人员</item></plurals>
+</resources>

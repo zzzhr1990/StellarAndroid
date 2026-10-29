@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="screenshot_player_note">精確seek與子母畫面設定會實際生效，其餘選項仍為設定預覽。</string>
+    <string name="screenshot_title">截圖</string>
+    <string name="screenshot_album">儲存至系統相簿</string>
+    <string name="screenshot_folder">儲存至資料夾</string>
+    <string name="screenshot_choose_path">選擇儲存路徑</string>
+    <string name="screenshot_path_unselected">尚未選擇資料夾</string>
+    <string name="screenshot_permission_failed">未取得儲存權限，截圖未儲存。</string>
+    <string name="screenshot_capture_failed">截圖失敗，請在影片畫面顯示後重試。</string>
+    <string name="screenshot_save_failed">截圖儲存失敗，請檢查儲存路徑和可用空間。</string>
+    <string name="screenshot_saved_album">截圖已儲存至系統相簿。</string>
+    <string name="screenshot_saved_folder">截圖已儲存至資料夾。</string>
+</resources>

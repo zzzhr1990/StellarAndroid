@@ -1,0 +1,8 @@
+<resources>
+    <string name="bluray_title_name">Blu-ray playlist %2$05d · %1$s</string>
+    <string name="bluray_play">Play Blu-ray</string>
+    <string name="disc_encrypted">Encrypted Blu-ray discs are not supported.</string>
+    <string name="disc_open_folder">Open disc folder</string>
+    <string name="disc_folder_title">Disc</string>
+    <string name="disc_folder_permission">Choose “Open disc folder” and grant access to the VIDEO_TS or BDMV folder.</string>
+</resources>

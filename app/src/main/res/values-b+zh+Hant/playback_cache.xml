@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playback_cache_title">快取</string>
+    <string name="playback_cache_disk">磁碟快取</string>
+    <string name="media_library_cache_title">媒體庫快取</string>
+    <string name="media_library_cache_clear_hint">清除快取的媒體庫資料與圖片。</string>
+    <string name="playback_cache_hint">將已讀取的網路媒體資料儲存在本機以便重用。適用於支援的HTTP(S)媒體，變更將於下次開啟媒體時生效。</string>
+    <string name="playback_cache_retention">快取保留時間</string>
+    <string name="playback_cache_day_1">1天</string>
+    <string name="playback_cache_day_7">7天</string>
+    <string name="playback_cache_day_30">30天</string>
+    <string name="playback_cache_expiry_hint">超過所選時間未使用的快取，會在開啟媒體時清理。此功能用於播放快取，並非離線下載。</string>
+    <string name="playback_cache_usage">已用空間</string>
+    <string name="playback_cache_calculating">正在計算…</string>
+    <string name="playback_cache_clear">清空快取</string>
+    <string name="playback_cache_clear_hint">刪除本機儲存的全部播放快取。</string>
+    <string name="playback_cache_cleared">快取已清空。</string>
+    <string name="playback_cache_clear_failed">部分快取無法清理，請重試。</string>
+    <string name="playback_cache_read_failed">無法讀取快取用量。</string>
+    <string name="playback_buffer_title">播放緩衝</string>
+    <string name="playback_buffer_minimum">最低緩衝時間</string>
+    <string name="playback_buffer_minimum_hint">緩衝耗盡後，補足此時間再恢復解碼。</string>
+    <string name="playback_buffer_maximum">最大緩衝時間</string>
+    <string name="playback_buffer_maximum_hint">最多預先讀取此時間的資料，數值越大，記憶體用量越高。</string>
+    <string name="playback_buffer_drop">緩衝滿時捨棄舊資料</string>
+    <string name="playback_buffer_drop_hint">捨棄較舊的非關鍵影格以降低延遲，可能跳過畫面；一般隨選播放建議關閉。</string>
+    <string name="playback_buffer_hint">變更將於下次開啟媒體時生效。</string>
+    <string name="playback_buffer_reset">恢復播放緩衝預設值</string>
+    <string name="playback_buffer_seconds">%1$d秒</string>
+    <string name="playback_buffer_no_wait">不等待（0秒）</string>
+    <string name="playback_cache_enable_disk">啟用磁碟快取</string>
+</resources>

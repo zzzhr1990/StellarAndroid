@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_home">Media</string>
+    <string name="scan_title">Media library scan</string>
+    <string name="scan_running">Scanning folders</string>
+    <string name="scan_paused">Paused — committed items are saved</string>
+    <string name="scan_complete">Scan complete</string>
+    <string name="scan_partial">Some folders are incomplete or contain unsupported items; available content is kept</string>
+    <string name="scan_failed">Scan could not finish. Check the connection, folder access or source data, then try again.</string>
+    <string name="scan_cancelled">Cancelled — committed items are saved</string>
+    <string name="scan_idle">Ready to scan folders</string>
+    <string name="scan_counts">Discovered %1$d · Read %2$d NFO files</string>
+    <string name="scan_pause">Pause</string>
+    <string name="scan_resume">Resume</string>
+    <string name="scan_cancel">Cancel</string>
+    <string name="scan_start">Update files</string>
+    <string name="scan_reread">Reread local metadata</string>
+    <string name="scan_add">Add folder</string>
+    <string name="scan_retry">Retry</string>
+    <string name="scan_new">Show newly added items</string>
+    <string name="scan_first">First page</string>
+    <string name="scan_next">Next page</string>
+    <string name="scan_episode">S%1$d · E%2$d</string>
+    <string name="scan_unrecognized">Unrecognized</string>
+    <string name="scan_local">Local metadata</string>
+    <string name="scan_back">Back to library</string>
+    <string name="scan_supported_sources">Scan local, NAS, Google Drive and OneDrive folders. Shared drives and shortcuts are not supported.</string>
+    <string name="scan_last_attempt">Last attempt: %1$s</string>
+    <string name="scan_last_complete">Last complete scan: %1$s</string>
+    <string name="scan_source_unavailable">This source is unavailable. Check the saved connection.</string>
+</resources>

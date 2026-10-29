@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">恆星播放器（Android）</string>
+    <string name="external_media_unsupported">此檔案無法作為音訊或影片開啟。</string>
+    <string name="external_media_unreadable">無法讀取此檔案，請從檔案管理員重新開啟並允許存取。</string>
+    <string name="home_media">首頁</string>
+    <string name="media_library_search">搜尋</string>
+    <string name="home_media_library">媒體庫</string>
+    <string name="home_settings">設定</string>
+    <string name="pip_disabled">子母畫面已關閉，可在播放設定中開啟。</string>
+    <string name="pip_unavailable">暫時無法進入子母畫面，請先開啟影片，並在系統設定中允許子母畫面。</string>
+    <string name="local_sample">本機範例 · 模擬播放</string>
+    <string name="playlist">播放清單</string>
+    <string name="state_ended">已結束</string>
+    <string name="back">返回</string>
+    <string name="subtitles_off">關閉字幕</string>
+    <string name="language">應用程式語言</string>
+    <string name="language_system">跟隨系統</string>
+    <string name="language_hans">简体中文</string>
+    <string name="language_hant">繁體中文</string>
+    <string name="language_english">English</string>
+    <string name="close">關閉</string>
+    <string name="feature_pending">此入口將於後續示範中開放。</string>
+    <string name="cast_pending">投放僅用於模擬示範，此版本不搜尋實際裝置。</string>
+    <plurals name="sample_count">
+        <item quantity="other">%d 個本機範例</item>
+    </plurals>
+    <plurals name="item_count">
+        <item quantity="other">%d 項</item>
+    </plurals>
+    <string name="local_file">本機檔案</string>
+</resources>

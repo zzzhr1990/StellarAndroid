@@ -1,0 +1,4 @@
+<resources>
+    <string name="enter_one_handed">单手模式</string>
+    <string name="exit_one_handed">关闭单手模式</string>
+</resources>

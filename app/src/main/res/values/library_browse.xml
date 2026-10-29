@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_not_owned">Not in your library</string>
+    <string name="library_owned">In your library</string>
+    <string name="library_not_owned_episodes">Episodes not in your library</string>
+    <string name="library_person_origin">From your library</string>
+    <string name="library_person_works_limited">Showing up to 40 works from the available filmography.</string>
+</resources>

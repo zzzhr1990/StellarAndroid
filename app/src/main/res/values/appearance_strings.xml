@@ -1,0 +1,9 @@
+<resources>
+    <string name="ap_system_colors_active">System colors are active; choose a color to switch to a custom theme.</string>
+    <string name="ap_choose_font">Choose another font</string>
+    <string name="ap_font_error">Could not import this font. Choose a valid TTF or OTF file up to 20 MB.</string>
+    <string name="ap_background_default">Default color</string>
+    <string name="ap_background_image">Background image</string>
+    <string name="ap_choose_image">Choose another background image</string>
+    <string name="ap_image_error">Could not import this image. Choose a supported image up to 25 MB.</string>
+</resources>

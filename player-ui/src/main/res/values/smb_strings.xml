@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_authentication">Authentication failed. Check the username and password.</string>
+    <string name="error_not_found">The share or file was not found.</string>
+    <string name="error_access_denied">Access to this file was denied.</string>
+    <string name="error_network_timeout">The server did not respond in time.</string>
+    <string name="error_encryption">Could not establish an encrypted SMB3 connection.</string>
+</resources>

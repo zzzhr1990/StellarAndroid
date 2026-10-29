@@ -1,0 +1,11 @@
+<resources>
+    <string name="audio_and_subtitles">Audio &amp; subtitles</string>
+    <string name="playback_tab">Playback</string>
+    <string name="video_tracks">Video track</string>
+    <string name="no_available_tracks">No available tracks</string>
+    <string name="load_local_subtitle">Load local subtitles</string>
+    <string name="load_url_subtitle">Load subtitles from URL</string>
+    <string name="search_subtitles">Search subtitles</string>
+    <string name="second_subtitle">Second subtitle</string>
+    <string name="subtitle_not_implemented">Not available yet</string>
+</resources>

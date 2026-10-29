@@ -1,0 +1,16 @@
+{
+  "libsmb2": {
+    "version": "6.2",
+    "commit": "d67e213a5c4e7e4969fd81f0b95e4ca5831fbba1",
+    "url": "https://github.com/sahlberg/libsmb2/tree/d67e213a5c4e7e4969fd81f0b95e4ca5831fbba1",
+    "archive": "libsmb2/source.tar",
+    "sha256": "8de6f298e4e87cae5993111f4a0f256f7c3d4428b2b63c69be26307dc8b1f643"
+  },
+  "libnfs": {
+    "version": "8.0.0",
+    "commit": "5b1bc60260b5ddac34900c5315010b88b73e7edd",
+    "url": "https://github.com/sahlberg/libnfs/tree/5b1bc60260b5ddac34900c5315010b88b73e7edd",
+    "archive": "libnfs/source.tar.gz",
+    "sha256": "80b67a8905f7e2051245c6fadc1c4beb7a6481da278e7664fee146e3bbe4b0f1"
+  }
+}

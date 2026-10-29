@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="capture_title">Animated capture</string>
+    <string name="capture_description">Capture the next few seconds of the playing video. Silent, SDR output only. Pausing, switching video, rotating or leaving the player cancels capture.</string>
+    <string name="capture_gif">GIF</string>
+    <string name="capture_mp4">MP4 (H.264)</string>
+    <string name="capture_gif_quality">Up to 640 px · 10 fps · 256 colors</string>
+    <string name="capture_mp4_quality">Up to 640 px · 15 fps · Video without sound</string>
+    <string name="capture_duration">Duration</string>
+    <plurals name="capture_seconds"><item quantity="one">%1$d second</item><item quantity="other">%1$d seconds</item></plurals>
+    <string name="capture_destination">Uses the album or folder selected in Settings → Player → Screenshot.</string>
+    <string name="capture_start">Start capture</string>
+    <string name="capture_cancel">Cancel</string>
+    <string name="capture_play_first">Play a video to start capture.</string>
+    <string name="capture_sdr_only">HDR and Dolby Vision capture are not supported. Use an SDR video.</string>
+    <string name="capture_real_video">Capture is available for real video playback.</string>
+    <string name="capture_recording">Recording %1$d / %2$d s</string>
+    <string name="capture_saving">Saving…</string>
+    <string name="capture_preparing">Preparing…</string>
+    <string name="capture_saved_album">Capture saved to album</string>
+    <string name="capture_saved_folder">Capture saved to folder</string>
+    <string name="capture_cancelled">Capture cancelled</string>
+    <string name="capture_interrupted">Capture interrupted; no file was saved</string>
+    <string name="capture_failed">Capture failed. Check the save location or try another format.</string>
+</resources>

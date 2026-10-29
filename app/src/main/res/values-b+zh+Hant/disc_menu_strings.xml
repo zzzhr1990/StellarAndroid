@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="disc_menu">原碟選單</string>
+    <string name="disc_menu_loading">正在開啟選單…</string>
+    <string name="disc_menu_unavailable">此光碟沒有可用的 DVD 或 HDMV 選單。BD-J 需要獨立的執行環境。</string>
+    <string name="disc_menu_failed">光碟導覽失敗，可返回標題播放繼續觀看。</string>
+    <string name="disc_menu_close">關閉</string>
+    <string name="disc_menu_top">主選單</string>
+    <string name="disc_menu_titles">標題播放</string>
+    <string name="disc_menu_fullscreen">全螢幕</string>
+    <string name="disc_menu_return">返回</string>
+    <string name="disc_menu_left">左</string>
+    <string name="disc_menu_up">上</string>
+    <string name="disc_menu_ok">確定</string>
+    <string name="disc_menu_down">下</string>
+    <string name="disc_menu_right">右</string>
+    <string name="disc_menu_popup">彈出選單</string>
+</resources>

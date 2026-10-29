@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="disc_menu">Disc menu</string>
+    <string name="disc_menu_loading">Opening menu…</string>
+    <string name="disc_menu_unavailable">This disc has no supported DVD or HDMV menu. BD-J requires a separate runtime.</string>
+    <string name="disc_menu_failed">Disc navigation failed. Return to title playback to continue.</string>
+    <string name="disc_menu_close">Close</string>
+    <string name="disc_menu_top">Top menu</string>
+    <string name="disc_menu_titles">Titles</string>
+    <string name="disc_menu_fullscreen">Full screen</string>
+    <string name="disc_menu_return">Return</string>
+    <string name="disc_menu_left">Left</string>
+    <string name="disc_menu_up">Up</string>
+    <string name="disc_menu_ok">OK</string>
+    <string name="disc_menu_down">Down</string>
+    <string name="disc_menu_right">Right</string>
+    <string name="disc_menu_popup">Popup</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="screenshot_player_note">Accurate seek and picture-in-picture settings take effect. Other options remain settings previews.</string>
+    <string name="screenshot_title">Screenshot</string>
+    <string name="screenshot_album">Save to system album</string>
+    <string name="screenshot_folder">Save to folder</string>
+    <string name="screenshot_choose_path">Choose save location</string>
+    <string name="screenshot_path_unselected">No folder selected</string>
+    <string name="screenshot_permission_failed">Cannot save screenshot without permission.</string>
+    <string name="screenshot_capture_failed">Screenshot unavailable. Try again when the video is visible.</string>
+    <string name="screenshot_save_failed">Could not save screenshot. Check the folder and available space.</string>
+    <string name="screenshot_saved_album">Screenshot saved to system album.</string>
+    <string name="screenshot_saved_folder">Screenshot saved to folder.</string>
+</resources>

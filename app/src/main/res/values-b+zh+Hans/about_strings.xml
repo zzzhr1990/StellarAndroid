@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_terms">服务协议</string>
+    <string name="about_website">产品官网</string>
+    <string name="about_licenses">开源许可证</string>
+    <string name="about_source">源代码及资料</string>
+    <string name="about_link_failed">没有可打开此链接的应用。</string>
+    <string name="about_tmdb_source">部分影片资料与图片由 TMDB 提供。</string>
+    <string name="about_licenses_intro">恒星播放器使用的第三方库与资源。点击条目可查看许可证及原始声明。</string>
+    <string name="about_libraries">开源库与资源</string>
+    <string name="about_other_components">其他组件与服务</string>
+    <string name="about_other_license">上游使用条款</string>
+    <string name="about_project">项目网站</string>
+    <string name="about_license_link">许可条款</string>
+    <string name="about_close">关闭</string>
+    <string name="about_load_failed">无法加载许可信息。</string>
+    <string name="about_retry">重试</string>
+    <string name="about_component_version">版本：%1$s</string>
+    <string name="about_terms_notice">此组件适用独立条款，请查看原始声明与项目网站。</string>
+    <string name="about_loading">正在加载许可证…</string>
+    <string name="about_privacy_url">https://github.com/zzzhr1990/StellarAndroid/blob/main/PRIVACY.md</string>
+    <string name="about_terms_url">https://github.com/zzzhr1990/StellarAndroid/blob/main/LICENSE</string>
+    <string name="about_website_url">https://github.com/zzzhr1990/StellarAndroid</string>
+    <string name="about_search">搜索库或许可证</string>
+    <string name="about_no_matches">没有匹配的库。</string>
+</resources>

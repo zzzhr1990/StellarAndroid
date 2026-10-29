@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="server_google_drive">Google Drive</string>
+    <string name="drive_hint">填写你自己的 Google Drive 只读访问令牌，浏览文件并播放。</string>
+    <string name="drive_account">Google 账号：%1$s</string>
+    <string name="drive_connect">连接 Google Drive</string>
+    <string name="drive_auth_error">需要重新授权 Google Drive，请再次连接。</string>
+    <string name="drive_config_error">由于应用配置问题，Google Drive 暂时无法使用。请联系支持人员。</string>
+</resources>

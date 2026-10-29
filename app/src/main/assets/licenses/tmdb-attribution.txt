@@ -1,0 +1,7 @@
+TMDB logo used for service attribution under the TMDB API attribution and branding terms.
+https://developer.themoviedb.org/docs/faq
+https://www.themoviedb.org/about/logos-attribution
+
+This product uses the TMDB API but is not endorsed or certified by TMDB.
+
+The TMDB logo and remotely retrieved metadata/images are not relicensed under the project GPL.

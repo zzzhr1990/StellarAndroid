@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playback_resume_conflict">Playback progress differs</string>
+    <string name="playback_resume_conflict_detail">This device and the server have different viewing states. Choose where to resume.</string>
+    <string name="playback_resume_local">This device · %1$s</string>
+    <string name="playback_resume_server">Server · %1$s</string>
+    <string name="playback_resume_start">Play from beginning</string>
+    <string name="playback_progress_pending">Saved on this device; server confirmation pending</string>
+    <string name="playback_save_failed">Could not save progress on this device. The latest position is kept in memory.</string>
+</resources>

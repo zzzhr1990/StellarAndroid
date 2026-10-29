@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_authentication">驗證失敗，請檢查使用者名稱和密碼。</string>
+    <string name="error_not_found">找不到共用或檔案。</string>
+    <string name="error_access_denied">沒有存取此檔案的權限。</string>
+    <string name="error_network_timeout">伺服器回應逾時。</string>
+    <string name="error_encryption">無法建立加密的 SMB3 連線。</string>
+</resources>

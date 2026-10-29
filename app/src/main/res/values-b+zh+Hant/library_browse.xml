@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_not_owned">尚未加入媒體庫</string>
+    <string name="library_owned">已加入媒體庫</string>
+    <string name="library_not_owned_episodes">尚未加入媒體庫的集數</string>
+    <string name="library_person_origin">媒體庫內關聯作品</string>
+    <string name="library_person_works_limited">目前資料最多顯示 40 部作品。</string>
+</resources>

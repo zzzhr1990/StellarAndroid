@@ -1,0 +1,8 @@
+<resources>
+    <string name="drive_token_title">Google Drive 存取權杖</string>
+    <string name="drive_token_help">填寫你自己的 OAuth 存取權杖（drive.readonly 權限），並在自己的 Google Cloud 專案啟用 Drive API。權杖到期後請在這裡更換。權杖僅在本機加密儲存。</string>
+    <string name="drive_token_label">存取權杖</string>
+    <string name="onedrive_token_title">OneDrive 存取權杖</string>
+    <string name="onedrive_token_help">填寫你自己的 Microsoft Graph OAuth 存取權杖，需要 Files.Read 委派權限。權杖過期後請在此重新填寫，權杖在此裝置加密儲存。</string>
+<string name="metadata_api_missing">此建置未設定線上識別。請使用自己的 TMDB 憑據編譯，詳見 README。</string>
+</resources>

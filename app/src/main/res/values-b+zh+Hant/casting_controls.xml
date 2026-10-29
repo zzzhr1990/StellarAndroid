@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cast_remote_title">投放遙控</string>
+    <string name="cast_collapse">收起遙控</string>
+    <string name="cast_play">播放</string>
+    <string name="cast_pause">暫停</string>
+    <string name="cast_rewind">後退15秒</string>
+    <string name="cast_forward">前進15秒</string>
+    <string name="cast_connecting">正在連線…</string>
+    <string name="cast_playing">電視正在播放</string>
+    <string name="cast_paused">電視已暫停</string>
+    <string name="cast_buffering">正在緩衝…</string>
+    <string name="cast_ended">播放結束</string>
+    <string name="cast_updating_subtitle">正在更新字幕…</string>
+    <string name="cast_subtitles">字幕</string>
+    <string name="cast_subtitle_file">選擇 SRT 檔案</string>
+    <string name="cast_subtitle_url">從網址載入字幕</string>
+    <string name="cast_phone_relay">手機正在提供媒體，可關閉螢幕播放，請保持 Wi-Fi 連線。</string>
+</resources>

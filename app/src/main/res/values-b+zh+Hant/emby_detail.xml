@@ -1,0 +1,18 @@
+<resources>
+    <string name="emby_detail_clear_progress">清除播放記錄</string>
+    <string name="emby_detail_download_unavailable">下載（暫不可用）</string>
+    <string name="emby_detail_duration">%1$d 小時 %2$d 分鐘</string>
+    <string name="detail_rating_tomatometer">爛番茄影評人</string>
+    <string name="detail_rating_audience">爛番茄觀眾</string>
+    <string name="detail_rating_description">%1$s：%2$s</string>
+    <string name="detail_rating_series_description">劇集評分，%1$s：%2$s</string>
+    <string name="detail_episode_title">第%1$d季 · 第%2$d集 — %3$s</string>
+    <string name="detail_file_location">位於 %1$s</string>
+    <string name="detail_file_server">%1$s伺服器</string>
+    <string name="detail_file_named_source">%1$s / %2$s</string>
+    <string name="detail_file_name_unknown">檔案名稱未提供</string>
+    <string name="detail_file_type_unknown">檔案類型未提供</string>
+    <string name="detail_file_size_unknown">檔案大小未提供</string>
+    <string name="detail_file_added">加入時間：%1$s</string>
+    <string name="detail_file_added_unknown">加入時間未提供</string>
+</resources>

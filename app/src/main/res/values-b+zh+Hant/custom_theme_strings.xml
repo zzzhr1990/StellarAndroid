@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ap_color_custom">自訂配色</string>
+    <string name="ap_custom_hint">初始配色與恆星藍紫相同。可分別調整淺色和深色配色，儲存後套用。文字與容器顏色自動調整。</string>
+    <string name="ap_custom_primary">主色</string>
+    <string name="ap_custom_secondary">輔助色</string>
+    <string name="ap_custom_tertiary">點綴色</string>
+    <string name="ap_custom_background">背景色</string>
+    <string name="ap_custom_preview">配色預覽</string>
+    <string name="ap_custom_reset">重設為恆星藍紫</string>
+    <string name="ap_custom_save">儲存並套用</string>
+    <string name="ap_custom_hex">十六進位顏色</string>
+    <string name="ap_custom_hex_hint">使用 #RRGGBB 格式，例如 #654EEF</string>
+    <string name="ap_custom_hex_error">請輸入六位十六進位顏色值（0–9、A–F）</string>
+    <string name="ap_custom_red">紅色</string>
+    <string name="ap_custom_green">綠色</string>
+    <string name="ap_custom_blue">藍色</string>
+</resources>

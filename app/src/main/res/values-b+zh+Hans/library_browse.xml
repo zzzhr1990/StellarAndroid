@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_not_owned">尚未入库</string>
+    <string name="library_owned">已入库</string>
+    <string name="library_not_owned_episodes">尚未入库的剧集</string>
+    <string name="library_person_origin">库内关联作品</string>
+    <string name="library_person_works_limited">当前资料最多展示 40 部作品。</string>
+</resources>

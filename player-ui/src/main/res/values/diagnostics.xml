@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="diagnostics">Diagnostics</string>
+    <string name="diag_unknown">Unknown</string>
+    <string name="diag_backend">Engine</string>
+    <string name="diag_video">Video</string>
+    <string name="diag_fps">Source / shown FPS</string>
+    <string name="diag_network">Network</string>
+    <string name="diag_bitrate">Media bitrate</string>
+    <string name="diag_color">Source color</string>
+    <string name="diag_screen">Display / viewport</string>
+    <string name="diag_file">File size</string>
+    <string name="diag_decoder">Decoder</string>
+    <string name="diag_buffer">Buffer</string>
+    <string name="diag_cpu">CPU (one core)</string>
+    <string name="diag_gpu">GPU usage</string>
+    <string name="diag_hardware">Hardware</string>
+    <string name="diag_software">Software</string>
+</resources>

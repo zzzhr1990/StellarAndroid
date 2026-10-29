@@ -1,0 +1,8 @@
+<resources>
+    <string name="drive_token_title">Google Drive access token</string>
+    <string name="drive_token_help">Paste your own OAuth access token with the drive.readonly scope. Enable the Drive API in your own Google Cloud project. Tokens expire; replace the token here when authorization fails. Tokens are encrypted on this device.</string>
+    <string name="drive_token_label">Access token</string>
+    <string name="onedrive_token_title">OneDrive access token</string>
+    <string name="onedrive_token_help">Paste your own Microsoft Graph OAuth access token with the Files.Read delegated scope. Tokens expire; replace the token here when authorization fails. Tokens are encrypted on this device.</string>
+<string name="metadata_api_missing">Online identification is not configured in this build. Build with your own TMDB credential; see README.</string>
+</resources>

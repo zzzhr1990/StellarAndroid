@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="media_library_local_url">本地和URL</string>
+    <string name="media_library_remote">存储服务</string>
+    <string name="media_library_media_servers">媒体服务器</string>
+    <string name="media_library_section_files">文件</string>
+    <string name="media_library_section_network">网络</string>
+    <string name="media_library_section_scan">扫描</string>
+    <string name="media_library_add_folder">添加文件夹到媒体库</string>
+    <string name="media_library_open_local">打开本机文件</string>
+    <string name="media_library_open_url">打开网络地址</string>
+    <string name="media_library_url_label">网络地址</string>
+    <string name="media_library_url_example">https://example.com/video.mp4</string>
+    <string name="media_library_url_hint">请输入 HTTP 或 HTTPS 媒体地址。</string>
+    <string name="media_library_url_error">请输入有效的 HTTP 或 HTTPS 地址。</string>
+    <string name="media_library_cancel">取消</string>
+    <string name="media_library_open">打开</string>
+    <string name="media_library_settings">媒体库设置</string>
+    <string name="library_quick_hash">允许使用快速哈希识别文件</string>
+    <string name="library_quick_hash_hint">快速哈希提取一小部分文件内容匹配正确的文件名。</string>
+    <string name="library_scan_threads">扫描线程数</string>
+    <string name="library_scan_threads_hint">下次扫描生效，控制同时进行的扫描任务数量。</string>
+    <plurals name="library_scan_threads_count"><item quantity="other">%1$d 个线程</item></plurals>
+</resources>

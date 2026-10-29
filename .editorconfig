@@ -1,0 +1,3 @@
+# Keep first-party source and Android resources in UTF-8 when saving in editors.
+[*.{kt,kts,java,cpp,h,c,xml,json,properties,toml,txt,pro,ps1,py,md,yml,yaml,sh,bat}]
+charset = utf-8

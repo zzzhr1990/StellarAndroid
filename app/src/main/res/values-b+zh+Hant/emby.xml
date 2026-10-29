@@ -1,0 +1,18 @@
+<resources>
+    <string name="emby_login">登入並儲存</string>
+    <string name="emby_login_hint">登入後可瀏覽此伺服器。帳號資訊與登入權杖儲存在本機。</string>
+    <string name="emby_refresh">重新整理</string>
+    <string name="emby_auth_expired">伺服器或登入狀態已變更，請重新登入。</string>
+    <string name="emby_login_again">重新登入</string>
+    <string name="emby_progress_error">觀看進度同步失敗，請檢查網路或重新登入。</string>
+    <string name="emby_minutes">%1$d 分鐘</string>
+    <string name="emby_version">媒體版本</string>
+    <string name="emby_unsupported">此項目沒有可用的原始媒體串流，暫不支援直播、伺服器轉碼和光碟映像。</string>
+    <string name="emby_resume_at">從 %1$s 繼續播放</string>
+    <string name="emby_restart">從頭播放</string>
+    <string name="emby_search">搜尋此伺服器</string>
+    <string name="emby_libraries">媒體庫</string>
+    <string name="emby_continue">繼續觀看</string>
+    <string name="emby_empty">暫無內容</string>
+    <string name="emby_more">載入更多</string>
+</resources>

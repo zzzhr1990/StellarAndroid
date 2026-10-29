@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ap_color_custom">Custom colors</string>
+    <string name="ap_custom_hint">Start with Stellar Indigo. Edit light and dark colors separately, then save to apply. Text and surface colors adjust automatically.</string>
+    <string name="ap_custom_primary">Primary color</string>
+    <string name="ap_custom_secondary">Secondary color</string>
+    <string name="ap_custom_tertiary">Accent color</string>
+    <string name="ap_custom_background">Background color</string>
+    <string name="ap_custom_preview">Color preview</string>
+    <string name="ap_custom_reset">Reset to Stellar Indigo</string>
+    <string name="ap_custom_save">Save and apply</string>
+    <string name="ap_custom_hex">Hex color</string>
+    <string name="ap_custom_hex_hint">Use #RRGGBB, for example #654EEF</string>
+    <string name="ap_custom_hex_error">Enter six hexadecimal digits (0–9, A–F)</string>
+    <string name="ap_custom_red">Red</string>
+    <string name="ap_custom_green">Green</string>
+    <string name="ap_custom_blue">Blue</string>
+</resources>

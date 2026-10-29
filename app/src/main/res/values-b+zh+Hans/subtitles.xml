@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="subtitle_seek_on_switch">切换字幕立即显示</string>
+    <string name="subtitle_seek_on_switch_hint">当切换字幕时候seek并立即呈现</string>
+    <string name="subtitle_url_title">加载远程URL字幕</string>
+    <string name="subtitle_url_label">HTTP或HTTPS字幕地址</string>
+    <string name="subtitle_load">加载</string>
+    <string name="subtitle_cancel">取消</string>
+    <string name="subtitle_loading">正在加载字幕…</string>
+    <string name="subtitle_load_failed">字幕加载失败，请检查文件格式或URL后重试。</string>
+    <string name="subtitle_file">外部字幕</string>
+    <string name="subtitle_url_invalid">请输入有效的HTTP或HTTPS地址</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="media_library_local_url">本機和URL</string>
+    <string name="media_library_remote">儲存服務</string>
+    <string name="media_library_media_servers">媒體伺服器</string>
+    <string name="media_library_section_files">檔案</string>
+    <string name="media_library_section_network">網路</string>
+    <string name="media_library_section_scan">掃描</string>
+    <string name="media_library_add_folder">新增資料夾至媒體庫</string>
+    <string name="media_library_open_local">開啟本機檔案</string>
+    <string name="media_library_open_url">開啟網路位址</string>
+    <string name="media_library_url_label">網路位址</string>
+    <string name="media_library_url_example">https://example.com/video.mp4</string>
+    <string name="media_library_url_hint">請輸入 HTTP 或 HTTPS 媒體位址。</string>
+    <string name="media_library_url_error">請輸入有效的 HTTP 或 HTTPS 位址。</string>
+    <string name="media_library_cancel">取消</string>
+    <string name="media_library_open">開啟</string>
+    <string name="media_library_settings">媒體庫設定</string>
+    <string name="library_quick_hash">允許使用快速雜湊識別檔案</string>
+    <string name="library_quick_hash_hint">快速雜湊擷取一小部分檔案內容以匹配正確的檔案名稱。</string>
+    <string name="library_scan_threads">掃描執行緒數</string>
+    <string name="library_scan_threads_hint">下次掃描生效，控制同時進行的掃描工作數量。</string>
+    <plurals name="library_scan_threads_count"><item quantity="other">%1$d 個執行緒</item></plurals>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">恒星播放器（Android）</string>
+    <string name="external_media_unsupported">此文件无法作为音频或视频打开。</string>
+    <string name="external_media_unreadable">无法读取此文件，请从文件管理器重新打开并允许访问。</string>
+    <string name="home_media">首页</string>
+    <string name="media_library_search">搜索</string>
+    <string name="home_media_library">媒体库</string>
+    <string name="home_settings">设置</string>
+    <string name="pip_disabled">画中画已关闭，可在播放设置中开启。</string>
+    <string name="pip_unavailable">暂时无法进入画中画，请先打开视频，并在系统设置中允许画中画。</string>
+    <string name="local_sample">本地示例 · 模拟播放</string>
+    <string name="playlist">播放列表</string>
+    <string name="state_ended">已结束</string>
+    <string name="back">返回</string>
+    <string name="subtitles_off">关闭字幕</string>
+    <string name="language">应用语言</string>
+    <string name="language_system">跟随系统</string>
+    <string name="language_hans">简体中文</string>
+    <string name="language_hant">繁體中文</string>
+    <string name="language_english">English</string>
+    <string name="close">关闭</string>
+    <string name="feature_pending">此入口将在后续演示中开放。</string>
+    <string name="cast_pending">投屏仅用于模拟演示，此版本不搜索真实设备。</string>
+    <plurals name="sample_count">
+        <item quantity="other">%d 个本地样例</item>
+    </plurals>
+    <plurals name="item_count">
+        <item quantity="other">%d 项</item>
+    </plurals>
+    <string name="local_file">本地文件</string>
+</resources>

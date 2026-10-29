@@ -1,0 +1,6 @@
+<resources>
+    <string name="dvd_title_name">Title %2$d · %1$s</string>
+    <string name="dvd_open_failed">Unable to read supported disc titles.</string>
+    <string name="dvd_opening">Reading disc titles…</string>
+    <string name="dvd_play">Play DVD</string>
+</resources>

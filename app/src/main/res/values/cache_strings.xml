@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cache_refresh_failed">Could not update. Saved content is still available.</string>
+    <string name="cache_user_state_pending">Watch status needs updating</string>
+    <string name="cache_showing_saved">Showing saved content · %1$s</string>
+    <string name="cache_list_changed">The library changed. Tap to refresh.</string>
+    <string name="cache_previous_page">Previous page</string>
+</resources>

@@ -1,0 +1,137 @@
+{
+  "version": "7.1.1",
+  "files": [
+    {
+      "path": "COPYING",
+      "sha256": "d6cb0e9e560f51085556949a84af12b79a00f10ab8b66c752537faf7cd665572"
+    },
+    {
+      "path": "src/bitreader.c",
+      "sha256": "87cab1dfdecca101dcb84e0075c9e59efda194a638c1c913405c1578beaa3150"
+    },
+    {
+      "path": "src/bswap.h",
+      "sha256": "021dbbb220bd7eb941be2a5b745c2905a19cdc84783220044ab4863033fa6de3"
+    },
+    {
+      "path": "src/dvd_input.c",
+      "sha256": "0210fe9fe6624dba21b56f260984933c926dead02a2d30de4e845b0132e5f38b"
+    },
+    {
+      "path": "src/dvd_input.h",
+      "sha256": "2b31e1703f5a3aea711ccb03ebaecdf955f10fd1d84ed76c30545da9c96b73af"
+    },
+    {
+      "path": "src/dvd_reader.c",
+      "sha256": "f0ec3984be06b96a92f744aa1efaa440922f390fc32d59c0217d3d67ef8166cf"
+    },
+    {
+      "path": "src/dvd_udf.c",
+      "sha256": "809dd813c07b97b853c3b2be7b13f9da208678b8b9979e09c8a91cc655a51602"
+    },
+    {
+      "path": "src/dvdread/attributes.h",
+      "sha256": "caf7c7393729d59ad11931c1936713ae2afc10d92c3fcab69ee150f1c4e59b45"
+    },
+    {
+      "path": "src/dvdread/bitreader.h",
+      "sha256": "517f045e5262e4c89660b9086337bc2abe0f3af2814b7b33d7a09f8c25f74b9c"
+    },
+    {
+      "path": "src/dvdread/dvd_filesystem.h",
+      "sha256": "89219c087d53192c79560cfecd4515dff8468b1337d0e715a93d5066226393a4"
+    },
+    {
+      "path": "src/dvdread/dvd_reader.h",
+      "sha256": "f8cf5485138013f6cdd6bd3a93331577aafd31587f0304874865bd5f40227dc6"
+    },
+    {
+      "path": "src/dvdread/dvd_udf.h",
+      "sha256": "f68185c559b27e39a758460a3449136e2d39ebe076b1045a4d9e8d60bffeb6d7"
+    },
+    {
+      "path": "src/dvdread/ifo_print.h",
+      "sha256": "355411be68f87745adaba3ebb854c0740117e0ebc9de9c4f8282aca9cda5a9b9"
+    },
+    {
+      "path": "src/dvdread/ifo_read.h",
+      "sha256": "c3e4e620a230634192bdb7fc842045b3a688a5e2c2c0e53f4cf393e7cfa478e7"
+    },
+    {
+      "path": "src/dvdread/ifo_types.h",
+      "sha256": "a156f745a50318062fd82944be7d282e342040b6a8a56998ce5488d2995f49c9"
+    },
+    {
+      "path": "src/dvdread/meson.build",
+      "sha256": "80bd62b85ea1029272b54e723e4faceed911e1aa21fc832dd8c72d422938808b"
+    },
+    {
+      "path": "src/dvdread/nav_print.h",
+      "sha256": "356a83563bd037846f5f4e039b5d93c0b7887d7bcbd7dbaf422f32eab5bae00b"
+    },
+    {
+      "path": "src/dvdread/nav_read.h",
+      "sha256": "cad389afc41ae9c37ed1245920588723d3b3e4b505d90a467e9882d6e704f14b"
+    },
+    {
+      "path": "src/dvdread/nav_types.h",
+      "sha256": "9c1c3624e69334193041d509c06328f1da541d1b0bbee3a4daee13aac09858a6"
+    },
+    {
+      "path": "src/dvdread/version.h.in",
+      "sha256": "b6757882acbcd9154c6668549e92407ba754072a9bca3a934438bd036b4f37eb"
+    },
+    {
+      "path": "src/dvdread_internal.h",
+      "sha256": "762f5b81e0ffc5b6712b0d958a1dbfa4f57ea14e17659e778a7189028a1e0782"
+    },
+    {
+      "path": "src/file/file_posix.c",
+      "sha256": "025744a5654822f6be563e8ddd045000c29e596476028dbfb558ee1d978f140b"
+    },
+    {
+      "path": "src/file/file_win32.c",
+      "sha256": "977f983c6efe3b2a608cb28b599e50402c01e16117cd05889aca91ab5ba0d6ee"
+    },
+    {
+      "path": "src/file/filesystem.h",
+      "sha256": "f358f3bc82c16b96a2d0553389e825af5a34c6e59f90236518142bbf923c699b"
+    },
+    {
+      "path": "src/ifo_print.c",
+      "sha256": "f5034194b4ab717bc8500eaf6d9609d3da8958d05c5506e426fc6d3775d265f9"
+    },
+    {
+      "path": "src/ifo_read.c",
+      "sha256": "181dca2e5b531b990febc186a747d251053e9139d158110513876c31dc40b745"
+    },
+    {
+      "path": "src/logger.c",
+      "sha256": "7e072738c77c2c901d86f0f69652df322b80e1cd2b3db6ed267cf5e30e607cbb"
+    },
+    {
+      "path": "src/logger.h",
+      "sha256": "845518ea6c24b5d122be73b445bfd2a791b120f176db31808f834b43e0f9b9ab"
+    },
+    {
+      "path": "src/md5.c",
+      "sha256": "13421b94f3dec38aaef25b4a8be00a327ef7a753e4aeb71b8f89382ec097b47a"
+    },
+    {
+      "path": "src/md5.h",
+      "sha256": "b6a526d1577d39fe0e933080d0afea28887b1fc9db75b5fe91b15a1286087b73"
+    },
+    {
+      "path": "src/meson.build",
+      "sha256": "cead1eeb347625f26bb074c74611f2316914af98dc5026ffd7937c5921f3f337"
+    },
+    {
+      "path": "src/nav_print.c",
+      "sha256": "95676d0ec874259cc97a4b60573677945173f60491e741f85bbf1497ece7b804"
+    },
+    {
+      "path": "src/nav_read.c",
+      "sha256": "40e446c1e39c172936b7ec4cd89bfad92efeef36d0e8a773646e4cf2b71a2a20"
+    }
+  ]
+}

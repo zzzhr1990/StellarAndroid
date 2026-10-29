@@ -1,0 +1,20 @@
+<resources>
+    <string name="hills_duration">\u0020/\u0020%1$s</string>
+    <string name="hills_demo_engine">Demo</string>
+    <string name="hills_unknown_codec" translatable="false">--</string>
+    <string name="hills_codec_hdr" translatable="false">%1$s/HDR</string>
+    <string name="hills_codec_dv" translatable="false">%1$s/DV</string>
+    <string name="hills_bytes_second">%1$sB/s</string>
+    <string name="hills_kbytes_second">%1$sKB/s</string>
+    <string name="hills_battery">Battery</string>
+    <string name="hills_rotate">Rotate screen</string>
+    <string name="hills_controls">Playback controls</string>
+    <string name="hills_tracks">Tracks</string>
+    <string name="hills_subtitle_settings">Settings</string>
+    <string name="hills_double_play">Double tap to play or pause</string>
+    <string name="hills_double_seek">Double tap to seek</string>
+    <string name="hills_double_hint">With both enabled, double tap the left or right third to seek and the middle to play or pause. Seek alone uses the two halves.</string>
+    <string name="hills_hide_paused">Hide controls while paused</string>
+    <string name="hills_other_tools">Other tools</string>
+    <string name="hills_speed_value">%1$sx</string>
+</resources>

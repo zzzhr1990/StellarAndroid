@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="casting_local_only">This tool is available during playback on this phone.</string>
+    <string name="casting_volume">Receiver volume</string>
+    <string name="casting_title">Cast media</string>
+    <string name="casting_hint">Connect to the same local network. Playback formats, subtitles and picture quality depend on the receiving device.</string>
+    <string name="casting_permission">Allow local network access to discover devices and share media.</string>
+    <string name="casting_network">Connect to Wi-Fi or Ethernet to cast.</string>
+    <string name="casting_vpn_blocked">Device discovery or connection failed, and the VPN does not allow direct LAN access. Enable “Allow apps to bypass VPN” in your VPN app, reconnect the VPN, then refresh the device list; or turn off the VPN and try again.</string>
+    <string name="casting_unavailable">Device discovery could not start. Try again.</string>
+    <string name="casting_source">This source needs additional casting support. Try a local MP4 or a direct media URL.</string>
+    <string name="casting_load_error">The receiver could not load this media. Check the format and network connection.</string>
+    <string name="casting_control_error">The receiver did not confirm the command. Playback on this phone stays paused.</string>
+    <string name="casting_disconnected">Connection to the receiver was lost. Playback on this phone stays paused.</string>
+    <string name="casting_allow">Allow local network access</string>
+    <string name="casting_return">Stop casting and play on phone</string>
+    <string name="casting_stop">Stop casting</string>
+    <string name="casting_dlna_device">%1$s · DLNA</string>
+    <string name="casting_empty">No DLNA playback devices found.</string>
+    <string name="casting_refresh">Refresh devices</string>
+    <string name="casting_close">Close</string>
+    <string name="casting_on_device">Casting to %1$s</string>
+</resources>

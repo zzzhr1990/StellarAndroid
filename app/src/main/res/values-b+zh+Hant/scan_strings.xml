@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_home">媒體</string>
+    <string name="scan_title">媒體庫掃描</string>
+    <string name="scan_running">正在掃描目錄</string>
+    <string name="scan_paused">已暫停，已提交的項目已儲存</string>
+    <string name="scan_complete">掃描完成</string>
+    <string name="scan_partial">部分目錄未完成或含不支援項目，可用內容已保留</string>
+    <string name="scan_failed">掃描未能完成，請檢查連線、目錄權限或來源資料後重試</string>
+    <string name="scan_cancelled">已取消，已提交的項目已儲存</string>
+    <string name="scan_idle">可以開始掃描目錄</string>
+    <string name="scan_counts">已發現 %1$d 項 · 已讀取 %2$d 份 NFO</string>
+    <string name="scan_pause">暫停</string>
+    <string name="scan_resume">繼續</string>
+    <string name="scan_cancel">取消</string>
+    <string name="scan_start">更新檔案變化</string>
+    <string name="scan_reread">重新讀取本機資料</string>
+    <string name="scan_add">新增目錄</string>
+    <string name="scan_retry">重試</string>
+    <string name="scan_new">顯示新加入的內容</string>
+    <string name="scan_first">第一頁</string>
+    <string name="scan_next">下一頁</string>
+    <string name="scan_episode">第 %1$d 季 · 第 %2$d 集</string>
+    <string name="scan_unrecognized">未識別</string>
+    <string name="scan_local">本機資料</string>
+    <string name="scan_back">返回媒體庫</string>
+    <string name="scan_supported_sources">掃描本機、NAS、Google Drive 和 OneDrive 目錄。暫不支援共用磁碟和捷徑。</string>
+    <string name="scan_last_attempt">最近嘗試：%1$s</string>
+    <string name="scan_last_complete">最近完整掃描：%1$s</string>
+    <string name="scan_source_unavailable">來源無法使用，請檢查已儲存的連線。</string>
+</resources>

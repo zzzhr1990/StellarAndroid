@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_builtin">Built-in media library</string>
+    <string name="library_type_local">On this device</string>
+    <string name="library_add">Add to media library</string>
+    <string name="library_remove">Remove from media library</string>
+    <string name="library_actions">Folder options</string>
+    <string name="library_member">In media library</string>
+    <string name="library_empty">No folders yet. Add a folder from Local and URL or a remote browser.</string>
+    <string name="library_added">Added to media library</string>
+    <string name="library_removed">Removed from media library</string>
+    <string name="library_already_title">Already in media library</string>
+    <string name="library_duplicate">This folder is already in your media library.</string>
+    <string name="library_parent">A parent folder is already in your media library. There is no need to add this folder again.</string>
+    <string name="library_failed_title">Unable to update media library</string>
+    <string name="library_error">The media library could not be read or updated. Please try again.</string>
+    <string name="library_permission">Folder access is unavailable. Select the folder again and allow access.</string>
+    <string name="library_ok">OK</string>
+</resources>

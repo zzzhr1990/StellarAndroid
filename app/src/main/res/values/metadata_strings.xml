@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="metadata_title">Metadata</string>
+    <string name="metadata_service">TMDB metadata</string>
+    <string name="metadata_scope">Identify indexed media, correct matches, or import existing metadata. Files and server data remain read-only.</string>
+    <string name="metadata_failed">Could not complete. Existing metadata is kept. Retry or check the source.</string>
+    <string name="metadata_saved">Saved. Manual choices are protected from automatic refresh.</string>
+    <string name="metadata_progress">Processed %1$d · Matched %2$d · Review %3$d · Failed %4$d</string>
+    <string name="metadata_identify">Identify library</string>
+    <string name="metadata_retry">Refresh metadata</string>
+    <string name="metadata_retry_ready">Metadata refresh started. Saved matches and manual edits are kept.</string>
+    <string name="metadata_query">Title or filename (include year and S/E for episodes)</string>
+    <string name="metadata_search">Find matches</string>
+    <string name="metadata_no_match">No reliable match. Edit the title or import metadata.</string>
+    <string name="metadata_candidate">%1$s  %2$s</string>
+    <string name="metadata_name">Title</string>
+    <string name="metadata_year">Year</string>
+    <string name="metadata_plot">Overview</string>
+    <string name="metadata_save">Save and lock</string>
+    <string name="metadata_import_file">Import NFO / XML for this file</string>
+    <string name="metadata_reset">Remove overrides and unlock</string>
+    <string name="metadata_reset_done">Overrides removed. Scanned sidecars remain available.</string>
+    <string name="metadata_import_server">Import from Emby / Jellyfin</string>
+    <string name="metadata_import_library">Import %1$s</string>
+    <string name="metadata_import_done">Import complete. Files with matching IDs were linked.</string>
+    <string name="metadata_import_partial">Import is incomplete. Existing records are kept.</string>
+    <string name="metadata_staging">Imported records are stored locally. Open a media card to link a record manually. Unlinked records do not create playable files.</string>
+    <string name="metadata_import_set">Imported library %1$d</string>
+    <string name="metadata_edit">Edit or match metadata</string>
+    <string name="metadata_waiting">Waiting for metadata: %1$d. Existing matches are kept; retries are bounded and can be canceled.</string>
+    <string name="metadata_waiting_paused">Metadata still pending: %1$d. Existing matches are kept. Start identification again to retry.</string>
+</resources>

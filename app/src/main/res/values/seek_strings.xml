@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hs_accurate_seek">Accurate seek</string>
+    <string name="hs_accurate_seek_hint">Turn this off if you have problems dragging the progress bar.</string>
+</resources>

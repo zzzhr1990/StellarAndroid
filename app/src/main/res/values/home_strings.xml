@@ -1,0 +1,33 @@
+<resources>
+    <string name="home_versions_sources">Versions and sources</string>
+    <string name="home_episodes">Season %1$d · Episodes %2$s</string>
+    <string name="home_episode_separator">,\u0020</string>
+    <string name="home_continue">Continue watching</string>
+    <string name="home_recent">Recently added</string>
+    <string name="home_movies">Movies</string>
+    <string name="home_series">TV shows</string>
+    <string name="home_manage">Manage</string>
+    <string name="home_all_sources">All sources</string>
+    <string name="home_refresh">Refresh</string>
+    <string name="home_view_all">View all</string>
+    <string name="home_refresh_failed">Could not update. Your library is still available.</string>
+    <string name="home_load_failed">Could not load your library. Try again.</string>
+    <string name="home_loading">Loading library…</string>
+    <string name="home_no_progress">Videos you start watching appear here.</string>
+    <string name="home_empty_section">No videos here yet. Add sources or scan to fill your library.</string>
+    <string name="home_episode_count">Episodes: %1$d</string>
+    <string name="home_version_count">Versions: %1$d</string>
+    <string name="home_mark_watched">Mark watched</string>
+    <string name="home_mark_unwatched">Mark unwatched</string>
+    <string name="home_watched">Watched</string>
+    <string name="home_all_seasons">All seasons</string>
+    <string name="home_season">Season %1$d</string>
+    <string name="home_rating_community">Community</string>
+    <string name="home_credit_actor">Cast</string>
+    <string name="home_credit_writer">Writer</string>
+    <string name="home_credit_crew">Crew</string>
+    <plurals name="home_credits_limited">
+        <item quantity="one">Showing the first %1$d cast or crew member</item>
+        <item quantity="other">Showing the first %1$d cast and crew members</item>
+    </plurals>
+</resources>

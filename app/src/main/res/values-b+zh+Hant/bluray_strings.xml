@@ -1,0 +1,8 @@
+<resources>
+    <string name="bluray_title_name">藍光播放清單 %2$05d · %1$s</string>
+    <string name="bluray_play">播放藍光</string>
+    <string name="disc_encrypted">暫不支援加密藍光光碟。</string>
+    <string name="disc_open_folder">開啟光碟資料夾</string>
+    <string name="disc_folder_title">光碟</string>
+    <string name="disc_folder_permission">請選擇「開啟光碟資料夾」，並授權存取 VIDEO_TS 或 BDMV 資料夾。</string>
+</resources>

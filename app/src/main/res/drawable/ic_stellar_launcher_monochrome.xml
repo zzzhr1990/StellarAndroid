@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- REF-G inspired vector redraw. Both loops keep the center transparent.
+     Geometry stays inside the centered 66dp safe circle on a 108dp canvas. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <group android:scaleX="0.075" android:scaleY="0.075"
+        android:translateX="16" android:translateY="14.5">
+        <path android:fillColor="#000000" android:fillAlpha="0.48"
+            android:fillType="evenOdd"
+            android:pathData="M173,439 C272,366 471,259 595,218 C700,183 734,220 750,310 C768,426 767,678 747,780 C731,864 687,894 603,860 C476,806 256,674 174,608 C107,554 102,493 173,439 Z M487,414 C528,430 598,479 627,508 C650,532 645,551 623,573 C587,605 522,642 480,654 C450,663 438,646 438,610 C435,563 437,490 443,450 C448,420 463,403 487,414 Z" />
+        <path android:fillColor="#000000" android:fillType="evenOdd"
+            android:pathData="M399,185 C513,244 740,376 839,468 C887,513 885,558 840,602 C726,708 510,828 399,866 C316,894 278,859 269,774 C255,637 257,401 275,283 C288,199 333,151 399,185 Z M487,414 C528,430 598,479 627,508 C650,532 645,551 623,573 C587,605 522,642 480,654 C450,663 438,646 438,610 C435,563 437,490 443,450 C448,420 463,403 487,414 Z" />
+    </group>
+</vector>

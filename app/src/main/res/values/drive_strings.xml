@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="server_google_drive">Google Drive</string>
+    <string name="drive_hint">Supply your own Google Drive read-only access token to browse and play files.</string>
+    <string name="drive_account">Google account: %1$s</string>
+    <string name="drive_connect">Connect Google Drive</string>
+    <string name="drive_auth_error">Google Drive authorization is required. Connect again to continue.</string>
+    <string name="drive_config_error">Google Drive is currently unavailable because of an app configuration issue. Please contact support.</string>
+</resources>

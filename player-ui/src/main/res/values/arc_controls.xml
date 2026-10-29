@@ -1,0 +1,4 @@
+<resources>
+    <string name="enter_one_handed">One-handed controls</string>
+    <string name="exit_one_handed">Close one-handed controls</string>
+</resources>

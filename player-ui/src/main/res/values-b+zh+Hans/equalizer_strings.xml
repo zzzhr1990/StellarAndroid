@@ -1,0 +1,16 @@
+<resources>
+    <string name="eq_title">均衡器</string>
+    <string name="eq_enable">启用均衡器</string>
+    <string name="eq_hint">松开滑杆应用调节，设置会保存并用于所有媒体。</string>
+    <string name="eq_unavailable">当前音频流无法使用均衡器。</string>
+    <string name="eq_flat">平直</string>
+    <string name="eq_bass">低音</string>
+    <string name="eq_voice">人声</string>
+    <string name="eq_bright">明亮</string>
+    <string name="eq_preamp">前级增益</string>
+    <string name="eq_hz">%1$s Hz</string>
+    <string name="eq_khz">%1$s kHz</string>
+    <string name="eq_db">%1$s dB</string>
+    <string name="eq_headroom" formatted="false">提升频段时会自动降低前级，预留增益余量。超过音频采样率限制的频段会跳过。音量超过 100% 时仍可能失真。</string>
+    <string name="eq_reset">重置并关闭</string>
+</resources>

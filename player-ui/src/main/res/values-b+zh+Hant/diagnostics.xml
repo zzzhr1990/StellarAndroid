@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="diagnostics">診斷資訊</string>
+    <string name="diag_unknown">未知</string>
+    <string name="diag_backend">播放核心</string>
+    <string name="diag_video">視訊</string>
+    <string name="diag_fps">來源／呈現幀率</string>
+    <string name="diag_network">網路讀取</string>
+    <string name="diag_bitrate">媒體位元率</string>
+    <string name="diag_color">來源色彩</string>
+    <string name="diag_screen">顯示模式／視口</string>
+    <string name="diag_file">檔案大小</string>
+    <string name="diag_decoder">解碼方式</string>
+    <string name="diag_buffer">緩衝</string>
+    <string name="diag_cpu">CPU（單核）</string>
+    <string name="diag_gpu">GPU使用率</string>
+    <string name="diag_hardware">硬體解碼</string>
+    <string name="diag_software">軟體解碼</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="ap_system_colors_active">当前使用系统配色；选择颜色可切换为自定义主题。</string>
+    <string name="ap_choose_font">更换字体文件</string>
+    <string name="ap_font_error">无法导入该字体，请选择不超过 20 MB 的有效 TTF 或 OTF 文件。</string>
+    <string name="ap_background_default">默认颜色</string>
+    <string name="ap_background_image">背景图</string>
+    <string name="ap_choose_image">更换背景图片</string>
+    <string name="ap_image_error">无法导入该图片，请选择不超过 25 MB 的有效图片。</string>
+</resources>

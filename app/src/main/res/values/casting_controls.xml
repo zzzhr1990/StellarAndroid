@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cast_remote_title">Cast controls</string>
+    <string name="cast_collapse">Minimize controls</string>
+    <string name="cast_play">Play</string>
+    <string name="cast_pause">Pause</string>
+    <string name="cast_rewind">Back 15 seconds</string>
+    <string name="cast_forward">Forward 15 seconds</string>
+    <string name="cast_connecting">Connecting…</string>
+    <string name="cast_playing">Playing on TV</string>
+    <string name="cast_paused">Paused on TV</string>
+    <string name="cast_buffering">Buffering…</string>
+    <string name="cast_ended">Playback finished</string>
+    <string name="cast_updating_subtitle">Updating subtitles…</string>
+    <string name="cast_subtitles">Subtitles</string>
+    <string name="cast_subtitle_file">Choose an SRT file</string>
+    <string name="cast_subtitle_url">Load subtitles from a URL</string>
+    <string name="cast_phone_relay">This phone is sharing the media. You can turn off its screen; keep it connected to Wi-Fi.</string>
+</resources>

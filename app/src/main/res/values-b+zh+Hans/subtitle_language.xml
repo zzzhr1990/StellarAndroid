@@ -1,0 +1,5 @@
+<resources>
+    <string name="subtitle_language_off">关闭</string>
+    <string name="subtitle_language_current">加载当前语言</string>
+    <string name="subtitle_language_hint">打开媒体时生效。当前语言跟随应用界面语言；没有匹配字幕时保持关闭。</string>
+</resources>

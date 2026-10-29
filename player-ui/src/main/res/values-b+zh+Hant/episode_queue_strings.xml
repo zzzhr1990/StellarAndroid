@@ -1,0 +1,6 @@
+<resources>
+    <string name="previous_episode">上一集</string>
+    <string name="next_episode">下一集</string>
+    <string name="episodes_unavailable">未能載入全部劇集，目前清單仍可使用。</string>
+    <string name="episode_unavailable">暫時無法播放這一集，請重試。</string>
+</resources>

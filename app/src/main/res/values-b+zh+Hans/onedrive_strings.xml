@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="server_onedrive">OneDrive</string>
+    <string name="onedrive_hint">填写你自己的 Microsoft Graph Files.Read 访问令牌，浏览文件并播放。</string>
+    <string name="onedrive_account">Microsoft 账号：%1$s</string>
+    <string name="onedrive_connect">连接 OneDrive</string>
+    <string name="onedrive_auth_error">需要 Microsoft 授权，请重新连接 OneDrive。</string>
+    <string name="onedrive_config_error">无法为此应用配置 Microsoft 登录。</string>
+    <string name="onedrive_account_error">请使用此连接原先绑定的 Microsoft 账号登录。如需使用其他账号，请新增 OneDrive 连接。</string>
+    <string name="onedrive_service_error">Microsoft 登录服务返回错误，请稍后重试。</string>
+    <string name="onedrive_signin_error">Microsoft 登录未成功，请重试。</string>
+</resources>

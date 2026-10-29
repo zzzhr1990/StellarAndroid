@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playback_cache_title">缓存</string>
+    <string name="playback_cache_disk">磁盘缓存</string>
+    <string name="media_library_cache_title">媒体库缓存</string>
+    <string name="media_library_cache_clear_hint">清除缓存的媒体库数据和图片。</string>
+    <string name="playback_cache_hint">将已读取的网络媒体数据保存在本机以便复用。适用于受支持的HTTP(S)媒体，更改将在下次打开媒体时生效。</string>
+    <string name="playback_cache_retention">缓存保留时间</string>
+    <string name="playback_cache_day_1">1天</string>
+    <string name="playback_cache_day_7">7天</string>
+    <string name="playback_cache_day_30">30天</string>
+    <string name="playback_cache_expiry_hint">超过所选时间未使用的缓存，会在打开媒体时清理。此功能用于播放缓存，不是离线下载。</string>
+    <string name="playback_cache_usage">已用空间</string>
+    <string name="playback_cache_calculating">正在计算…</string>
+    <string name="playback_cache_clear">清空缓存</string>
+    <string name="playback_cache_clear_hint">删除本机保存的全部播放缓存。</string>
+    <string name="playback_cache_cleared">缓存已清空。</string>
+    <string name="playback_cache_clear_failed">部分缓存未能清理，请重试。</string>
+    <string name="playback_cache_read_failed">无法读取缓存占用。</string>
+    <string name="playback_buffer_title">播放缓冲</string>
+    <string name="playback_buffer_minimum">最低缓冲时长</string>
+    <string name="playback_buffer_minimum_hint">缓冲耗尽后，补足此时长再恢复解码。</string>
+    <string name="playback_buffer_maximum">最大缓冲时长</string>
+    <string name="playback_buffer_maximum_hint">最多提前读取此时长的数据，数值越大，内存占用越高。</string>
+    <string name="playback_buffer_drop">缓冲满时丢弃旧数据</string>
+    <string name="playback_buffer_drop_hint">丢弃较旧的非关键帧以降低延迟，可能跳过画面；普通点播建议关闭。</string>
+    <string name="playback_buffer_hint">更改将在下次打开媒体时生效。</string>
+    <string name="playback_buffer_reset">恢复播放缓冲默认值</string>
+    <string name="playback_buffer_seconds">%1$d秒</string>
+    <string name="playback_buffer_no_wait">不等待（0秒）</string>
+    <string name="playback_cache_enable_disk">启用磁盘缓存</string>
+</resources>

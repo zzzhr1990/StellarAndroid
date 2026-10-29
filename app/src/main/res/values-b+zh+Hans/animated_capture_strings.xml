@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="capture_title">动图截取</string>
+    <string name="capture_description">截取当前播放画面接下来的几秒。仅支持 SDR，不含声音。暂停、切换视频、旋转或离开播放器会取消截取。</string>
+    <string name="capture_gif">GIF 动图</string>
+    <string name="capture_mp4">MP4（H.264）</string>
+    <string name="capture_gif_quality">最长边 640 像素 · 10 帧/秒 · 256 色</string>
+    <string name="capture_mp4_quality">最长边 640 像素 · 15 帧/秒 · 无声视频</string>
+    <string name="capture_duration">截取时长</string>
+    <plurals name="capture_seconds"><item quantity="other">%1$d 秒</item></plurals>
+    <string name="capture_destination">保存位置沿用设置 → 播放器 → 截图中的相册或文件夹。</string>
+    <string name="capture_start">开始截取</string>
+    <string name="capture_cancel">取消</string>
+    <string name="capture_play_first">请先播放视频再开始截取。</string>
+    <string name="capture_sdr_only">暂不支持 HDR 和杜比视界截取，请使用 SDR 视频。</string>
+    <string name="capture_real_video">仅支持真实视频播放时截取。</string>
+    <string name="capture_recording">正在截取 %1$d / %2$d 秒</string>
+    <string name="capture_saving">正在保存…</string>
+    <string name="capture_preparing">正在准备…</string>
+    <string name="capture_saved_album">截取已保存到相册</string>
+    <string name="capture_saved_folder">截取已保存到文件夹</string>
+    <string name="capture_cancelled">已取消截取</string>
+    <string name="capture_interrupted">截取已中断，未保存文件</string>
+    <string name="capture_failed">截取失败，请检查保存位置或尝试另一格式。</string>
+</resources>

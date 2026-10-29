@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="interaction_handedness">左右手習慣</string>
+    <string name="interaction_left_handed">左手優先</string>
+    <string name="interaction_right_handed">右手優先</string>
+</resources>

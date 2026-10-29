@@ -1,0 +1,69 @@
+# Copyright (C) 2025 Rob Hall
+# SPDX-License-Identifier: MIT
+
+# General options
+
+option('enable_docs',
+    type: 'boolean',
+    value: false,
+    description: 'Build libbluray documentation with Doxygen')
+
+option('enable_tools',
+    type: 'boolean',
+    value: true,
+    description: 'Build libbluray cli tools')
+
+option('enable_devtools',
+    type: 'boolean',
+    value: false,
+    description: 'Build libbluray development tools')
+
+option('enable_examples',
+    type: 'boolean',
+    value: false,
+    description: 'Build libbluray examples')
+
+# BD-J JAR options
+
+option('bdj_jar',
+    type: 'feature',
+    value: 'auto',
+    description: 'Build the BD-J JAR file (requires Java)')
+
+option('jdk_home',
+    type: 'string',
+    value: '',
+    description: 'Path to the JDK')
+
+option('bdj_type',
+    type: 'combo',
+    choices: ['j2me', 'j2se'],
+    value: 'j2se',
+    description: 'Type of the BD-J implementation')
+
+option('bdj_bootclasspath',
+    type: 'string',
+    value: '',
+    description: 'BD-J build-time bootclass path')
+
+# Optional dependencies to be found on the system
+
+option('embed_udfread',
+    type: 'boolean',
+    value: true,
+    description: 'When building libudfread as subproject, don\'t install library or headers')
+
+option('fontconfig',
+    type: 'feature',
+    value: 'auto',
+    description: 'System font support with fontconfig (except Windows)')
+
+option('freetype',
+    type: 'feature',
+    value: 'auto',
+    description: 'Font support with freetype2')
+
+option('libxml2',
+    type: 'feature',
+    value: 'auto',
+    description: 'Metadata support with libxml2')

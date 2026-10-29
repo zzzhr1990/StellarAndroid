@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="casting_local_only">此工具仅适用于手机本地播放。</string>
+    <string name="casting_volume">接收设备音量</string>
+    <string name="casting_title">投屏</string>
+    <string name="casting_hint">请连接同一局域网。播放格式、字幕和画质由接收设备决定。</string>
+    <string name="casting_permission">允许访问局域网，以发现设备并分享媒体。</string>
+    <string name="casting_network">请连接 Wi-Fi 或以太网后投屏。</string>
+    <string name="casting_unavailable">设备发现未能启动，请重试。</string>
+    <string name="casting_source">此来源还需要额外的投屏支持，请先使用本地 MP4 或媒体直链。</string>
+    <string name="casting_load_error">接收设备未能加载媒体，请检查格式和网络连接。</string>
+    <string name="casting_control_error">接收设备未确认操作，手机播放保持暂停。</string>
+    <string name="casting_disconnected">与接收设备的连接已断开，手机播放保持暂停。</string>
+    <string name="casting_allow">允许访问局域网</string>
+    <string name="casting_return">停止投屏并在手机播放</string>
+    <string name="casting_stop">停止投屏</string>
+    <string name="casting_dlna_device">%1$s · DLNA</string>
+    <string name="casting_empty">未发现 DLNA 播放设备。</string>
+    <string name="casting_refresh">刷新设备</string>
+    <string name="casting_close">关闭</string>
+    <string name="casting_on_device">正在投屏到 %1$s</string>
+    <string name="casting_vpn_blocked">未能完成设备发现或连接，且 VPN 不允许直接访问局域网。请在 VPN 应用中开启“允许应用绕过 VPN”，重新连接 VPN 后刷新设备列表；也可以关闭 VPN 后重试。</string>
+</resources>

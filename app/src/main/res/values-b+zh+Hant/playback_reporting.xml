@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playback_resume_conflict">播放進度存在衝突</string>
+    <string name="playback_resume_conflict_detail">本機與伺服器的觀看狀態不同，請選擇此次續播位置。</string>
+    <string name="playback_resume_local">本機 · %1$s</string>
+    <string name="playback_resume_server">伺服器 · %1$s</string>
+    <string name="playback_resume_start">從頭播放</string>
+    <string name="playback_progress_pending">已儲存在本機，等待伺服器確認</string>
+    <string name="playback_save_failed">本機進度儲存失敗，最新位置暫保留在記憶體中。</string>
+</resources>

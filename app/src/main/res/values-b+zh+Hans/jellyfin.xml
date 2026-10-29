@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jellyfin_login_hint">登录 Jellyfin 服务器，浏览媒体库并播放原始媒体。账号信息和会话令牌保存在本机。</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cache_data_hint">重用媒體庫資料。關閉時會清除已儲存的資料；目前內容保留到重新整理或離開。</string>
+    <string name="cache_retention_hint">未使用 %1$s 後清理；資料新鮮程度另行判斷。</string>
+    <string name="cache_calculating">正在計算…</string>
+    <string name="cache_clearing">正在清理…</string>
+    <string name="cache_failed">操作未完成，點按重試。</string>
+    <string name="cache_cleared_size">已清理 · 剩餘 %1$s</string>
+    <string name="cache_size">已佔用 %1$s</string>
+    <string name="cache_usage_hint">僅清理媒體庫資料與圖片，保留帳號、設定與歷史紀錄。佔用包含快取維護檔案，清理後可能不為零，也可能隨瀏覽增加。</string>
+    <string name="cache_refresh_size">重新整理佔用統計</string>
+    <string name="cache_library_preview_note">快取、快速雜湊和掃描執行緒數已實際生效，其他媒體庫選項仍為版面預覽。</string>
+</resources>

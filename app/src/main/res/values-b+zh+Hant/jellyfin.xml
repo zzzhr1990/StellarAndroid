@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jellyfin_login_hint">登入 Jellyfin 伺服器，瀏覽媒體庫並播放原始媒體。帳號資訊和工作階段權杖儲存在本機。</string>
+</resources>

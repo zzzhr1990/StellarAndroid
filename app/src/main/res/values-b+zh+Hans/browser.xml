@@ -1,0 +1,11 @@
+<resources>
+    <string name="browser_open_server">浏览%1$s</string>
+    <string name="browser_back">返回</string>
+    <string name="browser_refresh">刷新</string>
+    <string name="browser_root">根目录</string>
+    <string name="browser_empty">此文件夹为空</string>
+    <string name="browser_folder">文件夹</string>
+    <string name="browser_file">文件</string>
+    <string name="browser_unsupported">此文件不是支持的视频或音频文件。</string>
+    <string name="browser_limit">此文件夹项目过多，无法显示。请在服务器设置中指定更小的目录。</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="capture_title">動圖擷取</string>
+    <string name="capture_description">擷取目前播放畫面接下來的幾秒。僅支援 SDR，不含聲音。暫停、切換影片、旋轉或離開播放器會取消擷取。</string>
+    <string name="capture_gif">GIF 動圖</string>
+    <string name="capture_mp4">MP4（H.264）</string>
+    <string name="capture_gif_quality">最長邊 640 像素 · 10 幀/秒 · 256 色</string>
+    <string name="capture_mp4_quality">最長邊 640 像素 · 15 幀/秒 · 無聲影片</string>
+    <string name="capture_duration">擷取時長</string>
+    <plurals name="capture_seconds"><item quantity="other">%1$d 秒</item></plurals>
+    <string name="capture_destination">儲存位置沿用設定 → 播放器 → 截圖中的相簿或資料夾。</string>
+    <string name="capture_start">開始擷取</string>
+    <string name="capture_cancel">取消</string>
+    <string name="capture_play_first">請先播放影片再開始擷取。</string>
+    <string name="capture_sdr_only">暫不支援 HDR 和杜比視界擷取，請使用 SDR 影片。</string>
+    <string name="capture_real_video">僅支援真實影片播放時擷取。</string>
+    <string name="capture_recording">正在擷取 %1$d / %2$d 秒</string>
+    <string name="capture_saving">正在儲存…</string>
+    <string name="capture_preparing">正在準備…</string>
+    <string name="capture_saved_album">擷取已儲存至相簿</string>
+    <string name="capture_saved_folder">擷取已儲存至資料夾</string>
+    <string name="capture_cancelled">已取消擷取</string>
+    <string name="capture_interrupted">擷取已中斷，未儲存檔案</string>
+    <string name="capture_failed">擷取失敗，請檢查儲存位置或嘗試其他格式。</string>
+</resources>

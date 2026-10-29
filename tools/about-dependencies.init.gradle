@@ -1,0 +1,22 @@
+// Export only shipped runtime artifacts (no tests, tooling, BOMs or project modules).
+import groovy.json.JsonOutput
+
+allprojects {
+    afterEvaluate { project ->
+        if (project.path == ':app') {
+            project.tasks.register('exportAboutDependencies') {
+                doLast {
+                    def artifacts = project.configurations.releaseRuntimeClasspath.incoming.artifactView {
+                        componentFilter { it instanceof org.gradle.api.artifacts.component.ModuleComponentIdentifier }
+                    }.artifacts.artifacts
+                        .collect { [id: it.id.componentIdentifier.toString(), file: it.file.absolutePath] }
+                        .unique { it.id }.sort { it.id }
+                    def output = project.layout.buildDirectory.file('reports/about-dependencies.json').get().asFile
+                    output.parentFile.mkdirs()
+                    output.text = JsonOutput.prettyPrint(JsonOutput.toJson(artifacts))
+                    println "About runtime artifacts: ${artifacts.size()} -> ${output}"
+                }
+            }
+        }
+    }
+}

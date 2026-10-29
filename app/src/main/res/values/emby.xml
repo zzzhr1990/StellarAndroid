@@ -1,0 +1,18 @@
+<resources>
+    <string name="emby_login">Sign in and save</string>
+    <string name="emby_login_hint">Sign in to browse this server. Account details and the session token are saved locally on this device.</string>
+    <string name="emby_refresh">Refresh</string>
+    <string name="emby_auth_expired">The server or login session has changed. Please sign in again.</string>
+    <string name="emby_login_again">Sign in again</string>
+    <string name="emby_progress_error">Watch progress could not be synced. Check your connection or sign in again.</string>
+    <string name="emby_minutes">%1$d min</string>
+    <string name="emby_version">Media version</string>
+    <string name="emby_unsupported">This item does not have an available original stream. Live TV, server transcoding and disc images are not supported yet.</string>
+    <string name="emby_resume_at">Resume from %1$s</string>
+    <string name="emby_restart">Play from beginning</string>
+    <string name="emby_search">Search this server</string>
+    <string name="emby_libraries">Libraries</string>
+    <string name="emby_continue">Continue watching</string>
+    <string name="emby_empty">No items here</string>
+    <string name="emby_more">Load more</string>
+</resources>

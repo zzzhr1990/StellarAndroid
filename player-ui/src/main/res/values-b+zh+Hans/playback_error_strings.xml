@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_audio_output">无法初始化音频输出</string>
+    <string name="error_video_output">无法初始化视频输出</string>
+    <string name="error_no_playable_tracks">没有可播放的音频或视频轨道</string>
+    <string name="error_playback">播放失败，请重试。</string>
+</resources>

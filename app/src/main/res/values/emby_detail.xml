@@ -1,0 +1,18 @@
+<resources>
+    <string name="emby_detail_clear_progress">Clear playback history</string>
+    <string name="emby_detail_download_unavailable">Download (not available yet)</string>
+    <string name="emby_detail_duration">%1$d hr %2$d min</string>
+    <string name="detail_rating_tomatometer">Rotten Tomatoes critics</string>
+    <string name="detail_rating_audience">Rotten Tomatoes audience</string>
+    <string name="detail_rating_description">%1$s: %2$s</string>
+    <string name="detail_rating_series_description">Series rating, %1$s: %2$s</string>
+    <string name="detail_episode_title">Season %1$d · Episode %2$d – %3$s</string>
+    <string name="detail_file_location">Located in %1$s</string>
+    <string name="detail_file_server">%1$s server</string>
+    <string name="detail_file_named_source">%1$s / %2$s</string>
+    <string name="detail_file_name_unknown">File name not provided</string>
+    <string name="detail_file_type_unknown">File type not provided</string>
+    <string name="detail_file_size_unknown">File size not provided</string>
+    <string name="detail_file_added">Added %1$s</string>
+    <string name="detail_file_added_unknown">Date added not provided</string>
+</resources>

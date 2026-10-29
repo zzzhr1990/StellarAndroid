@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="server_onedrive">OneDrive</string>
+    <string name="onedrive_hint">Supply your own Microsoft Graph Files.Read access token to browse and play files.</string>
+    <string name="onedrive_account">Microsoft account: %1$s</string>
+    <string name="onedrive_connect">Connect OneDrive</string>
+    <string name="onedrive_auth_error">Microsoft authorization is required. Connect OneDrive again to continue.</string>
+    <string name="onedrive_config_error">Microsoft sign-in could not be configured for this app.</string>
+    <string name="onedrive_account_error">Sign in with the Microsoft account already linked to this connection. To use another account, add a new OneDrive connection.</string>
+    <string name="onedrive_service_error">Microsoft sign-in returned a service error. Please try again shortly.</string>
+    <string name="onedrive_signin_error">Microsoft sign-in failed. Please try again.</string>
+</resources>

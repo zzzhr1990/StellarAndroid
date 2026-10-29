@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="remote_subtitles_off">不傳送外掛字幕</string>
+    <string name="remote_subtitles_hint">僅支援外掛 SRT。選取表示請求已傳送，顯示以電視為準。切換會短暫重新載入；手機的樣式和延時不生效，內嵌字幕由電視控制。</string>
+    <string name="remote_subtitles_unavailable">此接收裝置或媒體暫不支援透過手機切換外掛字幕，請使用電視的字幕設定。</string>
+    <string name="remote_subtitles_loading">正在更新字幕請求並恢復播放…</string>
+    <string name="remote_subtitles_failed">字幕請求失敗，已恢復上一次播放請求。請檢查 SRT 檔案與接收裝置的相容性。</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_builtin">内置媒体库</string>
+    <string name="library_type_local">本地</string>
+    <string name="library_add">添加到媒体库</string>
+    <string name="library_remove">从媒体库中删除</string>
+    <string name="library_actions">文件夹选项</string>
+    <string name="library_member">已加入媒体库</string>
+    <string name="library_empty">暂无文件夹，请从“本地和URL”或远程文件浏览器添加。</string>
+    <string name="library_added">已添加到媒体库</string>
+    <string name="library_removed">已从媒体库中删除</string>
+    <string name="library_already_title">已在媒体库中</string>
+    <string name="library_duplicate">该文件夹已在媒体库中，无需重复添加。</string>
+    <string name="library_parent">该文件夹的父文件夹已在媒体库中，无需重复添加。</string>
+    <string name="library_failed_title">无法更新媒体库</string>
+    <string name="library_error">无法读取或更新媒体库，请重试。</string>
+    <string name="library_permission">无法获取文件夹权限，请重新选择文件夹并允许访问。</string>
+    <string name="library_ok">知道了</string>
+</resources>

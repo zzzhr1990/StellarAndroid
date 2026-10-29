@@ -1,0 +1,4 @@
+<resources>
+    <string name="dvd_chapters">光盘章节</string>
+    <string name="dvd_chapter">第 %1$d 章 · %2$s</string>
+</resources>

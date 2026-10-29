@@ -1,0 +1,12 @@
+<resources>
+    <string name="frame_time">Position: %1$s.%2$s</string>
+    <string name="frame_instructions">Playback is paused. Move one frame at a time, then continue when ready.</string>
+    <string name="frame_unavailable">Frame stepping is unavailable for this media or playback state.</string>
+    <string name="frame_busy">Loading frame…</string>
+    <string name="frame_pausing">Pausing playback…</string>
+    <string name="frame_boundary">No more frames in this direction.</string>
+    <string name="frame_end">At the end of the video. Continue playback, or close this panel and seek to another position.</string>
+    <string name="frame_failed">Could not load this frame. Try again or continue playback.</string>
+    <string name="frame_close">Close</string>
+    <string name="frame_resume">Continue playback</string>
+</resources>

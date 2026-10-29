@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_authentication">认证失败，请检查用户名和密码。</string>
+    <string name="error_not_found">找不到共享或文件。</string>
+    <string name="error_access_denied">没有访问此文件的权限。</string>
+    <string name="error_network_timeout">服务器响应超时。</string>
+    <string name="error_encryption">无法建立加密的 SMB3 连接。</string>
+</resources>

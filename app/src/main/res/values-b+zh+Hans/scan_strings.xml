@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scan_home">媒体</string>
+    <string name="scan_title">媒体库扫描</string>
+    <string name="scan_running">正在扫描目录</string>
+    <string name="scan_paused">已暂停，已提交的条目已保存</string>
+    <string name="scan_complete">扫描完成</string>
+    <string name="scan_partial">部分目录未完成或含不支持项，可用内容已保留</string>
+    <string name="scan_failed">扫描未能完成，请检查连接、目录权限或来源数据后重试</string>
+    <string name="scan_cancelled">已取消，已提交的条目已保存</string>
+    <string name="scan_idle">可以开始扫描目录</string>
+    <string name="scan_counts">已发现 %1$d 项 · 已读取 %2$d 份 NFO</string>
+    <string name="scan_pause">暂停</string>
+    <string name="scan_resume">继续</string>
+    <string name="scan_cancel">取消</string>
+    <string name="scan_start">更新文件变化</string>
+    <string name="scan_reread">重新读取本地资料</string>
+    <string name="scan_add">添加目录</string>
+    <string name="scan_retry">重试</string>
+    <string name="scan_new">显示新加入的内容</string>
+    <string name="scan_first">第一页</string>
+    <string name="scan_next">下一页</string>
+    <string name="scan_episode">第 %1$d 季 · 第 %2$d 集</string>
+    <string name="scan_unrecognized">未识别</string>
+    <string name="scan_local">本地资料</string>
+    <string name="scan_back">返回媒体库</string>
+    <string name="scan_supported_sources">扫描本机、NAS、Google Drive 和 OneDrive 目录。暂不支持共享盘和快捷方式。</string>
+    <string name="scan_last_attempt">最近尝试：%1$s</string>
+    <string name="scan_last_complete">最近完整扫描：%1$s</string>
+    <string name="scan_source_unavailable">来源不可用，请检查已保存的连接。</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="disc_menu">原盘菜单</string>
+    <string name="disc_menu_loading">正在打开菜单…</string>
+    <string name="disc_menu_unavailable">此光盘没有可用的 DVD 或 HDMV 菜单。BD-J 需要单独的运行环境。</string>
+    <string name="disc_menu_failed">光盘导航失败，可返回标题播放继续观看。</string>
+    <string name="disc_menu_close">关闭</string>
+    <string name="disc_menu_top">主菜单</string>
+    <string name="disc_menu_titles">标题播放</string>
+    <string name="disc_menu_fullscreen">全屏</string>
+    <string name="disc_menu_return">返回</string>
+    <string name="disc_menu_left">左</string>
+    <string name="disc_menu_up">上</string>
+    <string name="disc_menu_ok">确定</string>
+    <string name="disc_menu_down">下</string>
+    <string name="disc_menu_right">右</string>
+    <string name="disc_menu_popup">弹出菜单</string>
+</resources>

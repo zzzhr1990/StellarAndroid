@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playback_cache_title">Cache</string>
+    <string name="playback_cache_disk">Disk cache</string>
+    <string name="media_library_cache_title">Media library cache</string>
+    <string name="media_library_cache_clear_hint">Clear cached library data and artwork.</string>
+    <string name="playback_cache_hint">Save streamed media data locally for reuse. Supports eligible HTTP(S) media. Changes apply the next time you open media.</string>
+    <string name="playback_cache_retention">Keep unused cache</string>
+    <string name="playback_cache_day_1">1 day</string>
+    <string name="playback_cache_day_7">7 days</string>
+    <string name="playback_cache_day_30">30 days</string>
+    <string name="playback_cache_expiry_hint">Unused cache expires after this period and is cleaned up when media is opened. This is a playback cache, not an offline download.</string>
+    <string name="playback_cache_usage">Storage used</string>
+    <string name="playback_cache_calculating">Calculating…</string>
+    <string name="playback_cache_clear">Clear cache</string>
+    <string name="playback_cache_clear_hint">Remove all cached playback data from this device.</string>
+    <string name="playback_cache_cleared">Cache cleared.</string>
+    <string name="playback_cache_clear_failed">Could not clear all cache. Please try again.</string>
+    <string name="playback_cache_read_failed">Could not read cache usage.</string>
+    <string name="playback_buffer_title">Playback buffer</string>
+    <string name="playback_buffer_minimum">Minimum buffer</string>
+    <string name="playback_buffer_minimum_hint">Resume decoding after the empty buffer refills to this duration.</string>
+    <string name="playback_buffer_maximum">Maximum buffer</string>
+    <string name="playback_buffer_maximum_hint">Read ahead up to this duration. Higher values use more memory.</string>
+    <string name="playback_buffer_drop">Drop old data when full</string>
+    <string name="playback_buffer_drop_hint">Discard older non-key frames to reduce delay. May skip video; leave off for normal playback.</string>
+    <string name="playback_buffer_hint">Changes apply the next time you open media.</string>
+    <string name="playback_buffer_reset">Reset playback buffer</string>
+    <string name="playback_buffer_seconds">%1$d s</string>
+    <string name="playback_buffer_no_wait">Do not wait (0 s)</string>
+    <string name="playback_cache_enable_disk">Enable disk cache</string>
+</resources>

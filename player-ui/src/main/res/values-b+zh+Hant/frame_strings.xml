@@ -1,0 +1,12 @@
+<resources>
+    <string name="frame_time">定位 %1$s.%2$s</string>
+    <string name="frame_instructions">播放已暫停，可逐幀查看畫面，完成後繼續播放。</string>
+    <string name="frame_unavailable">目前媒體或播放狀態不支援逐幀查看。</string>
+    <string name="frame_busy">正在載入畫面…</string>
+    <string name="frame_pausing">正在暫停播放…</string>
+    <string name="frame_boundary">此方向已沒有更多畫面。</string>
+    <string name="frame_end">已到影片末尾。可繼續播放，或關閉面板後重新定位。</string>
+    <string name="frame_failed">未能載入這一幀，可重試或繼續播放。</string>
+    <string name="frame_close">關閉</string>
+    <string name="frame_resume">繼續播放</string>
+</resources>

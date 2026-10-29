@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="casting_subtitle_error">SRT 字幕未能发送。请使用有效的 UTF-8 或 UTF-16 SRT 文件；播放恢复成功时保留上一次字幕请求。</string>
+    <string name="casting_subtitle_hint">可在字幕菜单发送 SRT 文件。选中仅表示请求已提交，请以电视画面为准；内嵌字幕由电视控制。</string>
+</resources>

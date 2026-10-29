@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cache_data_hint">复用媒体库数据。关闭时会清除已保存的数据；当前内容保留到刷新或离开。</string>
+    <string name="cache_retention_hint">未使用 %1$s 后清理；数据新鲜程度另行判断。</string>
+    <string name="cache_calculating">正在计算…</string>
+    <string name="cache_clearing">正在清理…</string>
+    <string name="cache_failed">操作未完成，点按重试。</string>
+    <string name="cache_cleared_size">已清理 · 剩余 %1$s</string>
+    <string name="cache_size">已占用 %1$s</string>
+    <string name="cache_usage_hint">仅清理媒体库数据和图片，保留账号、设置与历史记录。占用包含缓存维护文件，清理后可能不为零，也可能随浏览增长。</string>
+    <string name="cache_refresh_size">刷新占用统计</string>
+    <string name="cache_library_preview_note">缓存、快速哈希和扫描线程数已实际生效，其他媒体库选项仍为布局预览。</string>
+</resources>

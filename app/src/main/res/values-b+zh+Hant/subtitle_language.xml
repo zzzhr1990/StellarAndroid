@@ -1,0 +1,5 @@
+<resources>
+    <string name="subtitle_language_off">關閉</string>
+    <string name="subtitle_language_current">載入目前語言</string>
+    <string name="subtitle_language_hint">開啟媒體時生效。目前語言跟隨應用程式介面語言；沒有符合的字幕時保持關閉。</string>
+</resources>

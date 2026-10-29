@@ -1,0 +1,3 @@
+-keep class com.stellar.player.mpv.MpvNative { *; }
+-keep interface com.stellar.player.source.StreamSource { *; }
+-keep class com.stellar.player.source.StreamReader { *; }

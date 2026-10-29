@@ -1,0 +1,16 @@
+<resources>
+    <string name="eq_title">Equalizer</string>
+    <string name="eq_enable">Enable equalizer</string>
+    <string name="eq_hint">Release a slider to apply. Your settings are saved for all media.</string>
+    <string name="eq_unavailable">Equalizer is unavailable for this audio stream.</string>
+    <string name="eq_flat">Flat</string>
+    <string name="eq_bass">Bass</string>
+    <string name="eq_voice">Voice</string>
+    <string name="eq_bright">Bright</string>
+    <string name="eq_preamp">Preamp</string>
+    <string name="eq_hz">%1$s Hz</string>
+    <string name="eq_khz">%1$s kHz</string>
+    <string name="eq_db">%1$s dB</string>
+    <string name="eq_headroom" formatted="false">EQ boosts automatically reduce the preamp to leave headroom. Frequencies above the audio sample rate limit are skipped. Volume above 100% can still cause distortion.</string>
+    <string name="eq_reset">Reset and turn off</string>
+</resources>

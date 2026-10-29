@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="remote_subtitles_off">Do not send external subtitles</string>
+    <string name="remote_subtitles_hint">External SRT only. Selection means the request was sent; display depends on the TV. Switching briefly reloads playback. Phone styling and timing offsets do not apply; the TV controls embedded subtitles.</string>
+    <string name="remote_subtitles_unavailable">This receiver or media does not support switching external subtitles from this phone. Use the TV subtitle controls.</string>
+    <string name="remote_subtitles_loading">Updating the subtitle request and restoring playback…</string>
+    <string name="remote_subtitles_failed">The subtitle request failed. The previous playback request was restored. Check the SRT file and receiver compatibility.</string>
+</resources>

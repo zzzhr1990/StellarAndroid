@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jellyfin_login_hint">Sign in to your Jellyfin server to browse and play original media. Account details and the session token are saved on this device.</string>
+</resources>

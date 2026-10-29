@@ -1,0 +1,17 @@
+<resources>
+    <string name="hills_duration">\u0020/\u0020%1$s</string>
+    <string name="hills_demo_engine">示範</string>
+    <string name="hills_bytes_second">%1$sB/s</string>
+    <string name="hills_kbytes_second">%1$sKB/s</string>
+    <string name="hills_battery">電量</string>
+    <string name="hills_rotate">旋轉螢幕</string>
+    <string name="hills_controls">播放控制</string>
+    <string name="hills_tracks">軌道</string>
+    <string name="hills_subtitle_settings">設定</string>
+    <string name="hills_double_play">連點兩下播放或暫停</string>
+    <string name="hills_double_seek">連點兩下快轉倒轉</string>
+    <string name="hills_double_hint">同時開啟時，左、中、右三區分別為倒轉、播放暫停、快轉；只開啟快轉倒轉時按左右半區操作。</string>
+    <string name="hills_hide_paused">暫停時自動隱藏控制項</string>
+    <string name="hills_other_tools">其他工具</string>
+    <string name="hills_speed_value">%1$sx</string>
+</resources>

@@ -1,0 +1,8 @@
+<!-- Locally drawn service identifier. See docs/STORAGE_SERVICE_PAGE_20261023.md. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#0364B8" android:pathData="M9,10 C9,6.1 11.6,4 14.6,4 C18,4 20.4,6.7 20.4,10.3 L14,14 Z" />
+    <path android:fillColor="#0078D4" android:pathData="M2.9,10.5 C3.8,7.2 7.8,6.4 10.1,8.7 L15,12 L9,16 L2,14 Z" />
+    <path android:fillColor="#1490DF" android:pathData="M15,12 L18.5,9.9 C21.8,9.4 24,11.6 24,14.5 C24,17 22,19 19.4,19 L11,19 L9,16 Z" />
+    <path android:fillColor="#28A8EA" android:pathData="M2.9,10.5 L15,12 L21.8,18.3 C21.1,18.8 20.3,19 19.4,19 L4.5,19 C2,19 0,17.1 0,14.7 C0,12.7 1.2,11.1 2.9,10.5 Z" />
+</vector>

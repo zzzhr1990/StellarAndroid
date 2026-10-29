@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="library_builtin">內建媒體庫</string>
+    <string name="library_type_local">本機</string>
+    <string name="library_add">加入媒體庫</string>
+    <string name="library_remove">從媒體庫中刪除</string>
+    <string name="library_actions">資料夾選項</string>
+    <string name="library_member">已加入媒體庫</string>
+    <string name="library_empty">尚無資料夾，請從「本機與URL」或遠端檔案瀏覽器加入。</string>
+    <string name="library_added">已加入媒體庫</string>
+    <string name="library_removed">已從媒體庫中刪除</string>
+    <string name="library_already_title">已在媒體庫中</string>
+    <string name="library_duplicate">此資料夾已在媒體庫中，無需重複加入。</string>
+    <string name="library_parent">此資料夾的父資料夾已在媒體庫中，無需重複加入。</string>
+    <string name="library_failed_title">無法更新媒體庫</string>
+    <string name="library_error">無法讀取或更新媒體庫，請重試。</string>
+    <string name="library_permission">無法取得資料夾權限，請重新選擇資料夾並允許存取。</string>
+    <string name="library_ok">知道了</string>
+</resources>

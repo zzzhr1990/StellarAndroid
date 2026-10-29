@@ -1,0 +1,6 @@
+-keep class com.stellar.player.disc.DvdNative { *; }
+-keep class com.stellar.player.disc.MenuNative { *; }
+-keep class com.stellar.player.disc.BlurayNative { *; }
+-keep class com.stellar.player.disc.NasDiscNative { *; }
+-keep class com.stellar.player.disc.DiscReader { public byte[] readAt(java.lang.String,long,int); public void cancelRead(); }
+-keep class * extends com.stellar.player.disc.DiscReader { public byte[] readAt(java.lang.String,long,int); public void cancelRead(); }

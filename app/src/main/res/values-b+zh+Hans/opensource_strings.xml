@@ -1,0 +1,8 @@
+<resources>
+    <string name="drive_token_title">Google Drive 访问令牌</string>
+    <string name="drive_token_help">填写你自己的 OAuth 访问令牌（drive.readonly 权限），并在自己的 Google Cloud 项目启用 Drive API。令牌过期后请在这里更换。令牌仅在本机加密保存。</string>
+    <string name="drive_token_label">访问令牌</string>
+    <string name="onedrive_token_title">OneDrive 访问令牌</string>
+    <string name="onedrive_token_help">填写你自己的 Microsoft Graph OAuth 访问令牌，需要 Files.Read 委托权限。令牌过期后请在此重新填写，令牌在此设备加密保存。</string>
+<string name="metadata_api_missing">此构建未配置在线识别。请使用自己的 TMDB 凭据编译，详见 README。</string>
+</resources>

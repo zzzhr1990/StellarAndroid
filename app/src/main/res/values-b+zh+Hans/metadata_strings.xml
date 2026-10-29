@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="metadata_title">识别与资料</string>
+    <string name="metadata_service">TMDB 媒体资料</string>
+    <string name="metadata_scope">识别已入库媒体、修正匹配或导入现有资料。文件和服务器数据只读。</string>
+    <string name="metadata_failed">未能完成，已有资料已保留。请重试或检查来源。</string>
+    <string name="metadata_saved">已保存。人工选择不会被自动刷新覆盖。</string>
+    <string name="metadata_progress">已处理 %1$d · 已匹配 %2$d · 待核对 %3$d · 失败 %4$d</string>
+    <string name="metadata_identify">识别媒体库</string>
+    <string name="metadata_retry">更新资料</string>
+    <string name="metadata_retry_ready">已开始更新资料，保留已确认身份和人工修正。</string>
+    <string name="metadata_query">片名或文件名（剧集请带年份和 S/E）</string>
+    <string name="metadata_search">查找匹配</string>
+    <string name="metadata_no_match">没有可靠匹配。可修改片名或导入资料。</string>
+    <string name="metadata_candidate">%1$s  %2$s</string>
+    <string name="metadata_name">标题</string>
+    <string name="metadata_year">年份</string>
+    <string name="metadata_plot">简介</string>
+    <string name="metadata_save">保存并锁定</string>
+    <string name="metadata_import_file">为当前文件导入 NFO / XML</string>
+    <string name="metadata_reset">移除覆盖资料并解锁</string>
+    <string name="metadata_reset_done">已移除覆盖资料，扫描得到的旁车资料仍可用。</string>
+    <string name="metadata_import_server">从 Emby / Jellyfin 导入</string>
+    <string name="metadata_import_library">导入 %1$s</string>
+    <string name="metadata_import_done">导入完成，已关联 ID 一致的文件。</string>
+    <string name="metadata_import_partial">导入未完整完成，已有记录已保留。</string>
+    <string name="metadata_staging">导入资料保存在本机。打开媒体卡片可人工关联记录；未关联资料不会生成可播放文件。</string>
+    <string name="metadata_import_set">已导入资料库 %1$d</string>
+    <string name="metadata_edit">编辑或匹配资料</string>
+    <string name="metadata_waiting">等待补全资料 %1$d 项。已匹配内容保留，将有限次重试，可随时取消。</string>
+    <string name="metadata_waiting_paused">还有 %1$d 项资料待补全。已匹配内容保留，可再次识别以重试。</string>
+</resources>

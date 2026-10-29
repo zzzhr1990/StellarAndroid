@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cache_refresh_failed">更新失败，仍可浏览已保存的内容。</string>
+    <string name="cache_user_state_pending">观看状态待更新</string>
+    <string name="cache_showing_saved">正在显示缓存内容 · %1$s</string>
+    <string name="cache_list_changed">媒体库已变化，点按刷新。</string>
+    <string name="cache_previous_page">上一页</string>
+</resources>
