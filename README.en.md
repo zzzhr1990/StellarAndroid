@@ -14,6 +14,26 @@ A native Kotlin / Jetpack Compose media player. This independent open-source edi
 - Optional aggregate ratings directly from `apiz.trakt.tv`. Episode ratings use the show's IMDb ID plus season and episode numbers.
 - DLNA casting through this project's SSDP / SOAP implementation.
 
+## Screenshots
+
+Portrait views on an unfolded foldable display, captured at **1968 × 2184**. Select an image to view it at full size.
+
+### Emby portrait playback
+
+[![Emby portrait playback with video, subtitles and playlist](assets/screenshots/emby-portrait-playback.png)](assets/screenshots/emby-portrait-playback.png)
+
+### Video details
+
+[![Video details with metadata, ratings and cast](assets/screenshots/video-details.png)](assets/screenshots/video-details.png)
+
+### Theme settings
+
+[![Theme settings for appearance, colors, fonts and navigation](assets/screenshots/settings.png)](assets/screenshots/settings.png)
+
+### Add a media library
+
+[![Add an Emby or Jellyfin media server](assets/screenshots/add-media-library.png)](assets/screenshots/add-media-library.png)
+
 ## Build
 
 The build targets `arm64-v8a` on Android 8.0 / API 26 and later. Native dependencies are built from pinned source archives bundled in this repository.
@@ -65,3 +85,7 @@ The README links the [project logo](assets/logo.svg). The Jellyfin mark follows 
 This product uses the TMDB API but is not endorsed or certified by TMDB.
 
 TMDB's commercial and non-commercial API terms differ. Obtain your own credentials and follow the [TMDB terms](https://developer.themoviedb.org/docs/faq) and [Trakt terms](https://trakt.tv/terms). See [privacy information](PRIVACY.md).
+
+---
+
+<p align="center">冷湖科技(武汉)有限公司</p>

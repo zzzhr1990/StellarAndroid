@@ -14,6 +14,26 @@
 - 可选 Trakt 聚合评分，直接访问 `apiz.trakt.tv`；单集评分使用剧集 IMDb ID、季号和集号。
 - DLNA 投屏，使用项目自己的 SSDP / SOAP 实现。
 
+## 界面预览
+
+折叠屏展开状态下的竖屏界面，原图分辨率为 **1968 × 2184**。点击图片可查看大图。
+
+### Emby 竖屏播放
+
+[![Emby 竖屏播放：视频、字幕与播放列表](assets/screenshots/emby-portrait-playback.png)](assets/screenshots/emby-portrait-playback.png)
+
+### 视频详情
+
+[![视频详情：影片资料、评分与演职人员](assets/screenshots/video-details.png)](assets/screenshots/video-details.png)
+
+### 主题设置
+
+[![主题设置：主题模式、颜色、字体与导航栏](assets/screenshots/settings.png)](assets/screenshots/settings.png)
+
+### 添加媒体库
+
+[![添加媒体服务器：Emby 与 Jellyfin](assets/screenshots/add-media-library.png)](assets/screenshots/add-media-library.png)
+
 ## 编译
 
 构建目标为 `arm64-v8a`，最低 Android 8.0（API 26）。原生依赖从随仓库提供的固定源码构建。
@@ -84,3 +104,7 @@ Google Drive 和 OneDrive 在应用的连接页面输入**自己的 OAuth access
 This product uses the TMDB API but is not endorsed or certified by TMDB.
 
 TMDB 非商业 API 使用与商业使用的条款不同；申请自己的凭据并遵守 [TMDB 条款](https://developer.themoviedb.org/docs/faq) 和 [Trakt 条款](https://trakt.tv/terms)。[隐私说明](PRIVACY.md)。
+
+---
+
+<p align="center">冷湖科技(武汉)有限公司</p>
