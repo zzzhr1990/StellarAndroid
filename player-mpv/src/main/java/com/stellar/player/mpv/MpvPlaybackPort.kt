@@ -251,7 +251,8 @@ class MpvPlaybackPort(private val resolve: (String) -> MpvSource?,
                         "vo", "null", "gpu-api", "opengl",
                         "gpu-context", "android",
                         "hwdec", "mediacodec-copy",
-                        "ao", "aaudio,opensles", "pause", "yes", "volume", "100", "cache", "yes", "cache-on-disk", "no",
+                        // Prefer OpenSL ES for stable pause/seek timing; retain AAudio as fallback.
+                        "ao", "opensles,aaudio", "pause", "yes", "volume", "100", "cache", "yes", "cache-on-disk", "no",
                         "cache-pause-wait", cache.first.toString(), "demuxer-readahead-secs", cache.second.toString(),
                         "cache-secs", cache.second.toString(),
                         // Retain keyframes needed when a Surface rebind restarts video decoding.
