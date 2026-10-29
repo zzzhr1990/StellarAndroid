@@ -26,4 +26,5 @@
     <string name="about_tmdb_notice" translatable="false">This product uses the TMDB API but is not endorsed or certified by TMDB.</string>
     <string name="about_search">Search libraries or licenses</string>
     <string name="about_no_matches">No matching libraries.</string>
+    <string name="about_version_notice">This player is intended only for learning and research. Copyright belongs to 冷湖科技(武汉)有限公司.\n\nThis player does not provide any videos or music, nor channels for downloading videos.</string>
 </resources>

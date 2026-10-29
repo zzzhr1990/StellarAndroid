@@ -27,7 +27,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.stellar.player.contract.PlaybackBackend
 import com.stellar.player.contract.SubtitleAppearanceOption
 import cn.coldlake.stellar.opensource.R
 import cn.coldlake.stellar.opensource.appearance.*
@@ -42,13 +41,13 @@ import java.text.NumberFormat
 @Composable
 internal fun SettingsDetailPage(route: String, onBack: () -> Unit, onNavigate: (String) -> Unit,
     language: AppLanguage, onLanguage: (AppLanguage) -> Unit, appearance: AppearanceStore,
-    preview: SettingsPreviewStore, caches: AppCaches?, customDraft: String,
-    onCustomDraft: (String) -> Unit, onPreview: () -> Unit) {
+    caches: AppCaches?, customDraft: String,
+    onCustomDraft: (String) -> Unit) {
     val context = LocalContext.current.applicationContext
     val kind = route.substringBefore(':')
     val argument = route.substringAfter(':', "")
     val spec = remember(route) {
-        if (kind == "catalogue" || kind == "cache") settingsCatalogue.values.flatten().first { it.id == argument } else null
+        if (kind == "cache") settingsCatalogue.values.flatten().first { it.id == argument } else null
     }
     val subtitle = if (kind == "subtitle") SubtitleAppearanceOption.valueOf(argument) else null
     val colorRole = if (kind == "custom-color") CustomColorRole.valueOf(argument.substringAfter(':')) else null
@@ -64,9 +63,10 @@ internal fun SettingsDetailPage(route: String, onBack: () -> Unit, onNavigate: (
         "buffer-minimum" -> R.string.playback_buffer_minimum
         "buffer-maximum" -> R.string.playback_buffer_maximum
         "playback-retention" -> R.string.playback_cache_retention
-        "catalogue", "cache" -> requireNotNull(spec).title
+        "cache" -> requireNotNull(spec).title
         "custom-color" -> requireNotNull(colorRole).label
-        else -> R.string.hs_preview_title
+        "version" -> R.string.hs_version
+        else -> R.string.home_settings
     }
     Column(Modifier.fillMaxSize().testTag("settings-detail-$route")) {
         SettingsPageToolbar(title, onBack)
@@ -121,7 +121,7 @@ internal fun SettingsDetailPage(route: String, onBack: () -> Unit, onNavigate: (
                         caches.setRetention(image, CacheRetention.entries[it]); onBack()
                     })
             }
-            "catalogue" -> CatalogueOptionPage(requireNotNull(spec), preview) { onBack(); onPreview() }
+            "version" -> SettingsMessagePage(R.string.about_version_notice, onBack)
             "custom-color" -> {
                 val dark = argument.substringBefore(':').toBoolean()
                 val draft = remember(customDraft) { CustomPalette.decode(customDraft) }
@@ -249,28 +249,6 @@ private fun SubtitleAppearancePage(option: SubtitleAppearanceOption, onBack: () 
                     modifier = Modifier.testTag("subtitle-appearance-apply")) { Text(stringResource(R.string.subtitle_appearance_apply)) }
             }
         }
-    }
-}
-
-@Composable
-private fun CatalogueOptionPage(spec: SettingSpec, store: SettingsPreviewStore, onSaved: () -> Unit) {
-    when (spec.kind) {
-        SettingKind.Choice -> SettingsChoicePage(spec.options.map { stringResource(it) }, store.choice(spec),
-            onSelect = { store.saveChoice(spec.id, it); onSaved() })
-        SettingKind.Edit -> {
-            var input by rememberSaveable(spec.id) { mutableStateOf(store.text(spec)) }
-            Column(Modifier.fillMaxSize().imePadding().verticalScroll(rememberScrollState()).padding(24.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                spec.subtitle?.let { Text(stringResource(it), style = MaterialTheme.typography.bodyMedium) }
-                OutlinedTextField(input, { input = it }, Modifier.fillMaxWidth().testTag("settings-edit-input"), minLines = 2)
-                Button(onClick = { store.save(spec.id, input); onSaved() }, modifier = Modifier.fillMaxWidth()
-                    .testTag("settings-edit-save")) { Text(stringResource(R.string.hs_done)) }
-            }
-        }
-        SettingKind.Color -> SettingsChoicePage(listOf(R.string.hs_color_lavender, R.string.hs_color_blue,
-            R.string.hs_color_green, R.string.hs_color_pink).map { stringResource(it) }, store.number(spec).toInt(),
-            onSelect = { store.save(spec.id, it.toFloat()); onSaved() })
-        else -> Unit
     }
 }
 

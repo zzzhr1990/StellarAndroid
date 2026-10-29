@@ -9,5 +9,4 @@
     <string name="cache_size">Using %1$s</string>
     <string name="cache_usage_hint">Only library data and artwork are cleared. Accounts, settings and history are kept. Storage includes cache housekeeping files, so it may remain above zero or grow as you browse.</string>
     <string name="cache_refresh_size">Refresh storage usage</string>
-    <string name="cache_library_preview_note">Cache, quick hash, and scan thread controls work on this device. Other library options are layout previews.</string>
 </resources>

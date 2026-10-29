@@ -167,7 +167,6 @@ private fun MoreTools(s: PlaybackSnapshot, t: PlayerToolsState, a: PlayerPanelAc
         }
     }
     t.remainingMs?.let { Text(stringResource(R.string.timer_remaining, formatTime(it)), color = PlayerColors.Accent, modifier = Modifier.testTag("timer-summary")) }
-    Text(stringResource(if (s.simulated) R.string.tool_local_only else R.string.real_tools_hint), color = PlayerColors.Secondary, fontSize = 12.sp)
     if (!showPlaybackSettings) return
     if (video) {
         Text(stringResource(R.string.screen_fit), color = PlayerColors.Secondary, modifier = Modifier.padding(top = 20.dp))

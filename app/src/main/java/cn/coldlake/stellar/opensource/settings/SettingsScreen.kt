@@ -5,14 +5,7 @@ import cn.coldlake.stellar.opensource.network.MediaSecuritySettings
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -20,11 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalResources
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -34,8 +24,6 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cn.coldlake.stellar.opensource.R
@@ -44,12 +32,9 @@ import cn.coldlake.stellar.opensource.platform.WindowHdrSupport
 import cn.coldlake.stellar.opensource.appearance.AppearanceStore
 import cn.coldlake.stellar.opensource.appearance.rememberAppearanceStore
 import kotlinx.coroutines.launch
-import java.text.NumberFormat
-import kotlin.math.roundToInt
 import cn.coldlake.stellar.opensource.navigation.LibraryNavDisplay
 import cn.coldlake.stellar.opensource.navigation.SettingsDestination
 import cn.coldlake.stellar.opensource.navigation.rememberHorizontalNavigationMetadata
-import com.stellar.player.ui.LocalPageActive
 
 private val SettingsText: Color @Composable get() = MaterialTheme.colorScheme.onBackground
 private val SettingsSecondary: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
@@ -69,7 +54,6 @@ internal fun SettingsScreen(route: String, onNavigateRoute: (String) -> Unit, on
     var customDraft by rememberSaveable { mutableStateOf<String?>(null) }
     val context = LocalContext.current
     val resources = LocalResources.current
-    val store = rememberSettingsPreviewStore(context)
     val seekSettings = remember(context.applicationContext) { PlaybackSeekSettings(context) }
     var accurateSeek by remember(seekSettings) { mutableStateOf(seekSettings.accurateSeek) }
     DisposableEffect(seekSettings) {
@@ -97,8 +81,6 @@ internal fun SettingsScreen(route: String, onNavigateRoute: (String) -> Unit, on
     val snackbar = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     LaunchedEffect(route) { snackbar.currentSnackbarData?.dismiss() }
-    val previewSaved = stringResource(R.string.hs_preview_saved)
-    val notifyPreview = { scope.launch { snackbar.currentSnackbarData?.dismiss(); snackbar.showSnackbar(previewSaved) }; Unit }
     val navigationMotion = rememberHorizontalNavigationMetadata()
     MaterialTheme {
         Surface(Modifier.fillMaxSize().testTag("settings-page-$route"), color = Color.Transparent, contentColor = SettingsText) {
@@ -110,8 +92,8 @@ internal fun SettingsScreen(route: String, onNavigateRoute: (String) -> Unit, on
             key(target) {
                 if (page == null) {
                     SettingsDetailPage(target, navigateBack, onNavigateRoute, language, onLanguage,
-                        appearance, store, caches, customDraft ?: appearance.state.customPalette.encode(),
-                        onCustomDraft = { customDraft = it }, onPreview = notifyPreview)
+                        appearance, caches, customDraft ?: appearance.state.customPalette.encode(),
+                        onCustomDraft = { customDraft = it })
                 } else if (page == SettingsPage.HOME) {
                     SettingsHome(onNavigate, language, { onNavigateRoute("language") })
                 } else {
@@ -121,7 +103,7 @@ internal fun SettingsScreen(route: String, onNavigateRoute: (String) -> Unit, on
                             SettingsPage.ABOUT -> AboutPage(
                                 onDeviceInfo = { onNavigate(SettingsPage.DEVICE_INFO) },
                                 onLicenses = { onNavigate(SettingsPage.OPEN_SOURCE) },
-                                onAction = { onNavigateRoute("notice") })
+                                onVersion = { onNavigateRoute("version") })
                             SettingsPage.OPEN_SOURCE -> OpenSourcePage()
                             SettingsPage.DEVICE_INFO -> DeviceInfoPage()
                             SettingsPage.CUSTOM_THEME -> CustomThemePage(appearance,
@@ -138,8 +120,8 @@ internal fun SettingsScreen(route: String, onNavigateRoute: (String) -> Unit, on
                                     key(spec.id) {
                                         if (spec.id == "force_sdr") PlaybackOutputRow()
                                         else if (spec.kind == SettingKind.SubtitleLanguage) SubtitleLanguageRow(onNavigateRoute)
-                                        else if(spec.id in cacheSettingIds && caches!=null) CacheSettingsRow(spec,caches,onNavigateRoute)
-                                        else CatalogueRow(spec, store, notifyPreview, onNavigateRoute, pipEnabled, pipSupported, onPip,
+                                        else if (spec.id in cacheSettingIds) caches?.let { CacheSettingsRow(spec, it, onNavigateRoute) }
+                                        else RuntimeToggleRow(spec, pipEnabled, pipSupported, onPip,
                                             hdrEnabled, hdrSupport, onHdr, ignoreCertificateErrors,
                                             onIgnoreCertificateErrors = { security.ignoreCertificateErrors = it },
                                             accurateSeek = accurateSeek, onAccurateSeek = { seekSettings.accurateSeek = it })
@@ -148,14 +130,14 @@ internal fun SettingsScreen(route: String, onNavigateRoute: (String) -> Unit, on
                                 if (page == SettingsPage.SUBTITLE) SubtitleAppearanceRows(onNavigateRoute)
                                 if (page == SettingsPage.LIBRARY) LibraryScanSettingsRows(onNavigateRoute)
                                 if(page==SettingsPage.LIBRARY && caches!=null) CacheUsageFooter(caches)
-                                if (page != SettingsPage.THEME && page != SettingsPage.AUDIO) Text(stringResource(
-                                    when(page) { SettingsPage.ADVANCED_FEATURES -> R.string.hs_advanced_features_note
-                                        SettingsPage.PLAYER -> R.string.screenshot_player_note
-                                        SettingsPage.SUBTITLE -> R.string.settings_subtitle_note
-                                        SettingsPage.LIBRARY -> R.string.cache_library_preview_note
-                                        else -> R.string.hs_preview_note }), color = SettingsSecondary,
+                                val note = when (page) {
+                                    SettingsPage.ADVANCED_FEATURES -> R.string.hs_advanced_features_note
+                                    SettingsPage.SUBTITLE -> R.string.settings_subtitle_note
+                                    else -> null
+                                }
+                                note?.let { Text(stringResource(it), color = SettingsSecondary,
                                     fontSize = 12.sp, lineHeight = 18.sp,
-                                    modifier = Modifier.padding(16.dp).testTag("settings-preview-note"))
+                                    modifier = Modifier.padding(16.dp).testTag("settings-note")) }
                                 Spacer(Modifier.height(24.dp))
                             }
                         }
@@ -202,13 +184,12 @@ private fun SettingsHome(onNavigate: (SettingsPage) -> Unit, language: AppLangua
         SettingsNavigationRow(R.string.hs_library, R.drawable.material_symbol_video_library, "LIBRARY", groupIndex = 2, groupCount = 3, iconColor = SettingsIconColor.BLUE) { onNavigate(SettingsPage.LIBRARY) }
         Spacer(Modifier.height(16.dp))
         SectionTitle(R.string.hs_player)
-        SettingsNavigationRow(R.string.hs_interaction, R.drawable.material_symbol_touch_app, "INTERACTION", groupIndex = 0, groupCount = 7, iconColor = SettingsIconColor.ORANGE) { onNavigate(SettingsPage.INTERACTION) }
-        SettingsNavigationRow(R.string.hs_player, R.drawable.material_symbol_play_circle, "PLAYER", groupIndex = 1, groupCount = 7, iconColor = SettingsIconColor.BLUE) { onNavigate(SettingsPage.PLAYER) }
-        SettingsNavigationRow(R.string.playback_cache_title, R.drawable.material_symbol_hard_drive, "PLAYBACK_CACHE", groupIndex = 2, groupCount = 7, iconColor = SettingsIconColor.GREEN) { onNavigate(SettingsPage.PLAYBACK_CACHE) }
-        SettingsNavigationRow(R.string.settings_audio, com.stellar.player.ui.R.drawable.hills_headphones, "AUDIO", groupIndex = 3, groupCount = 7, iconColor = SettingsIconColor.PINK) { onNavigate(SettingsPage.AUDIO) }
-        SettingsNavigationRow(R.string.settings_subtitle, R.drawable.material_symbol_subtitles, "SUBTITLE", groupIndex = 4, groupCount = 7, iconColor = SettingsIconColor.PURPLE) { onNavigate(SettingsPage.SUBTITLE) }
-        SettingsNavigationRow(R.string.screenshot_title, com.stellar.player.ui.R.drawable.hills_photo_camera, "SCREENSHOT", groupIndex = 5, groupCount = 7, iconColor = SettingsIconColor.ORANGE) { onNavigate(SettingsPage.SCREENSHOT) }
-        SettingsNavigationRow(R.string.hs_advanced_features, R.drawable.material_symbol_science, "ADVANCED_FEATURES", groupIndex = 6, groupCount = 7, iconColor = SettingsIconColor.CYAN) { onNavigate(SettingsPage.ADVANCED_FEATURES) }
+        SettingsNavigationRow(R.string.hs_interaction, R.drawable.material_symbol_touch_app, "INTERACTION", groupIndex = 0, groupCount = 6, iconColor = SettingsIconColor.ORANGE) { onNavigate(SettingsPage.INTERACTION) }
+        SettingsNavigationRow(R.string.hs_player, R.drawable.material_symbol_play_circle, "PLAYER", groupIndex = 1, groupCount = 6, iconColor = SettingsIconColor.BLUE) { onNavigate(SettingsPage.PLAYER) }
+        SettingsNavigationRow(R.string.playback_cache_title, R.drawable.material_symbol_hard_drive, "PLAYBACK_CACHE", groupIndex = 2, groupCount = 6, iconColor = SettingsIconColor.GREEN) { onNavigate(SettingsPage.PLAYBACK_CACHE) }
+        SettingsNavigationRow(R.string.settings_subtitle, R.drawable.material_symbol_subtitles, "SUBTITLE", groupIndex = 3, groupCount = 6, iconColor = SettingsIconColor.PURPLE) { onNavigate(SettingsPage.SUBTITLE) }
+        SettingsNavigationRow(R.string.screenshot_title, com.stellar.player.ui.R.drawable.hills_photo_camera, "SCREENSHOT", groupIndex = 4, groupCount = 6, iconColor = SettingsIconColor.ORANGE) { onNavigate(SettingsPage.SCREENSHOT) }
+        SettingsNavigationRow(R.string.hs_advanced_features, R.drawable.material_symbol_science, "ADVANCED_FEATURES", groupIndex = 5, groupCount = 6, iconColor = SettingsIconColor.CYAN) { onNavigate(SettingsPage.ADVANCED_FEATURES) }
         Spacer(Modifier.height(16.dp))
         SectionTitle(R.string.hs_about)
         SettingsNavigationRow(R.string.hs_about, R.drawable.material_symbol_info, "ABOUT", iconColor = SettingsIconColor.BLUE) { onNavigate(SettingsPage.ABOUT) }
@@ -253,117 +234,44 @@ internal fun RowText(title: Int, subtitle: String?, modifier: Modifier = Modifie
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun CatalogueRow(spec: SettingSpec, store: SettingsPreviewStore, onPreview: () -> Unit, onDetail: (String) -> Unit,
+private fun RuntimeToggleRow(spec: SettingSpec,
     pipEnabled: Boolean, pipSupported: Boolean, onPip: (Boolean) -> Unit,
     hdrEnabled: Boolean, hdrSupport: WindowHdrSupport, onHdr: (Boolean) -> Unit,
     ignoreCertificateErrors: Boolean, onIgnoreCertificateErrors: (Boolean) -> Unit,
     accurateSeek: Boolean, onAccurateSeek: (Boolean) -> Unit) {
-    if (spec.kind == SettingKind.Section) {
-        if (spec.id == "backup_section") Spacer(Modifier.height(24.dp))
-        SectionTitle(spec.title)
-        return
-    }
-    val isToggle = spec.kind in setOf(SettingKind.Toggle, SettingKind.Pip, SettingKind.WebDavTls, SettingKind.WindowHdr, SettingKind.AccurateSeek)
-    val textValue = if (spec.kind == SettingKind.Edit) store.text(spec) else ""
-    val subtitle = when {
-        spec.kind == SettingKind.WindowHdr -> stringResource(when (hdrSupport) {
-            WindowHdrSupport.SUPPORTED -> R.string.hs_force_hdr_hint
-            WindowHdrSupport.ANDROID_VERSION -> R.string.hs_force_hdr_android
-            WindowHdrSupport.DISPLAY_UNSUPPORTED -> R.string.hs_force_hdr_display
-        })
-        spec.kind == SettingKind.Choice -> stringResource(spec.options[store.choice(spec)])
-        spec.kind == SettingKind.Edit && textValue.isNotBlank() -> textValue
-        spec.subtitle != null -> stringResource(spec.subtitle)
-        else -> null
-    }
+    val subtitle = if (spec.kind == SettingKind.WindowHdr) stringResource(when (hdrSupport) {
+        WindowHdrSupport.SUPPORTED -> R.string.hs_force_hdr_hint
+        WindowHdrSupport.ANDROID_VERSION -> R.string.hs_force_hdr_android
+        WindowHdrSupport.DISPLAY_UNSUPPORTED -> R.string.hs_force_hdr_display
+    }) else spec.subtitle?.let { stringResource(it) }
     val checked = when (spec.kind) {
         SettingKind.Pip -> pipEnabled
         SettingKind.WebDavTls -> ignoreCertificateErrors
         SettingKind.WindowHdr -> hdrEnabled
         SettingKind.AccurateSeek -> accurateSeek
-        SettingKind.Toggle -> store.boolean(spec)
-        else -> false
+        else -> error("Missing runtime setting: ${spec.id}")
     }
-    val changeToggle: (Boolean) -> Unit = {
-        when (spec.kind) {
-            SettingKind.Pip -> onPip(it)
-            SettingKind.WebDavTls -> onIgnoreCertificateErrors(it)
-            SettingKind.WindowHdr -> onHdr(it)
-            SettingKind.AccurateSeek -> onAccurateSeek(it)
-            else -> { store.save(spec.id, it); onPreview() }
-        }
+    val enabled = when (spec.kind) {
+        SettingKind.Pip -> pipSupported
+        SettingKind.WindowHdr -> hdrEnabled || hdrSupport == WindowHdrSupport.SUPPORTED
+        else -> true
     }
-    Box {
-        if (spec.kind == SettingKind.Slider) {
-            var draft by remember(spec.id, store.number(spec)) { mutableFloatStateOf(store.number(spec)) }
-            val locale = LocalConfiguration.current.locales[0]
-            val value = if (spec.unit == R.string.hs_multiplier) stringResource(spec.unit,
-                NumberFormat.getNumberInstance(locale).apply { minimumFractionDigits = 1; maximumFractionDigits = 1 }.format(draft))
-                else stringResource(spec.unit, draft.roundToInt())
-            val sliderLabel = stringResource(spec.title)
-            Row(Modifier.padding(horizontal = 16.dp, vertical = 2.dp).fillMaxWidth().heightIn(min = 96.dp)
-                .clip(MaterialTheme.shapes.large).background(MaterialTheme.colorScheme.surfaceContainerLow)
-                .padding(start = if (spec.indent) 32.dp else 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
-                verticalAlignment = Alignment.CenterVertically) {
-                spec.icon?.let { Symbol(it); Spacer(Modifier.width(16.dp)) }
-                Column(Modifier.weight(1f)) {
-                    RowText(spec.title, subtitle)
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        val interaction = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }
-                        val sliderState = remember(spec.id, spec.range) { SliderState(draft, trackRange = spec.range) }
-                        sliderState.value = draft
-                        Slider(state = sliderState, onValueChange = { draft = it },
-                            onValueChangeFinished = { store.save(spec.id, draft); onPreview() },
-                            modifier = Modifier.weight(1f).padding(horizontal = 8.dp).testTag("setting-${spec.id}").semantics { contentDescription = sliderLabel }, interactionSource = interaction,
-                            thumb = { Box(Modifier.size(4.dp, 44.dp).clip(CircleShape).background(SettingsAccent)) },
-                            track = { state -> SliderDefaults.Track(state, Modifier.height(16.dp),
-                                colors = SliderDefaults.colors(activeTrackColor = SettingsAccent, inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer),
-                                thumbTrackGapSize = 4.dp, drawStopIndicator = null) })
-                        Text(value, fontSize = 16.sp, fontWeight = FontWeight.Medium, textAlign = TextAlign.Center,
-                            modifier = Modifier.widthIn(min = 52.dp).padding(start = 8.dp).testTag("setting-value-${spec.id}"))
-                    }
-                }
-            }
-        } else {
-            val action = {
-                onDetail(if (spec.kind in setOf(SettingKind.Choice, SettingKind.Edit, SettingKind.Color))
-                    "catalogue:${spec.id}" else "notice")
-            }
-            val enabled = when (spec.kind) {
-                SettingKind.Pip -> pipSupported
-                SettingKind.WindowHdr -> hdrEnabled || hdrSupport == WindowHdrSupport.SUPPORTED
-                else -> true
-            }
-            val minimumHeight = when {
-                spec.kind == SettingKind.Color -> 64.dp
-                spec.kind == SettingKind.Action && subtitle == null -> 56.dp
-                else -> 72.dp
-            }
-            Row(Modifier.padding(horizontal = 16.dp, vertical = 2.dp).fillMaxWidth().heightIn(min = minimumHeight)
-                .clip(MaterialTheme.shapes.large)
-                .background(MaterialTheme.colorScheme.surfaceContainerLow)
-                .testTag(if (spec.kind == SettingKind.Pip) "pip-setting" else "setting-${spec.id}")
-                .then(if (isToggle) Modifier.toggleable(checked, enabled = enabled, role = Role.Switch, onValueChange = changeToggle)
-                    else Modifier.clickable(role = Role.Button, onClick = action))
-                .padding(start = if (spec.indent) 32.dp else 16.dp, end = 20.dp, top = 16.dp, bottom = 16.dp),
-                verticalAlignment = Alignment.CenterVertically) {
-                spec.icon?.let { Symbol(it); Spacer(Modifier.width(16.dp)) }
-                RowText(spec.title, subtitle, Modifier.weight(1f))
-                if (isToggle) {
-                    Spacer(Modifier.width(12.dp))
-                    Switch(checked, onCheckedChange = null, enabled = enabled,
-                        colors = SwitchDefaults.colors(checkedThumbColor = MaterialTheme.colorScheme.onPrimary, checkedTrackColor = SettingsAccent,
-                            uncheckedThumbColor = MaterialTheme.colorScheme.outline, uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant, uncheckedBorderColor = MaterialTheme.colorScheme.outline))
-                }
-                if (spec.kind == SettingKind.Color) {
-                    Spacer(Modifier.width(16.dp))
-                    val palette = listOf(SettingsAccent, Color(0xFFAAC7FF), Color(0xFFA8D5BA), Color(0xFFF3B7C8))
-                    Box(Modifier.size(32.dp).clip(CircleShape).background(palette[store.number(spec).roundToInt().coerceIn(0,3)])
-                        .border(1.dp, SettingsSecondary, CircleShape))
-                }
-            }
-        }
+    val change: (Boolean) -> Unit = when (spec.kind) {
+        SettingKind.Pip -> onPip
+        SettingKind.WebDavTls -> onIgnoreCertificateErrors
+        SettingKind.WindowHdr -> onHdr
+        SettingKind.AccurateSeek -> onAccurateSeek
+        else -> error("Missing runtime setting: ${spec.id}")
+    }
+    Row(Modifier.padding(horizontal = 16.dp, vertical = 2.dp).fillMaxWidth().heightIn(min = 72.dp)
+        .clip(MaterialTheme.shapes.large).background(MaterialTheme.colorScheme.surfaceContainerLow)
+        .testTag(if (spec.kind == SettingKind.Pip) "pip-setting" else "setting-${spec.id}")
+        .toggleable(checked, enabled = enabled, role = Role.Switch, onValueChange = change)
+        .padding(start = 16.dp, end = 20.dp, top = 16.dp, bottom = 16.dp),
+        verticalAlignment = Alignment.CenterVertically) {
+        RowText(spec.title, subtitle, Modifier.weight(1f))
+        Spacer(Modifier.width(12.dp))
+        Switch(checked, onCheckedChange = null, enabled = enabled)
     }
 }

@@ -9,5 +9,4 @@
     <string name="cache_size">已占用 %1$s</string>
     <string name="cache_usage_hint">仅清理媒体库数据和图片，保留账号、设置与历史记录。占用包含缓存维护文件，清理后可能不为零，也可能随浏览增长。</string>
     <string name="cache_refresh_size">刷新占用统计</string>
-    <string name="cache_library_preview_note">缓存、快速哈希和扫描线程数已实际生效，其他媒体库选项仍为布局预览。</string>
 </resources>

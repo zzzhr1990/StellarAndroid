@@ -9,5 +9,4 @@
     <string name="cache_size">已佔用 %1$s</string>
     <string name="cache_usage_hint">僅清理媒體庫資料與圖片，保留帳號、設定與歷史紀錄。佔用包含快取維護檔案，清理後可能不為零，也可能隨瀏覽增加。</string>
     <string name="cache_refresh_size">重新整理佔用統計</string>
-    <string name="cache_library_preview_note">快取、快速雜湊和掃描執行緒數已實際生效，其他媒體庫選項仍為版面預覽。</string>
 </resources>

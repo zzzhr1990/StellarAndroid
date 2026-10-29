@@ -179,7 +179,6 @@
     <string name="snapshot_hint">Simulated frame preview at the current position. No image is captured or saved.</string>
     <string name="real_unavailable">This feature is not available for real playback yet.</string>
     <string name="real_media">Media information</string>
-    <string name="real_tools_hint">Playback tools use the actual media. Unsupported features are unavailable.</string>
     <string name="seek_failed">Seek failed. Try another position.</string>
     <string name="media_format">Container: %1$s</string>
     <string name="video_format">Video: %1$s · %2$s × %3$s</string>

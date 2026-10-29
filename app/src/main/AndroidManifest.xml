@@ -16,6 +16,7 @@
         <intent><action android:name="android.support.customtabs.action.CustomTabsService" /></intent>
     </queries>
     <application
+        android:name=".StellarApplication"
         android:allowBackup="false"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"

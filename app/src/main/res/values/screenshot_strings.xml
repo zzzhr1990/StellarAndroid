@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="screenshot_player_note">Accurate seek and picture-in-picture settings take effect. Other options remain settings previews.</string>
     <string name="screenshot_title">Screenshot</string>
     <string name="screenshot_album">Save to system album</string>
     <string name="screenshot_folder">Save to folder</string>

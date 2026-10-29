@@ -6,7 +6,7 @@ import androidx.core.content.edit
 import com.stellar.player.ui.PlaybackInteractionOptions
 import kotlin.math.roundToInt
 
-/** Uses the existing real controls store; preview values never become playback policy. */
+/** Persists interaction preferences consumed by the playback controls. */
 internal class PlaybackInteractionSettings(val preferences: SharedPreferences) {
     constructor(context: Context) : this(context.getSharedPreferences("playback_controls", Context.MODE_PRIVATE))
 

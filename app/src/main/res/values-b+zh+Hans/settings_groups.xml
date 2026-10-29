@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_audio">音频</string>
     <string name="settings_subtitle">字幕</string>
     <string name="settings_subtitle_note">修改会保存并应用于真实播放。恢复默认仅重置字幕外观，保留语言与时间偏好。</string>
 </resources>

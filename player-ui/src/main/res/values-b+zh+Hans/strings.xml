@@ -179,7 +179,6 @@
     <string name="snapshot_hint">预览当前位置的固定示例画面，不截取或保存真实图片。</string>
     <string name="real_unavailable">真实播放暂不支持此功能。</string>
     <string name="real_media">媒体信息</string>
-    <string name="real_tools_hint">播放工具使用真实媒体数据，未支持的功能不可用。</string>
     <string name="seek_failed">定位失败，请尝试其他位置。</string>
     <string name="media_format">封装格式：%1$s</string>
     <string name="video_format">视频：%1$s · %2$s × %3$s</string>

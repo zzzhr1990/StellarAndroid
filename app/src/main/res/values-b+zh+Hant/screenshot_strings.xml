@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="screenshot_player_note">精確seek與子母畫面設定會實際生效，其餘選項仍為設定預覽。</string>
     <string name="screenshot_title">截圖</string>
     <string name="screenshot_album">儲存至系統相簿</string>
     <string name="screenshot_folder">儲存至資料夾</string>

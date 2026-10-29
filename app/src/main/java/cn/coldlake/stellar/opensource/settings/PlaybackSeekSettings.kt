@@ -3,7 +3,7 @@ package cn.coldlake.stellar.opensource.settings
 import android.content.Context
 import androidx.core.content.edit
 
-/** Real playback preference, separate from presentation-only settings previews. */
+/** Seek mode preference consumed by the playback engine. */
 internal class PlaybackSeekSettings(context: Context) {
     val preferences = context.applicationContext.getSharedPreferences("playback_seek_v1", Context.MODE_PRIVATE)
 

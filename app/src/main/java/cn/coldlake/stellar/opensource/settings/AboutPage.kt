@@ -39,7 +39,7 @@ internal fun rememberAboutLinkOpener(): (String) -> Unit {
 private data class AboutEntry(val title: Int, val tag: String, val subtitle: String? = null, val action: () -> Unit)
 
 @Composable
-internal fun AboutPage(onDeviceInfo: () -> Unit, onLicenses: () -> Unit, onAction: () -> Unit) {
+internal fun AboutPage(onDeviceInfo: () -> Unit, onLicenses: () -> Unit, onVersion: () -> Unit) {
     val context = LocalContext.current
     val version = remember(context) { context.packageManager.getPackageInfo(context.packageName, 0).versionName.orEmpty() }
     val openLink = rememberAboutLinkOpener()
@@ -48,7 +48,7 @@ internal fun AboutPage(onDeviceInfo: () -> Unit, onLicenses: () -> Unit, onActio
     val website = stringResource(R.string.about_website_url)
     val source = stringResource(R.string.about_source_url)
     val entries = listOf(
-        AboutEntry(R.string.hs_version, "VERSION", version, onAction),
+        AboutEntry(R.string.hs_version, "VERSION", version, onVersion),
         AboutEntry(R.string.hs_privacy, "PRIVACY") { openLink(privacy) },
         AboutEntry(R.string.about_terms, "TERMS") { openLink(terms) },
         AboutEntry(R.string.about_website, "WEBSITE") { openLink(website) },

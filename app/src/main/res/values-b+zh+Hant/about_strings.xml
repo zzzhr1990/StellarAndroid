@@ -23,4 +23,5 @@
     <string name="about_website_url">https://github.com/zzzhr1990/StellarAndroid</string>
     <string name="about_search">搜尋程式庫或授權條款</string>
     <string name="about_no_matches">沒有符合的程式庫。</string>
+    <string name="about_version_notice">本播放器只供學習、研究使用，版權歸 冷湖科技(武汉)有限公司所有。\n\n本播放器不提供任何影片、音樂，也不提供相應影片下載渠道。</string>
 </resources>
