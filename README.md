@@ -8,6 +8,7 @@
 
 - 使用 MPV、FFmpeg 和 libplacebo 播放本地与网络媒体，通过 OpenGL 渲染视频。
 - 字幕、音轨、播放列表、均衡器、画中画、截图与片段导出。
+- 媒体库扫描与索引、任务暂停与继续、缺失资料补全及资料刷新。
 - SMB、NFS、WebDAV、Google Drive、OneDrive，以及用户自己的 Emby / Jellyfin 媒体库。
 - 未加密 DVD / Blu-ray 文件及镜像、DVD 和 HDMV 菜单。
 - 通过 TMDB 官方 API 直接搜索和获取影片、剧集、季、单集、演职员资料。

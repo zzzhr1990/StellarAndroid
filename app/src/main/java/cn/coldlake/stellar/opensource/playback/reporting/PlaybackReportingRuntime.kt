@@ -32,7 +32,7 @@ internal class PlaybackReportingRuntime internal constructor(
     val recordChanges = changes.asStateFlow()
     private val active = mutableSetOf<String>()
     private class Remote(val adapter: MediaServerReportAdapter) { @Volatile var revoked = false }
-    private data class Write(val key: PlaybackRecordKey?, val source: EmbyPlayback?, val remote: Remote?, val fact: PlaybackFact)
+    private data class Write(val key: PlaybackRecordKey?, val source: EmbyPlayback?, val remote: Remote?, val fact: PlaybackFact, val generation: Long)
     // Snapshot floods are normalized before this queue. Adjacent progress merges; boundaries remain explicit.
     private val queue = ArrayDeque<Write>()
     private val wake = Channel<Unit>(Channel.CONFLATED)
@@ -57,7 +57,9 @@ internal class PlaybackReportingRuntime internal constructor(
     fun coordinator(key: PlaybackRecordKey?, source: EmbyPlayback?): PlaybackReportingCoordinator {
         // Each replay gets a new adapter; an ended adapter can release its client independently.
         var remote: Remote? = null
+        var generation = catalog.playbackGeneration
         return PlaybackReportingCoordinator({ fact ->
+            if (fact.opensSession) generation = catalog.playbackGeneration
             if (fact.kind == ReportKind.START) remote = source?.let { Remote(EmbyReportAdapter(it) { resolveProfile(it.profile.id) }) }
             synchronized(queue) {
                 val tail = queue.lastOrNull()
@@ -71,14 +73,14 @@ internal class PlaybackReportingRuntime internal constructor(
                 // A stalled disk cannot create an unbounded event log or suspend the player thread.
                 if (queue.size >= 64) {
                     val overflow = queue.removeFirst()
-                    overflow.key?.let { records.memory(it, overflow.fact) }
+                    overflow.key?.let { records.memory(it, overflow.fact, overflow.generation) }
                     overflow.remote?.let {
                         // Never bypass the commit queue: that could send an old Start after a new one.
                         it.revoked = true
                         dispatcher.revoke(it.adapter.target, overflow.fact.session)
                     }
                 }
-                queue.addLast(Write(key, source, remote, combined))
+                queue.addLast(Write(key, source, remote, combined, generation))
             }
             wake.trySend(Unit)
         }, SystemClock::elapsedRealtime, System::currentTimeMillis)
@@ -90,7 +92,7 @@ internal class PlaybackReportingRuntime internal constructor(
         var record: PlaybackRecord? = null
         var persisted = false
         if (work.key != null) {
-            val result = records.commit(work.key, fact, adapter?.target, adapter?.baseline) {
+            val result = records.commit(work.key, fact, adapter?.target, adapter?.baseline, work.generation) {
                 work.source?.let { catalog.playbackServerBind(target(it.profile), it.item.id, it.version.id, work.key) }
             }
             record = result.record; persisted = result.durable

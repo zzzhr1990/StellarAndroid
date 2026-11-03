@@ -14,30 +14,35 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import java.io.IOException
 import cn.coldlake.stellar.opensource.network.HttpRateLimited
 import cn.coldlake.stellar.opensource.network.MAX_RATE_WAIT
 
 internal class LibraryScanner(private val catalog: CatalogDatabase, private val source: LibraryFileSource,
     private val workers: Int = 1,
+    private val permits: Semaphore = Semaphore(workers.coerceIn(1, 4)),
     private val directoryReady: suspend () -> Unit = {},
     private val progress: suspend () -> Unit = {}) {
     suspend fun execute(claim: ScanClaim) {
+        do { drain(claim) } while (catalog.finish(claim) == "running")
+    }
+    /** A producer drains only its own frontiers; settlement waits for every producer. */
+    suspend fun drain(claim: ScanClaim, scope: String? = null, localOnly: Boolean = false) {
         while (true) {
             currentCoroutineContext().ensureActive()
             // A single coordinator selects a bounded batch; no worker can take the same directory.
             val batch = mutableListOf<DirectoryWork>()
-            repeat(workers.coerceIn(1, 4)) { catalog.next(claim, batch)?.let(batch::add) }
-            if (batch.isEmpty()) {
-                if (catalog.finish(claim) != "running") return
-                continue
-            }
+            repeat(workers.coerceIn(1, 4)) { catalog.next(claim, batch, scope, localOnly)?.let(batch::add) }
+            if (batch.isEmpty()) return
             // awaitAll also propagates a source's CancellationException; launch/join
             // treats a cancelled child as normal and would select the same work again.
             coroutineScope { batch.map { work -> async { scanDirectory(claim, work) } }.awaitAll() }
         }
     }
-    private suspend fun scanDirectory(claim: ScanClaim, work: DirectoryWork) {
+    suspend fun scanDirectory(claim: ScanClaim, work: DirectoryWork) = permits.withPermit {
             var listed = work.phase == "metadata"
             try {
                 if (work.phase != "metadata") {
@@ -53,7 +58,7 @@ internal class LibraryScanner(private val catalog: CatalogDatabase, private val 
                         progress()
                     }
                     catalog.listed(claim, work, complete)
-                    if (!complete) return
+                    if (!complete) return@withPermit
                     listed = true
                 }
                 var after = 0L
@@ -127,6 +132,8 @@ internal class LocalLibraryRuntime private constructor(private val context: Cont
     private val mutableHomeUpdates = MutableStateFlow(HomeUpdates())
     val homeUpdates = mutableHomeUpdates.asStateFlow()
     private val runLock = Mutex()
+    private val mutableClearing = MutableStateFlow(false)
+    val clearing = mutableClearing.asStateFlow()
     @Volatile private var active: Job? = null
     private var lastPublish = 0L
     private var publishedProjection = -1L
@@ -184,12 +191,17 @@ internal class LocalLibraryRuntime private constructor(private val context: Cont
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) { mutable.value = mutable.value.copy(error = true) }
     }
-    suspend fun runScan(resume: Boolean, force: Boolean = false, locale: String = metadataLanguage(
+    suspend fun runScan(resume: Boolean, force: Boolean = false, refresh: Boolean = false, locale: String = metadataLanguage(
         cn.coldlake.stellar.opensource.platform.LanguagePreference.wrap(context).resources.configuration.locales[0].toLanguageTag())) = withContext(Dispatchers.IO) {
-        if (!runLock.tryLock()) return@withContext
+        if (mutableClearing.value || !runLock.tryLock()) return@withContext
         try {
             ready.await(); synchronizeRoots()
-            val claim = catalog.begin(resume, force) ?: return@withContext
+            if (refresh) metadata.retryQueries()
+            val claim = catalog.begin(resume, force || refresh)
+            if (claim == null) {
+                if (refresh) metadata.identify(locale)
+                return@withContext
+            }
             active = currentCoroutineContext()[Job]
             publish(true)
             val language = catalog.prepareScanMetadata(claim, locale)
@@ -204,12 +216,11 @@ internal class LocalLibraryRuntime private constructor(private val context: Cont
                     if (retryAt > 0) catalog.clearProviderRetry(LibraryScanner.RATE_KEY)
                     val profiles = serverProfiles.value.values.toList()
                     val workers = cn.coldlake.stellar.opensource.settings.LibraryScanSettings(context).scanThreads
-                    cn.coldlake.stellar.opensource.medialibrary.cloud.CloudLibrarySync(cloudIndex, catalog, { root ->
-                        cn.coldlake.stellar.opensource.medialibrary.cloud.cloudProvider(context,
-                            cn.coldlake.stellar.opensource.medialibrary.cloud.CloudLocator.profile(root.treeUri, profiles))
-                    }, workers = workers) { publish() }.execute(claim)
                     RegisteredLibrarySource(context, profiles, cloudIndex).use { source ->
-                        LibraryScanner(catalog, source, workers = workers, directoryReady = { wake.trySend(Unit) }) { publish() }.execute(claim)
+                        LibraryDiscovery(catalog, source, cloudIndex, { root ->
+                            cn.coldlake.stellar.opensource.medialibrary.cloud.cloudProvider(context,
+                                cn.coldlake.stellar.opensource.medialibrary.cloud.CloudLocator.profile(root.treeUri, profiles))
+                        }, workers, directoryReady = { wake.trySend(Unit) }, progress = { publish() }).execute(claim)
                     }
                     while (catalog.projectHomeBatch()) { publish(); yield() }
                 } catch (limited: HttpRateLimited) {
@@ -244,18 +255,35 @@ internal class LocalLibraryRuntime private constructor(private val context: Cont
             publish(true)
         }
     }
+    fun taskFailed() { mutable.value = mutable.value.copy(error = true) }
     fun launchFailed() { mutable.value = mutable.value.copy(error = true) }
     suspend fun configurationChanging() = withContext(Dispatchers.IO) {
         ready.await(); metadata.stop(); catalog.stop("cancelled"); active?.cancel(); publish(true)
     }
     suspend fun page(before: Long = Long.MAX_VALUE) = withContext(Dispatchers.IO) { ready.await(); catalog.page(before) }
-    suspend fun identify(locale: String, resume: Boolean = false) = withContext(Dispatchers.IO) {
+    suspend fun identify(locale: String, resume: Boolean = false, incremental: Boolean = false) = withContext(Dispatchers.IO) {
         ready.await()
-        val job = if (resume) catalog.metadataJob() else null
-        if (job?.scanRun != null) {
-            val wake = Channel<Unit>(Channel.CONFLATED).apply { close() }
-            metadata.identifyScan(job.scanRun, job.locale, wake)
-        } else metadata.identify(locale, resume)
+        if (mutableClearing.value || !runLock.tryLock()) return@withContext
+        try {
+            val job = if (resume) catalog.metadataJob() else null
+            if (job?.scanRun != null) {
+                val wake = Channel<Unit>(Channel.CONFLATED).apply { close() }
+                metadata.identifyScan(job.scanRun, job.locale, wake)
+            } else metadata.identify(locale, resume, incremental)
+        } finally { runLock.unlock() }
+    }
+    /** Owned by the application, so leaving the confirmation page cannot interrupt an accepted reset. */
+    suspend fun clearMedia(deleteManual: Boolean, deletePlayback: Boolean) {
+        if (!mutableClearing.compareAndSet(false, true)) return
+        scope.async {
+            try {
+                ready.await()
+                runLock.withLock {
+                    metadata.clearMedia(deleteManual, deletePlayback)
+                    publish(true)
+                }
+            } finally { mutableClearing.value = false }
+        }.await()
     }
     suspend fun history() = withContext(Dispatchers.IO) { ready.await(); catalog.history() }
     suspend fun refreshCards(ids: List<Long>) = withContext(Dispatchers.IO) { ready.await(); catalog.cardsById(ids) }

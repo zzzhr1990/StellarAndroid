@@ -6,11 +6,11 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 
 /** Imported identities remain namespaced by server and user. No path guessing or server writes. */
-internal class ServerCatalogImporter(private val db: CatalogDatabase) {
+internal class ServerCatalogImporter(private val db: CatalogDatabase, private val catalogGeneration: Long = db.catalogGeneration) {
     suspend fun run(profile: ServerProfile, library: String, page: suspend (Int) -> JSONObject,
         progress: suspend (Int) -> Unit = {}): String {
         val scope = scope(profile, library)
-        val generation = db.importStart(scope, profile.name)
+        val generation = db.importStart(scope, profile.name, catalogGeneration)
         var complete = false; var start = 0; var expected: Int? = null
         try {
             while (true) {

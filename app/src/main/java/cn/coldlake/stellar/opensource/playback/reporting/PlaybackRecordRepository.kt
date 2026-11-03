@@ -15,6 +15,7 @@ internal class PlaybackRecordRepository(val catalog: CatalogDatabase) {
     private var recovered = false
     private data class Unsaved(val record: PlaybackRecord, val opensSession: Boolean)
     private val unsaved = LinkedHashMap<PlaybackRecordKey, Unsaved>()
+    private var memoryGeneration = catalog.playbackGeneration
     private val failure = MutableStateFlow(false)
     val storageFailed = failure.asStateFlow()
     suspend fun <T> database(block: () -> T): T = withContext(Dispatchers.IO) { mutex.withLock {
@@ -22,13 +23,20 @@ internal class PlaybackRecordRepository(val catalog: CatalogDatabase) {
         block()
     } }
     fun discard(key: PlaybackRecordKey) = synchronized(unsaved) { unsaved.remove(key); failure.value = unsaved.isNotEmpty() }
+    private fun refreshGeneration() {
+        if (memoryGeneration != catalog.playbackGeneration) {
+            unsaved.clear(); failure.value = false; memoryGeneration = catalog.playbackGeneration
+        }
+    }
     suspend fun read(key: PlaybackRecordKey): PlaybackRecord? {
-        synchronized(unsaved) { unsaved[key]?.let { return it.record } }
+        synchronized(unsaved) { refreshGeneration(); unsaved[key]?.let { return it.record } }
         return try { database { catalog.playbackRead(key) } }
         catch (e: CancellationException) { throw e }
         catch (_: Exception) { failure.value = true; null }
     }
-    fun memory(key: PlaybackRecordKey, fact: PlaybackFact): RecordCommit = synchronized(unsaved) {
+    fun memory(key: PlaybackRecordKey, fact: PlaybackFact, generation: Long = catalog.playbackGeneration): RecordCommit = synchronized(unsaved) {
+        refreshGeneration()
+        if (generation != catalog.playbackGeneration) return@synchronized RecordCommit(null, false)
         val old = unsaved[key]
         val record = PlaybackRecord(key, fact.positionMs, fact.durationMs, old?.record?.watched == true || fact.finish == FinishReason.ENDED,
             fact.positionMs > 0 && fact.finish != FinishReason.ENDED, fact.lastWatchedAt, (old?.record?.revision ?: 0) + 1,
@@ -39,15 +47,19 @@ internal class PlaybackRecordRepository(val catalog: CatalogDatabase) {
         RecordCommit(record, false)
     }
     suspend fun commit(key: PlaybackRecordKey, fact: PlaybackFact, target: String?, baseline: ServerBaseline?,
+        generation: Long = catalog.playbackGeneration,
         before: () -> Unit = {}): RecordCommit {
-        val pending = synchronized(unsaved) { unsaved[key]?.takeIf { it.record.session == fact.session } }
+        val pending = synchronized(unsaved) { refreshGeneration(); unsaved[key]?.takeIf { it.record.session == fact.session } }
         val value = if (pending != null) fact.copy(opensSession = fact.opensSession || pending.opensSession, persist = true) else fact
         return try {
-            val record = database { before(); catalog.playbackCommit(key, value, target, baseline) }
+            val record = database {
+                if (generation == catalog.playbackGeneration) before()
+                catalog.playbackCommit(key, value, target, baseline, generation)
+            }
             synchronized(unsaved) { unsaved.remove(key); failure.value = unsaved.isNotEmpty() }
             RecordCommit(record, true)
         } catch (e: CancellationException) { throw e }
-        catch (_: Exception) { memory(key, value) }
+        catch (_: Exception) { memory(key, value, generation) }
     }
     suspend fun acknowledge(event: ReportEnvelope, result: ReportResult) {
         val key = event.key ?: return

@@ -32,6 +32,11 @@ internal class CatalogHome(private val db: SQLiteConnection, private val catalog
 
     fun takeAffected(): Set<HomeQuery> = affectedQueries.toSet().also { affectedQueries.clear() }
 
+    fun invalidateAll() {
+        val sources = listOf<String?>(null) + sources().map { it.id }
+        sources.forEach { source -> HomeSection.entries.forEach { affectedQueries += HomeQuery(it, source) } }
+    }
+
     private fun invalidate(entity: Long) {
         db.rows("SELECT source,kind FROM home_entity_source WHERE entity=? UNION ALL SELECT NULL,kind FROM home_entity WHERE id=?", entity, entity) {
             it.textOrNull(0) to it.getText(1)
@@ -61,6 +66,12 @@ internal class CatalogHome(private val db: SQLiteConnection, private val catalog
                 AND EXISTS(SELECT 1 FROM objects WHERE id=new.object AND kind='IMAGE') BEGIN
                 ${artworkDirty("(SELECT scope FROM objects WHERE id=new.object)", "(SELECT parent FROM objects WHERE id=new.object)")} END"""
         )
+        // An outer UPSERT can override a trigger's OR IGNORE conflict policy. Avoid
+        // inserting an existing dirty ID, including when a parent was updated first.
+        val bindingTriggers = listOf("insert" to "new", "update" to "new", "delete" to "old").map { (event, row) ->
+            "CREATE TRIGGER home_binding_$event AFTER ${event.uppercase()} ON metadata_binding BEGIN " +
+                "INSERT INTO home_dirty SELECT $row.object WHERE NOT EXISTS(SELECT 1 FROM home_dirty WHERE id=$row.object); END"
+        }
         val schema = listOf(
             "CREATE TABLE home_dirty(id INTEGER PRIMARY KEY)",
             "ALTER TABLE catalog_import ADD COLUMN label TEXT NOT NULL DEFAULT ''",
@@ -82,14 +93,11 @@ internal class CatalogHome(private val db: SQLiteConnection, private val catalog
             "INSERT INTO home_dirty SELECT -id FROM imported_record",
             "CREATE TRIGGER home_wall_insert AFTER INSERT ON wall BEGIN INSERT OR IGNORE INTO home_dirty VALUES(new.object); END",
             "CREATE TRIGGER home_wall_update AFTER UPDATE ON wall BEGIN INSERT OR IGNORE INTO home_dirty VALUES(new.object); END",
-            "CREATE TRIGGER home_binding_insert AFTER INSERT ON metadata_binding BEGIN INSERT OR IGNORE INTO home_dirty VALUES(new.object); END",
-            "CREATE TRIGGER home_binding_update AFTER UPDATE ON metadata_binding BEGIN INSERT OR IGNORE INTO home_dirty VALUES(new.object); END",
-            "CREATE TRIGGER home_binding_delete AFTER DELETE ON metadata_binding BEGIN INSERT OR IGNORE INTO home_dirty VALUES(old.object); END",
             "CREATE TRIGGER home_import_insert AFTER INSERT ON imported_record BEGIN INSERT OR IGNORE INTO home_dirty VALUES(-new.id); END",
             "CREATE TRIGGER home_import_update AFTER UPDATE ON imported_record WHEN new.payload!=old.payload OR new.misses!=old.misses BEGIN INSERT OR IGNORE INTO home_dirty VALUES(-new.id); END",
             "CREATE TRIGGER home_member_insert AFTER INSERT ON member BEGIN INSERT OR IGNORE INTO home_dirty SELECT new.object WHERE EXISTS(SELECT 1 FROM wall WHERE object=new.object); END",
             "CREATE TRIGGER home_member_update AFTER UPDATE ON member WHEN new.misses!=old.misses BEGIN INSERT OR IGNORE INTO home_dirty SELECT new.object WHERE EXISTS(SELECT 1 FROM wall WHERE object=new.object); END"
-        )
+        ) + bindingTriggers
     }
 
     fun pending() = db.scalar("SELECT EXISTS(SELECT 1 FROM home_dirty)") != 0L

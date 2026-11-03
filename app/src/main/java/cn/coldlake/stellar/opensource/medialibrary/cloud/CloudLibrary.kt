@@ -59,6 +59,7 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
         file.parentFile!!.mkdirs()
         BundledSQLiteDriver().open(file.absolutePath).also { c ->
             c.exec("PRAGMA busy_timeout=5000"); c.exec("PRAGMA journal_mode=WAL"); c.exec("PRAGMA synchronous=FULL")
+            val oldVersion = c.scalar("PRAGMA user_version")
             c.exec("CREATE TABLE IF NOT EXISTS cloud_roots(id TEXT PRIMARY KEY,type TEXT,server TEXT,scope TEXT,uri TEXT,doc TEXT,label TEXT,created INTEGER,updated INTEGER,revision INTEGER,deleted INTEGER)")
             c.exec("CREATE UNIQUE INDEX IF NOT EXISTS cloud_root_identity ON cloud_roots(scope,doc)")
             c.exec("CREATE TABLE IF NOT EXISTS cloud_items(scope TEXT,id TEXT,parent TEXT,name TEXT,kind TEXT,size INTEGER,modified INTEGER,version TEXT,deleted INTEGER,unsupported INTEGER,generation INTEGER,PRIMARY KEY(scope,id))")
@@ -67,10 +68,17 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
             c.exec("CREATE TABLE IF NOT EXISTS cloud_dirs(scope TEXT,id TEXT,cursor TEXT,done INTEGER DEFAULT 0,PRIMARY KEY(scope,id))")
             // Rowid is the implicit last index column, preserving the existing FIFO order.
             c.exec("CREATE INDEX IF NOT EXISTS cloud_dirs_queue ON cloud_dirs(scope,done)")
+            // Exact membership of a completed directory, independent of the unfinished feed.
+            c.exec("CREATE TABLE IF NOT EXISTS cloud_listing(scope TEXT,parent TEXT,id TEXT,PRIMARY KEY(scope,parent,id))")
             c.exec("CREATE TABLE IF NOT EXISTS cloud_pages(scope TEXT,phase TEXT,cursor TEXT,PRIMARY KEY(scope,phase,cursor))")
             c.exec("CREATE TABLE IF NOT EXISTS cloud_pending(scope TEXT,id TEXT,PRIMARY KEY(scope,id))")
             c.exec("CREATE INDEX IF NOT EXISTS cloud_pending_queue ON cloud_pending(scope)")
-            c.exec("PRAGMA user_version=2")
+            if (oldVersion < 3) {
+                // Older checkpoints have no exact directory membership. Re-list before early publication.
+                c.exec("UPDATE cloud_dirs SET done=0,cursor=NULL")
+                c.exec("DELETE FROM cloud_pages WHERE phase LIKE 'dir:%'")
+            }
+            c.exec("PRAGMA user_version=3")
         }
     }
     private fun <T> tx(block: () -> T): T {
@@ -99,18 +107,21 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
         CloudSync(it.getText(0), it.textOrNull(1), it.textOrNull(2), it.getLong(3), it.getLong(4) == 1L)
     }.firstOrNull()
     @Synchronized fun needsBaseline(scope: String, signature: String) = db.rows("SELECT signature FROM cloud_sync WHERE scope=?", scope) { it.getText(0) }.firstOrNull() != signature
-    @Synchronized fun prepare(scope: String, signature: String, seed: String?, initialDelta: Boolean, roots: List<String>, reset: Boolean = false) = tx {
+    @Synchronized fun prepare(scope: String, signature: String, seed: String?, initialDelta: Boolean, roots: List<String>, reset: Boolean = false,
+        streamDirectories: Boolean = false) = tx {
         val old = state(scope)
         val same = db.rows("SELECT signature FROM cloud_sync WHERE scope=?", scope) { it.getText(0) }.firstOrNull() == signature
         if (old == null || !same || reset) {
             db.exec("DELETE FROM cloud_dirs WHERE scope=?", scope); db.exec("DELETE FROM cloud_pages WHERE scope=?", scope)
             db.exec("DELETE FROM cloud_pending WHERE scope=?", scope)
+            db.exec("DELETE FROM cloud_listing WHERE scope=?", scope)
             db.exec("INSERT OR REPLACE INTO cloud_sync VALUES(?,?,?,?,NULL,?,1)", scope, signature,
-                if (initialDelta) "feed" else "directories", seed, (old?.generation ?: 0) + 1)
-            if (!initialDelta) roots.forEach { db.exec("INSERT OR IGNORE INTO cloud_dirs(scope,id) VALUES(?,?)", scope, it) }
+                if (initialDelta && !streamDirectories) "feed" else "directories", seed, (old?.generation ?: 0) + 1)
+            if (!initialDelta || streamDirectories) roots.forEach { db.exec("INSERT OR IGNORE INTO cloud_dirs(scope,id) VALUES(?,?)", scope, it) }
         } else if (old.phase == "done") {
             db.exec("DELETE FROM cloud_dirs WHERE scope=?", scope); db.exec("DELETE FROM cloud_pages WHERE scope=?", scope)
             db.exec("DELETE FROM cloud_pending WHERE scope=?", scope)
+            db.exec("DELETE FROM cloud_listing WHERE scope=?", scope)
             db.exec("UPDATE cloud_sync SET phase='feed',cursor=terminal,baseline=0 WHERE scope=?", scope)
         }
     }
@@ -120,6 +131,7 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
     private fun enqueue(scope: String, id: String) {
         db.exec("INSERT INTO cloud_dirs(scope,id) VALUES(?,?) ON CONFLICT(scope,id) DO UPDATE SET done=0,cursor=NULL", scope, id)
         db.exec("DELETE FROM cloud_pages WHERE scope=? AND phase=?", scope, "dir:$id")
+        db.exec("DELETE FROM cloud_listing WHERE scope=? AND parent=?", scope, id)
     }
     private fun put(scope: String, item: CloudObject, generation: Long) {
         if (item.deleted) db.exec("""INSERT INTO cloud_items VALUES(?,?,NULL,'','OTHER',NULL,NULL,NULL,1,0,?)
@@ -133,7 +145,17 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
         val generation = checkNotNull(state(scope)).generation
         items.forEach { put(scope, it, generation) }
     }
-    @Synchronized fun page(scope: String, page: CloudPage, directory: CloudDirectory? = null) = tx {
+    @Synchronized fun changedEntries(scope: String, entries: List<CloudObject>): List<Pair<String, String?>> = entries.chunked(128).flatMap { chunk ->
+        val byId = chunk.associateBy { it.ref.id }
+        val stored = db.rows("""SELECT id,parent,name,kind,size,modified,version,deleted,unsupported FROM cloud_items
+            WHERE scope=? AND id IN (${chunk.joinToString(",") { "?" }})""", scope, *byId.keys.toTypedArray()) {
+            val id = it.getText(0)
+            id to CloudObject(byId.getValue(id).ref, it.textOrNull(1), it.getText(2), RemoteFileKind.valueOf(it.getText(3)),
+                it.longOrNull(4), it.longOrNull(5), it.textOrNull(6), it.getLong(7) != 0L, it.getLong(8) != 0L)
+        }.toMap()
+        chunk.filter { stored[it.ref.id] != it }.map { it.ref.id to it.parent }
+    }
+    @Synchronized fun page(scope: String, page: CloudPage, directory: CloudDirectory? = null, authoritative: Boolean = true) = tx {
         if (!page.complete) throw IOException("Incomplete cloud page")
         val state = checkNotNull(state(scope))
         val phase = directory?.id?.let { "dir:$it" } ?: "feed"
@@ -144,8 +166,10 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
             db.exec("INSERT INTO cloud_pages VALUES(?,?,?)", scope, phase, next)
         }
         page.objects.forEach {
-            put(scope, it, state.generation)
+            // OneDrive's initial delta remains authoritative even after an early directory preview.
+            put(scope, it, if (!authoritative && state.baseline) state.generation - 1 else state.generation)
             if (directory == null) db.exec("INSERT OR IGNORE INTO cloud_pending VALUES(?,?)", scope, it.ref.id)
+            else db.exec("INSERT OR IGNORE INTO cloud_listing VALUES(?,?,?)", scope, directory.id, it.ref.id)
         }
         if (directory != null) {
             db.exec("UPDATE cloud_dirs SET cursor=?,done=? WHERE scope=? AND id=?", next, if (next == null) 1 else 0, scope, directory.id)
@@ -174,6 +198,7 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
         val state = checkNotNull(state(scope))
         if (state.baseline) db.exec("UPDATE cloud_items SET deleted=1 WHERE scope=? AND generation!=?", scope, state.generation)
         db.exec("UPDATE cloud_sync SET phase='done',baseline=0 WHERE scope=?", scope)
+        db.exec("DELETE FROM cloud_listing WHERE scope=?", scope)
     }
     @Synchronized fun known(scope: String, id: String) = db.scalar("SELECT COUNT(*) FROM cloud_items WHERE scope=? AND id=?", scope, id) != 0L
     @Synchronized fun parent(scope: String, id: String): String? = db.rows("SELECT parent FROM cloud_items WHERE scope=? AND id=?", scope, id) { it.textOrNull(0) }.firstOrNull()
@@ -185,8 +210,14 @@ internal class CloudIndex(context: Context, name: String = "cloud_library.db") :
             SELECT o.id,o.parent FROM ancestors a JOIN cloud_items o ON o.scope=? AND o.id=a.parent AND o.deleted=0)
             SELECT COUNT(*) FROM ancestors WHERE id IN ($marks) OR parent IN ($marks)""", scope, id, scope, *roots.toTypedArray(), *roots.toTypedArray()) > 0
     }
-    @Synchronized fun children(scope: String, parent: String, after: String = ""): List<FileFact> = db.rows(
-        "SELECT id,name,kind,size,modified,version FROM cloud_items WHERE scope=? AND parent=? AND id>? AND deleted=0 AND unsupported=0 ORDER BY id LIMIT 128", scope, parent, after) {
+    @Synchronized fun completedDirectories(scope: String, after: Long): List<Pair<Long, String>> = db.rows(
+        "SELECT rowid,id FROM cloud_dirs WHERE scope=? AND done=1 AND rowid>? ORDER BY rowid LIMIT 128", scope, after) { it.getLong(0) to it.getText(1) }
+    @Synchronized fun listingComplete(scope: String, parent: String) = db.scalar(
+        "SELECT COUNT(*) FROM cloud_dirs WHERE scope=? AND id=? AND done=1", scope, parent) == 1L
+    @Synchronized fun children(scope: String, parent: String, after: String = "", listedOnly: Boolean = false): List<FileFact> = db.rows(
+        """SELECT id,name,kind,size,modified,version FROM cloud_items i WHERE scope=? AND parent=? AND id>? AND deleted=0 AND unsupported=0
+            ${if (listedOnly) "AND EXISTS(SELECT 1 FROM cloud_listing l WHERE l.scope=i.scope AND l.parent=i.parent AND l.id=i.id)" else ""}
+            ORDER BY id LIMIT 128""", scope, parent, after) {
         FileFact(it.getText(0), it.getText(1), fileKind(it.getText(1), RemoteFileKind.valueOf(it.getText(2))), it.longOrNull(3), it.longOrNull(4), it.textOrNull(5))
     }
     @Synchronized fun unsupported(scope: String, parent: String) = db.scalar("SELECT COUNT(*) FROM cloud_items WHERE scope=? AND parent=? AND deleted=0 AND unsupported=1", scope, parent) > 0
@@ -214,22 +245,7 @@ internal val LibraryPathType.cloud get() = this == LibraryPathType.GOOGLE_DRIVE 
 
 internal class CloudLibrarySource(private val context: Context, private val profiles: List<ServerProfile>,
     private val index: CloudIndex) : LibraryFileSource {
-    override fun enumerate(root: ScanRoot, directory: String) = flow {
-        // The provider sync has already committed its graph. SQL windows never aggregate a directory.
-        if (!index.available(root.scope, root.documentId)) {
-            emit(DiscoveryBatch(emptyList(), true, Coverage.COMPLETE)); return@flow
-        }
-        var after = ""
-        while (true) {
-            currentCoroutineContext().ensureActive()
-            val page = index.children(root.scope, directory, after)
-            if (page.isEmpty()) break
-            emit(DiscoveryBatch(page)); after = page.last().objectId
-        }
-        // Coverage warnings are recorded per root by CloudLibrarySync. They must not
-        // prevent NFO parsing or explicit removals in the supported part of this graph.
-        emit(DiscoveryBatch(emptyList(), true, Coverage.COMPLETE))
-    }
+    override fun enumerate(root: ScanRoot, directory: String) = cloudDirectoryEntries(index, root, directory)
     override suspend fun open(root: ScanRoot, objectId: String) = try {
         read(CloudLocator.file(root.treeUri, objectId), LocalNfo.MAX_BYTES).inputStream()
     } catch (_: CloudReadLimitExceeded) { throw LocalNfo.InvalidContent() }
@@ -237,4 +253,21 @@ internal class CloudLibrarySource(private val context: Context, private val prof
         try { it.smallFile(CloudLocator.ref(uri).id, limit) }
         catch (failure: DirectoryFailure) { throw IOException("Cloud sidecar unavailable", failure) }
     }
+}
+
+internal fun cloudDirectoryEntries(index: CloudIndex, root: ScanRoot, directory: String, listedOnly: Boolean = false) = flow {
+        if (listedOnly) check(index.listingComplete(root.scope, directory))
+        if (!index.available(root.scope, root.documentId)) {
+            emit(DiscoveryBatch(emptyList(), true, Coverage.COMPLETE)); return@flow
+        }
+        var after = ""
+        while (true) {
+            currentCoroutineContext().ensureActive()
+            val page = index.children(root.scope, directory, after, listedOnly)
+            if (page.isEmpty()) break
+            emit(DiscoveryBatch(page)); after = page.last().objectId
+        }
+        // Coverage warnings are recorded per root by CloudLibrarySync. They must not
+        // prevent NFO parsing or explicit removals in the supported part of this graph.
+        emit(DiscoveryBatch(emptyList(), true, Coverage.COMPLETE))
 }

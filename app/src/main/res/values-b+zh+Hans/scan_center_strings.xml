@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="scan_center_title">扫描与识别</string>
+    <string name="scan_center_active">正在更新媒体库</string>
+    <string name="scan_center_inactive">当前没有运行中的任务</string>
+    <string name="scan_center_waiting">等待识别服务</string>
+    <string name="scan_center_identifying">正在识别资料</string>
+    <string name="scan_center_paused">任务已暂停</string>
+    <string name="scan_center_failed">更新未完成</string>
+    <string name="scan_center_partial">部分来源未完成</string>
+    <string name="scan_center_cancelled">任务已取消</string>
+    <string name="scan_center_discovered">文件扫描已结束</string>
+    <string name="scan_center_ready">让媒体库保持最新</string>
+    <string name="scan_center_hint">发现新增文件，同时识别影片与剧集。已保存的资料会保留，离开此页不影响任务。</string>
+    <string name="scan_center_update">更新媒体库</string>
+    <string name="scan_center_more">更多操作</string>
+    <string name="scan_center_fill">增量识别媒体</string>
+    <string name="scan_center_stop_metadata">仅停止识别，继续扫描</string>
+    <string name="scan_center_no_sources">请先在媒体库中添加本机、NAS 或云盘目录。</string>
+    <string name="scan_center_files">文件发现</string>
+    <string name="scan_center_found">已发现条目</string>
+    <string name="scan_center_nfo">已读取本地资料</string>
+    <string name="scan_center_metadata">资料识别</string>
+    <string name="scan_center_saved">已保存的识别结果</string>
+    <string name="scan_center_matched">已匹配</string>
+    <string name="scan_center_review">待核对</string>
+    <string name="scan_center_pending">待补全</string>
+    <string name="scan_center_errors">识别失败</string>
+    <string name="scan_center_metadata_hint">包含当前资料语言下已有的识别记录。部分已匹配内容仍可能有资料待补全。</string>
+    <string name="scan_center_fill_hint">识别库中尚未识别的媒体，并补全缺失资料。</string>
+    <string name="scan_center_refresh">刷新媒体资料</string>
+    <string name="scan_center_refresh_hint">重新读取媒体旁的本地资料，并更新在线资料，保留人工修改。</string>
+    <string name="scan_center_clear">清空媒体数据库</string>
+    <string name="scan_center_clear_description">清空本机媒体列表及自动识别资料。来源配置和媒体文件会保留。</string>
+    <string name="scan_center_delete_manual">同时删除人工匹配与手动修改</string>
+    <string name="scan_center_delete_playback">同时删除本机播放记录</string>
+    <string name="scan_center_clear_retention">未勾选的内容会保留，并在重新扫描后恢复关联。不会删除服务器上的播放记录。</string>
+    <string name="scan_center_clear_confirm">清空</string>
+    <string name="scan_center_clear_cancel">取消</string>
+    <string name="scan_center_clearing">正在清空媒体库</string>
+    <string name="scan_center_cleared">媒体库已清空</string>
+    <string name="scan_center_clear_failed">清空未完成</string>
+</resources>

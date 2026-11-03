@@ -12,6 +12,7 @@ import androidx.savedstate.serialization.decodeFromSavedState
 @Serializable internal sealed interface MediaDestination : NavKey {
     @Serializable data object Home : MediaDestination
     @Serializable data object Settings : MediaDestination
+    @Serializable data object CatalogScan : MediaDestination
     @Serializable data object CatalogMetadata : MediaDestination
     @Serializable data object Paths : MediaDestination
     @Serializable data object Storage : MediaDestination

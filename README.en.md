@@ -8,6 +8,7 @@ A native Kotlin / Jetpack Compose media player.
 
 - Local and network playback with MPV, FFmpeg and libplacebo, using OpenGL for video rendering.
 - Subtitles, tracks, playlists, equalizer, picture-in-picture, screenshots and clip export.
+- Library scanning and indexing, pause and resume, missing metadata identification and metadata refresh.
 - SMB, NFS, WebDAV, Google Drive, OneDrive and your own Emby / Jellyfin libraries.
 - Unencrypted DVD / Blu-ray files and images, DVD and HDMV menus.
 - Movie, show, season, episode and cast information directly from the official TMDB API.

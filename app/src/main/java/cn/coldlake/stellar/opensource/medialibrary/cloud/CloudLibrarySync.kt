@@ -1,14 +1,18 @@
 package cn.coldlake.stellar.opensource.medialibrary.cloud
 
-import android.content.Context
 import cn.coldlake.stellar.opensource.medialibrary.catalog.*
 import cn.coldlake.stellar.opensource.medialibrary.servers.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import java.io.IOException
 import cn.coldlake.stellar.opensource.network.HttpRateLimited
 
 internal class CloudLibrarySync(private val index: CloudIndex, private val catalog: CatalogDatabase,
     private val provider: (ScanRoot) -> CloudProvider, private val workers: Int = 1,
+    private val permits: Semaphore = Semaphore(workers.coerceIn(1, 4)),
+    private val directoryReady: (suspend (String, String) -> Unit)? = null,
+    private val scopeReady: suspend (String) -> Unit = {},
     private val progress: suspend () -> Unit = {}) {
     val failures: MutableList<String> = java.util.Collections.synchronizedList(mutableListOf())
     suspend fun execute(claim: ScanClaim) {
@@ -23,12 +27,14 @@ internal class CloudLibrarySync(private val index: CloudIndex, private val catal
                 provider(roots.first()).use { client ->
                     val signature = roots.sortedBy { it.id }.joinToString(";") { "${it.id}:${it.revision}:${it.documentId}" }
                     suspend fun prepare(reset: Boolean) {
-                        val seed = if (reset || index.needsBaseline(scope, signature)) client.start() else null
+                        val seed = if (reset || index.needsBaseline(scope, signature)) permits.withPermit { client.start() } else null
                         catalog.checkClaim(claim)
-                        index.prepare(scope, signature, seed, client.capabilities.initialDelta, roots.map { it.documentId }, reset)
+                        if (reset) catalog.restartCloudScope(claim, scope)
+                        index.prepare(scope, signature, seed, client.capabilities.initialDelta, roots.map { it.documentId }, reset,
+                            streamDirectories = directoryReady != null)
                         val metadata = mutableListOf<CloudObject>()
                         for (root in roots) {
-                            val obj = try { client.metadata(root.documentId) }
+                            val obj = try { permits.withPermit { client.metadata(root.documentId) } }
                             catch (failure: DirectoryFailure) {
                                 // A previously selected folder may have been deleted. Let the
                                 // authoritative feed settle it; a metadata 404 alone is not a sweep.
@@ -41,6 +47,14 @@ internal class CloudLibrarySync(private val index: CloudIndex, private val catal
                         catalog.checkClaim(claim); index.remember(scope, metadata)
                     }
                     prepare(false)
+                    // Durable directory checkpoints can outlive the catalogue's current run.
+                    var after = 0L
+                    if (directoryReady != null && index.state(scope)?.phase == "directories") while (true) {
+                        val completed = index.completedDirectories(scope, after)
+                        if (completed.isEmpty()) break
+                        for ((_, directory) in completed) directoryReady.invoke(scope, directory)
+                        after = completed.last().first
+                    }
                     var reset = false
                     while (true) {
                         try { synchronize(claim, scope, roots, client); break }
@@ -49,6 +63,7 @@ internal class CloudLibrarySync(private val index: CloudIndex, private val catal
                             reset = true; prepare(true)
                         }
                     }
+                    scopeReady(scope)
                 }
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (limited: HttpRateLimited) { throw limited }
@@ -66,16 +81,18 @@ internal class CloudLibrarySync(private val index: CloudIndex, private val catal
             var listed = false
             while (true) {
                 val directory = index.directory(scope) ?: break
-                val page = client.children(directory.id, directory.cursor)
+                val page = permits.withPermit { client.children(directory.id, directory.cursor) }
                 validateScope(page, roots.first())
-                catalog.checkClaim(claim); index.page(scope, page, directory)
+                catalog.checkClaim(claim); index.page(scope, page, directory, authoritative = !client.capabilities.initialDelta)
                 preview(claim, scope, roots, page.objects); progress(); listed = true
+                if (page.next == null) directoryReady?.invoke(scope, directory.id)
             }
             val state = checkNotNull(index.state(scope))
             if (state.phase == "directories" || listed && state.phase == "compensated") index.feed(scope)
             while (index.state(scope)?.phase == "feed") {
-                val page = client.changes(index.state(scope)?.cursor)
+                val page = permits.withPermit { client.changes(index.state(scope)?.cursor) }
                 validateScope(page, roots.first())
+                catalog.invalidateCloudEntries(claim, scope, index.changedEntries(scope, page.objects))
                 catalog.checkClaim(claim); index.page(scope, page)
                 preview(claim, scope, roots, page.objects); progress()
             }
@@ -94,7 +111,7 @@ internal class CloudLibrarySync(private val index: CloudIndex, private val catal
                             currentCoroutineContext().ensureActive()
                             if (visited.size > 512) throw IOException("Cloud ancestry exceeds supported depth")
                             if (parent !in ancestors && !index.known(scope, parent)) {
-                                val obj = client.metadata(parent)
+                                val obj = permits.withPermit { client.metadata(parent) }
                                 validateScope(CloudPage(listOf(obj), null), roots.first())
                                 ancestors[parent] = obj
                                 // Bound staged metadata even for a batch with many deep ancestry chains.

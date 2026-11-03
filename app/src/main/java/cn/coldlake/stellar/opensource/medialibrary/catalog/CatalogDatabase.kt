@@ -16,6 +16,10 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
     private var homeSources: Set<String>? = null
     private var sourcesChanged = false
     private var transactionsTotal = 0L
+    @Volatile var playbackGeneration = 0L
+        private set
+    @Volatile var catalogGeneration = 0L
+        private set
     @Synchronized fun homeUpdates(): HomeUpdates = homeUpdates
     @Synchronized fun homeRevision(): Long = projectionRevision
     val file: File = context.getDatabasePath(name)
@@ -25,7 +29,7 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
             c.exec("PRAGMA busy_timeout=5000"); c.exec("PRAGMA journal_mode=WAL")
             c.exec("PRAGMA synchronous=FULL"); c.exec("PRAGMA foreign_keys=ON")
             val version = c.rows("PRAGMA user_version") { it.getLong(0) }.single()
-            require(version in 0..17) { "Unsupported catalog version" }
+            require(version in 0..18) { "Unsupported catalog version" }
             if (version == 0L) {
                 c.exec("BEGIN IMMEDIATE")
                 try { SCHEMA.forEach { c.exec(it) }; c.exec("PRAGMA user_version=2"); c.exec("COMMIT") }
@@ -182,7 +186,49 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
                     c.exec("PRAGMA user_version=17"); c.exec("COMMIT")
                 } catch (error: Throwable) { c.exec("ROLLBACK"); throw error }
             }
+            if (version <= 17L) {
+                c.exec("BEGIN IMMEDIATE")
+                try {
+                    if (c.rows("PRAGMA table_info(metadata_job)") { it.getText(1) }.none { it == "incremental" })
+                        c.exec("ALTER TABLE metadata_job ADD COLUMN incremental INTEGER NOT NULL DEFAULT 0")
+                    listOf("insert", "update", "delete").forEach { c.exec("DROP TRIGGER IF EXISTS home_binding_$it") }
+                    CatalogHome.bindingTriggers.forEach { c.exec(it) }
+                    c.exec("PRAGMA user_version=18"); c.exec("COMMIT")
+                } catch (error: Throwable) { c.exec("ROLLBACK"); throw error }
+            }
         }
+    }
+    /** Reset catalog contents atomically. Identity anchors prevent ID reuse and restore retained user data. */
+    @Synchronized fun clearMedia(deleteManual: Boolean, deletePlayback: Boolean) {
+        transaction(drain = false) {
+            homeIndex.invalidateAll()
+            // A late import page or discovery claim must never become valid after another scan starts.
+            db.exec("UPDATE catalog_import SET generation=generation+1,state=CASE WHEN state='obsolete' THEN 'obsolete' ELSE 'cleared' END")
+            db.exec("DELETE FROM scan_run WHERE id!=(SELECT MAX(id) FROM scan_run)")
+            db.exec("UPDATE scan_run SET state='idle',epoch=epoch+1,started=0,current='',queries=0,batches=0,discovered=0,parsed=0,facts=0,projections=0,settled=0")
+            db.exec("UPDATE roots SET attempted=NULL,completed=NULL,outcome=NULL")
+            db.exec("UPDATE objects SET parent=NULL,name='',stem='',size=NULL,modified=NULL,version=NULL,revision=revision+1")
+            db.exec("UPDATE imported_record SET payload='{}',seen=0,misses=2")
+            db.exec("UPDATE metadata_edit SET revision=revision+1")
+            if (deleteManual) db.exec("DELETE FROM metadata_binding")
+            else db.exec("DELETE FROM metadata_binding WHERE origin NOT IN ('manual','import')")
+            // Parent records referenced by manual choices are part of the retained choice.
+            db.exec("""DELETE FROM metadata_entity WHERE NOT EXISTS(SELECT 1 FROM metadata_binding b
+                WHERE (b.identity=metadata_entity.identity OR json_extract(b.payload,'$.seriesIdentity')=metadata_entity.identity)
+                AND b.locale=metadata_entity.locale)""")
+            listOf("member", "run_root", "frontier", "seen", "nfo", "wall", "dependency", "wall_artwork", "file_fingerprint",
+                "cloud_ready", "cloud_partial", "metadata_attempt", "metadata_job", "scan_metadata", "scan_metadata_queue",
+                "provider_query", "imported_id", "home_server_media", "home_external", "home_version", "home_source",
+                "home_entity_source", "home_progress").forEach { db.exec("DELETE FROM $it") }
+            // Respect a server Retry-After even when the local catalog is explicitly reset.
+            db.exec("DELETE FROM provider_retry WHERE key NOT IN (?,?)", MetadataProvider.RATE_KEY, LibraryScanner.RATE_KEY)
+            db.exec("UPDATE home_entity SET payload=NULL,added=0,versions=0,episodes=0,played=0,resume=0,content_revision=content_revision+1,progress_revision=progress_revision+1")
+            if (deletePlayback) listOf("playback_record", "playback_delivery", "playback_version", "playback_server").forEach { db.exec("DELETE FROM $it") }
+            // Clear trigger work only after all writes; retained identities must stay invisible until rediscovered.
+            db.exec("DELETE FROM home_dirty")
+        }
+        catalogGeneration++
+        if (deletePlayback) playbackGeneration++
     }
     @Synchronized fun fingerprintFile(id: Long): FingerprintFile? = db.rows("""SELECT o.scope,o.doc,o.size,o.modified,o.version,r.uri,r.revision
         FROM objects o JOIN member m ON m.object=o.id JOIN roots r ON r.id=m.root
@@ -273,7 +319,8 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
     @Synchronized fun playbackBind(version: Long, key: PlaybackRecordKey) = transaction(drain = false) {
         PlaybackRecordStore(db).apply { bind(version, key, replace = true); project(key, homeIndex) }
     }
-    @Synchronized fun playbackCommit(key: PlaybackRecordKey, fact: PlaybackFact, target: String?, baseline: ServerBaseline?) = transaction(drain = false) {
+    @Synchronized fun playbackCommit(key: PlaybackRecordKey, fact: PlaybackFact, target: String?, baseline: ServerBaseline?, generation: Long = playbackGeneration) = transaction(drain = false) {
+        if (generation != playbackGeneration) return@transaction null
         val store = PlaybackRecordStore(db)
         store.commit(key, fact, target, baseline)?.also { if (fact.persist) store.project(key, homeIndex) }
     }
@@ -287,6 +334,35 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
     }
     @Synchronized fun cloudPartial(claim: ScanClaim, root: String) {
         valid(claim); db.exec("INSERT OR IGNORE INTO cloud_partial VALUES(?,?)", claim.run, root)
+    }
+    /** Rebuild the final reachable graph; provisional pages must never count as final presence. */
+    @Synchronized fun restartCloudScope(claim: ScanClaim, scope: String) = transaction {
+        valid(claim)
+        db.exec("DELETE FROM frontier WHERE run=? AND scope=?", claim.run, scope)
+        db.exec("DELETE FROM seen WHERE run=? AND scope=?", claim.run, scope)
+        for (r in roots().filter { it.scope == scope }) {
+            db.exec("INSERT OR IGNORE INTO frontier VALUES(?,?,?,?,'pending')", claim.run, scope, r.documentId, r.id)
+            db.exec("INSERT OR IGNORE INTO seen VALUES(?,?,?,?,?)", claim.run, scope, r.documentId, null, "DIRECTORY")
+        }
+    }
+    /** Stop late results before a feed page changes a file, its sidecar, or its ancestry. */
+    @Synchronized fun invalidateCloudEntries(claim: ScanClaim, scope: String, entries: List<Pair<String, String?>>) = transaction {
+        valid(claim)
+        for (chunk in entries.chunked(128)) {
+            val marks = chunk.joinToString(",") { "?" }
+            val parents = db.rows("SELECT parent FROM objects WHERE scope=? AND doc IN ($marks)", scope,
+                *chunk.map { it.first }.toTypedArray()) { it.textOrNull(0) }
+            (parents + chunk.map { it.second } + chunk.map { it.first }).filterNotNull().distinct().forEach {
+                db.exec("UPDATE frontier SET phase='pending' WHERE run=? AND scope=? AND doc=?", claim.run, scope, it)
+            }
+        }
+    }
+    @Synchronized fun cloudDirectory(claim: ScanClaim, scope: String, directory: String): DirectoryWork? {
+        valid(claim)
+        return db.rows("""SELECT r.id,r.scope,r.doc,r.uri,r.revision,r.label FROM frontier f JOIN roots r ON r.id=f.root
+            WHERE f.run=? AND f.scope=? AND f.doc=?""", claim.run, scope, directory, map = ::root).firstOrNull()?.let {
+            DirectoryWork(scope, directory, it, "pending")
+        }
     }
     @Synchronized fun initialize() {
         // A new process never silently resumes a long foreground task.
@@ -326,7 +402,11 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
         }
         val roots = roots()
         if (roots.isEmpty()) return@transaction null
-        if (force) db.exec("UPDATE nfo SET parser=0")
+        if (force) {
+            // A forced reread must invalidate projections even when size and mtime are unchanged.
+            db.exec("UPDATE objects SET revision=revision+1 WHERE kind='NFO'")
+            db.exec("UPDATE nfo SET parser=0")
+        }
         db.exec("UPDATE scan_run SET state='cancelled',epoch=epoch+1 WHERE state='paused'")
         // Only one live staging set; old summaries are retained, not all previous enumerations.
         db.exec("DELETE FROM seen"); db.exec("DELETE FROM frontier"); db.exec("DELETE FROM run_root"); db.exec("DELETE FROM cloud_ready")
@@ -336,7 +416,7 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
         val run = db.scalar("SELECT last_insert_rowid()")
         for (r in roots) {
             db.exec("INSERT INTO run_root VALUES(?,?,?)", run, r.id, r.revision)
-            db.exec("INSERT OR IGNORE INTO objects(scope,doc,name,stem,kind) VALUES(?,?,?,'','DIRECTORY')", r.scope, r.documentId, r.label)
+            db.exec("INSERT INTO objects(scope,doc,name,stem,kind) VALUES(?,?,?,'','DIRECTORY') ON CONFLICT(scope,doc) DO UPDATE SET name=excluded.name", r.scope, r.documentId, r.label)
             db.exec("INSERT OR IGNORE INTO frontier VALUES(?,?,?,?, 'pending')", run, r.scope, r.documentId, r.id)
             db.exec("INSERT OR IGNORE INTO seen VALUES(?,?,?,?,?)", run, r.scope, r.documentId, null, "DIRECTORY")
             db.exec("UPDATE roots SET attempted=?,outcome='running' WHERE id=?", System.currentTimeMillis(), r.id)
@@ -359,12 +439,14 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
             ScanStatus(it.getLong(0), it.getText(1), it.getLong(2), it.getLong(3), it.getText(4), count)
         }.firstOrNull() ?: ScanStatus(roots = count)
     }
-    @Synchronized fun next(claim: ScanClaim, excluded: List<DirectoryWork> = emptyList()): DirectoryWork? {
+    @Synchronized fun next(claim: ScanClaim, excluded: List<DirectoryWork> = emptyList(), scope: String? = null,
+        localOnly: Boolean = false): DirectoryWork? {
         valid(claim)
         val skip = excluded.joinToString("") { " AND NOT (f.scope=? AND f.doc=?)" }
         return db.rows("""SELECT f.scope,f.doc,f.phase,r.id,r.scope,r.doc,r.uri,r.revision,r.label FROM frontier f
-            JOIN roots r ON r.id=f.root WHERE f.run=? AND f.phase IN ('pending','listing','metadata') $skip
-            ORDER BY f.rowid LIMIT 1""", claim.run, *excluded.flatMap { listOf(it.scope, it.documentId) }.toTypedArray()) {
+            JOIN roots r ON r.id=f.root WHERE f.run=? AND f.phase IN ('pending','listing','metadata')
+            ${if (scope != null) "AND f.scope=?" else ""} ${if (localOnly) "AND r.uri NOT LIKE 'stellar-cloud:%'" else ""} $skip
+            ORDER BY f.rowid LIMIT 1""", claim.run, *(listOfNotNull(scope) + excluded.flatMap { listOf(it.scope, it.documentId) }).toTypedArray()) {
             DirectoryWork(it.getText(0), it.getText(1), ScanRoot(it.getText(3), it.getText(4), it.getText(5),
                 it.getText(6), it.getLong(7), it.getText(8)), it.getText(2))
         }.firstOrNull()
@@ -617,7 +699,7 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
     }
 
     /** One bounded input window, one attempt window and one alias lookup, including not-due files. */
-    @Synchronized fun metadataCandidates(ids: List<Long>, locale: String, now: Long): List<MetadataCandidate> {
+    @Synchronized fun metadataCandidates(ids: List<Long>, locale: String, now: Long, incremental: Boolean = false): List<MetadataCandidate> {
         val inputs = metadataInputs(ids)
         if (inputs.isEmpty()) return emptyList()
         val marks = ids.joinToString(",") { "?" }
@@ -629,7 +711,8 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
             WHERE b.origin='provider' AND q.expires>? AND b.object IN ($marks)""", now, *ids.toTypedArray()) { it.getLong(0) }.toSet()
         return inputs.map { input ->
             val attempt = attempts[input.id]?.takeIf { it.input == input.input && it.edit == input.editRevision }
-            MetadataCandidate(input, !input.locked && (attempt == null || attempt.retry <= now || input.id in redirected),
+            val complete = incremental && attempt?.state in setOf("matched", "local")
+            MetadataCandidate(input, !input.locked && !complete && (attempt == null || attempt.retry <= now || input.id in redirected),
                 attempt?.takeIf { it.state in setOf("waiting", "partial") }?.let { it.state to it.retry })
         }
     }
@@ -727,6 +810,9 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
         db.exec("UPDATE provider_query SET expires=0 WHERE key NOT LIKE 'stellar|alias|%'")
         db.exec("DELETE FROM provider_retry WHERE key NOT IN (?,?)", MetadataProvider.RATE_KEY, LibraryScanner.RATE_KEY)
     }
+    @Synchronized fun retryIncompleteMetadata() {
+        db.exec("UPDATE metadata_attempt SET retry_at=0 WHERE state IN ('review','failed')")
+    }
     @Synchronized fun providerBound(id: Long): Boolean = db.rows("SELECT origin FROM metadata_binding WHERE object=? ORDER BY priority DESC LIMIT 1", id) {
         it.getText(0)
     }.firstOrNull() == "provider"
@@ -758,15 +844,15 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
     @Synchronized fun metadataState(id: Long, locale: String): String? = db.rows("SELECT state FROM metadata_attempt WHERE object=? AND locale=?", id, locale) { it.getText(0) }.firstOrNull()
     @Synchronized fun metadataCounts(locale: String): Map<String,Int> = db.rows("""SELECT a.state,COUNT(*) FROM metadata_attempt a JOIN wall w ON w.object=a.object
         WHERE w.visible=1 AND a.locale=? AND NOT EXISTS(SELECT 1 FROM metadata_binding b WHERE b.object=a.object AND b.origin='manual') GROUP BY a.state""", locale) { it.getText(0) to it.getInt(1) }.toMap()
-    @Synchronized fun nextMetadataRetry(locale: String, now: Long = System.currentTimeMillis()): Long? = if (redirectedBinding(now)) 0L else db.rows("""SELECT MIN(a.retry_at) FROM metadata_attempt a JOIN wall w ON w.object=a.object
+    @Synchronized fun nextMetadataRetry(locale: String, now: Long = System.currentTimeMillis(), incremental: Boolean = false): Long? = if (!incremental && redirectedBinding(now)) 0L else db.rows("""SELECT MIN(a.retry_at) FROM metadata_attempt a JOIN wall w ON w.object=a.object
         WHERE w.visible=1 AND a.locale=? AND a.state IN ('waiting','partial')
         AND NOT EXISTS(SELECT 1 FROM metadata_binding b WHERE b.object=a.object AND b.origin='manual')""", locale) { it.longOrNull(0) }.firstOrNull()
-    @Synchronized fun metadataJob(): MetadataJob? = db.rows("SELECT locale,state,round,next_at,scan_run FROM metadata_job WHERE id=1") {
-        MetadataJob(it.getText(0), it.getText(1), it.getInt(2), it.getLong(3), it.longOrNull(4))
+    @Synchronized fun metadataJob(): MetadataJob? = db.rows("SELECT locale,state,round,next_at,scan_run,incremental FROM metadata_job WHERE id=1") {
+        MetadataJob(it.getText(0), it.getText(1), it.getInt(2), it.getLong(3), it.longOrNull(4), it.getLong(5) != 0L)
     }.firstOrNull()
     @Synchronized fun metadataJob(job: MetadataJob) {
-        db.exec("INSERT INTO metadata_job(id,locale,state,round,next_at,scan_run) VALUES(1,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET locale=excluded.locale,state=excluded.state,round=excluded.round,next_at=excluded.next_at,scan_run=excluded.scan_run",
-            job.locale, job.state, job.round, job.nextAt, job.scanRun)
+        db.exec("INSERT INTO metadata_job(id,locale,state,round,next_at,scan_run,incremental) VALUES(1,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET locale=excluded.locale,state=excluded.state,round=excluded.round,next_at=excluded.next_at,scan_run=excluded.scan_run,incremental=excluded.incremental",
+            job.locale, job.state, job.round, job.nextAt, job.scanRun, if (job.incremental) 1 else 0)
     }
 
     /** The scanner produces durable work in the same transaction as its local projection. */
@@ -801,7 +887,8 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
             JOIN roots r ON r.id=f.root AND r.active=1
             JOIN run_root rr ON rr.run=f.run AND rr.root=r.id AND rr.revision=r.revision
             JOIN scan_run s ON s.id=f.run
-            WHERE o.id=? AND s.state!='cancelled' AND s.id=(SELECT MAX(id) FROM scan_run)""", run, id) {
+            WHERE o.id=? AND s.state!='cancelled' AND s.id=(SELECT MAX(id) FROM scan_run)
+            AND EXISTS(SELECT 1 FROM seen v WHERE v.run=f.run AND v.scope=o.scope AND v.doc=o.doc)""", run, id) {
             Triple(it.getText(0), it.getText(1), it.getText(2))
         }.firstOrNull() ?: return false
         var directory: String? = location.second
@@ -850,7 +937,8 @@ internal class CatalogDatabase(context: Context, name: String = "library_catalog
             SELECT 1 FROM wall WHERE wall.object=scan_metadata_queue.object AND visible=1)""", run)
     }
 
-    @Synchronized fun importStart(scope: String, label: String = ""): Long = transaction {
+    @Synchronized fun importStart(scope: String, label: String = "", expectedGeneration: Long = catalogGeneration): Long = transaction {
+        if (expectedGeneration != catalogGeneration) throw ObsoleteScan()
         val oldSources = homeIndex.sources()
         val reactivated = db.scalar("SELECT COUNT(*) FROM catalog_import WHERE scope=? AND state='obsolete'", scope) != 0L
         db.exec("INSERT INTO catalog_import(scope,generation,state,label) VALUES(?,1,'running',?) ON CONFLICT(scope) DO UPDATE SET generation=generation+1,state='running',label=excluded.label", scope, label)

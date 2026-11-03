@@ -114,6 +114,10 @@ internal fun MediaLibraryScreen(onLocalMedia: () -> Unit, onNetworkMedia: (Strin
                 }
                 MediaDestination.Settings -> MediaLibrarySettingsScreen(navigation::pop, { library.open(true) }, onAddFolder,
                     { navigation.push(MediaDestination.CatalogMetadata) })
+                MediaDestination.CatalogScan -> {
+                    val runtime = remember(context) { cn.coldlake.stellar.opensource.medialibrary.catalog.LocalLibraryRuntime.get(context) }
+                    cn.coldlake.stellar.opensource.medialibrary.catalog.LibraryScanScreen(runtime, onBack = navigation::pop)
+                }
                 MediaDestination.CatalogMetadata -> {
                     val runtime = remember(context) { cn.coldlake.stellar.opensource.medialibrary.catalog.LocalLibraryRuntime.get(context) }
                     cn.coldlake.stellar.opensource.medialibrary.catalog.MetadataScreen(runtime, onBack = navigation::pop)
@@ -176,6 +180,7 @@ internal fun MediaLibraryScreen(onLocalMedia: () -> Unit, onNetworkMedia: (Strin
                 colors = IconButtonDefaults.iconButtonColors(disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant)) {
                 Icon(painterResource(R.drawable.material_symbol_search), stringResource(R.string.media_library_search), Modifier.size(24.dp))
             }
+            cn.coldlake.stellar.opensource.medialibrary.catalog.LibraryScanButton(onClick = { navigation.push(MediaDestination.CatalogScan) })
             IconButton(onClick = { navigation.push(MediaDestination.Settings) }, modifier = Modifier.size(48.dp).testTag("media-library-settings")) {
                 Icon(painterResource(R.drawable.material_symbol_settings), stringResource(R.string.media_library_settings), Modifier.size(24.dp))
             }

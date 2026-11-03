@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="scan_center_title">Scan &amp; identify</string>
+    <string name="scan_center_active">Updating your library</string>
+    <string name="scan_center_inactive">No task running</string>
+    <string name="scan_center_waiting">Waiting for metadata</string>
+    <string name="scan_center_identifying">Identifying media</string>
+    <string name="scan_center_paused">Update paused</string>
+    <string name="scan_center_failed">Update interrupted</string>
+    <string name="scan_center_partial">Some sources are incomplete</string>
+    <string name="scan_center_cancelled">Update cancelled</string>
+    <string name="scan_center_discovered">File scan finished</string>
+    <string name="scan_center_ready">Keep your library up to date</string>
+    <string name="scan_center_hint">Discover new files and identify movies and shows together. Saved metadata is kept, and tasks can continue after you leave this page.</string>
+    <string name="scan_center_update">Update library</string>
+    <string name="scan_center_more">More actions</string>
+    <string name="scan_center_fill">Identify missing media</string>
+    <string name="scan_center_stop_metadata">Stop identifying; keep scanning</string>
+    <string name="scan_center_no_sources">First add a local, NAS or cloud folder to your library.</string>
+    <string name="scan_center_files">File discovery</string>
+    <string name="scan_center_found">Items discovered</string>
+    <string name="scan_center_nfo">Local metadata read</string>
+    <string name="scan_center_metadata">Metadata</string>
+    <string name="scan_center_saved">Saved identification results</string>
+    <string name="scan_center_matched">Matched</string>
+    <string name="scan_center_review">Needs review</string>
+    <string name="scan_center_pending">Needs more metadata</string>
+    <string name="scan_center_errors">Failed</string>
+    <string name="scan_center_metadata_hint">Includes earlier results in the current metadata language. Matched items may still need more metadata.</string>
+    <string name="scan_center_fill_hint">Identify unrecognized items and fill incomplete metadata in your library.</string>
+    <string name="scan_center_refresh">Refresh media metadata</string>
+    <string name="scan_center_refresh_hint">Reread metadata beside your files and refresh online metadata. Manual changes are kept.</string>
+    <string name="scan_center_clear">Clear media database</string>
+    <string name="scan_center_clear_description">Clear the media list and automatic metadata on this device. Source settings and media files will be kept.</string>
+    <string name="scan_center_delete_manual">Also delete manual matches and edits</string>
+    <string name="scan_center_delete_playback">Also delete playback history on this device</string>
+    <string name="scan_center_clear_retention">Unchecked items will be kept and linked again after a scan. Server playback history is not deleted.</string>
+    <string name="scan_center_clear_confirm">Clear</string>
+    <string name="scan_center_clear_cancel">Cancel</string>
+    <string name="scan_center_clearing">Clearing library…</string>
+    <string name="scan_center_cleared">Library cleared</string>
+    <string name="scan_center_clear_failed">Could not clear library</string>
+</resources>

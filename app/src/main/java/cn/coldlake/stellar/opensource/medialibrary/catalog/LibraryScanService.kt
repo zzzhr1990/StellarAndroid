@@ -56,11 +56,15 @@ class LibraryScanService : Service() {
                     var request = intent
                     do {
                         identifying = request?.action == "identify"
-                        if (identifying) runtime.identify(request?.getStringExtra("locale") ?: "en-US", request?.getBooleanExtra("resume", false) == true)
-                        else runtime.runScan(request?.getBooleanExtra("resume", false) == true, request?.getBooleanExtra("force", false) == true)
+                        if (identifying) runtime.identify(request?.getStringExtra("locale") ?: "en-US", request?.getBooleanExtra("resume", false) == true,
+                            incremental = request?.getBooleanExtra("incremental", false) == true)
+                        else runtime.runScan(request?.getBooleanExtra("resume", false) == true, request?.getBooleanExtra("force", false) == true,
+                            refresh = request?.action == "refresh")
                         request = pendingIdentify; pendingIdentify = null
                     } while (request != null)
                 }
+                catch (cancelled: CancellationException) { throw cancelled }
+                catch (error: Exception) { runtime.taskFailed() }
                 finally {
                     identifying = false
                     if (task === currentCoroutineContext()[Job] && stopSelfResult(latestStartId)) stopForeground(STOP_FOREGROUND_REMOVE)
@@ -73,8 +77,12 @@ class LibraryScanService : Service() {
     override fun onDestroy() { scope.cancel(); super.onDestroy() }
     companion object {
         private const val CHANNEL = "local_library_scan"
-        internal fun identify(context: Context, locale: String, resume: Boolean = false) {
-            try { context.startForegroundService(Intent(context, LibraryScanService::class.java).setAction("identify").putExtra("locale", locale).putExtra("resume", resume)) }
+        internal fun identify(context: Context, locale: String, resume: Boolean = false, incremental: Boolean = false) {
+            try { context.startForegroundService(Intent(context, LibraryScanService::class.java).setAction("identify").putExtra("locale", locale).putExtra("resume", resume).putExtra("incremental", incremental)) }
+            catch (_: Exception) { LocalLibraryRuntime.get(context).launchFailed() }
+        }
+        internal fun refresh(context: Context) {
+            try { context.startForegroundService(Intent(context, LibraryScanService::class.java).setAction("refresh")) }
             catch (_: Exception) { LocalLibraryRuntime.get(context).launchFailed() }
         }
         internal fun start(context: Context, resume: Boolean = false, force: Boolean = false) {

@@ -19,7 +19,7 @@ private fun metadataProgress(counts: Map<String,Int>, running: Boolean, until: L
     return MetadataProgress(running, matched + review + failed, matched, review, failed,
         (counts["waiting"] ?: 0) + (counts["partial"] ?: 0), until)
 }
-internal data class MetadataJob(val locale: String, val state: String, val round: Int = 0, val nextAt: Long = 0, val scanRun: Long? = null)
+internal data class MetadataJob(val locale: String, val state: String, val round: Int = 0, val nextAt: Long = 0, val scanRun: Long? = null, val incremental: Boolean = false)
 internal data class MetadataCandidate(val input: MetadataInput, val due: Boolean, val pending: Pair<String, Long>?)
 internal data class ScanMetadataWork(val id: Long, val run: Long, val generation: Long, val attempts: Int)
 
@@ -33,9 +33,9 @@ internal class LibraryMetadata(private val context: Context, private val db: Cat
     private val lock = Mutex()
     @Volatile private var active: Job? = null
     @Volatile private var stopped = false
-    suspend fun identify(locale: String, resume: Boolean = false) = withContext(Dispatchers.IO) {
+    suspend fun identify(locale: String, resume: Boolean = false, incremental: Boolean = false) = withContext(Dispatchers.IO) {
         if (!lock.tryLock()) return@withContext
-        var job = if (resume) db.metadataJob()?.takeIf { it.state in setOf("running", "waiting") && it.round < 3 } else MetadataJob(locale, "running")
+        val job = if (resume) db.metadataJob()?.takeIf { it.state in setOf("running", "waiting") && it.round < 3 } else MetadataJob(locale, "running", incremental = incremental)
         if (job == null) { lock.unlock(); return@withContext }
         val language = job.locale
         var currentJob: MetadataJob = job
@@ -68,6 +68,7 @@ internal class LibraryMetadata(private val context: Context, private val db: Cat
         }
         stopped = false; active = currentCoroutineContext()[Job]; publish()
         try {
+            if (!resume && job.incremental) db.retryIncompleteMetadata()
             profiles()
             if (!awaitRetry(currentJob.nextAt)) return@withContext
             while (currentJob.round < 3) {
@@ -76,7 +77,7 @@ internal class LibraryMetadata(private val context: Context, private val db: Cat
                 while (true) {
                     ensureActive()
                     val ids = db.metadataIds(after); if (ids.isEmpty()) break
-                    for (candidate in db.metadataCandidates(ids, language, clock())) {
+                    for (candidate in db.metadataCandidates(ids, language, clock(), job.incremental)) {
                         ensureActive()
                         if (!candidate.due) continue
                         if (!awaitRetry(db.providerRetry(MetadataProvider.RATE_KEY), rate = true)) return@withContext
@@ -85,7 +86,7 @@ internal class LibraryMetadata(private val context: Context, private val db: Cat
                     }
                     after = ids.last(); yield()
                 }
-                val retry = db.nextMetadataRetry(language, clock())
+                val retry = db.nextMetadataRetry(language, clock(), job.incremental)
                 if (retry == null) { saveJob("complete"); break }
                 if (currentJob.round >= 3) { saveJob("paused", retry); break }
                 if (!awaitRetry(retry)) break
@@ -311,6 +312,13 @@ internal class LibraryMetadata(private val context: Context, private val db: Cat
         }
     }
     fun stop() { stopped = true; active?.cancel() }
+    suspend fun clearMedia(deleteManual: Boolean, deletePlayback: Boolean) = withContext(Dispatchers.IO) {
+        lock.withLock {
+            db.clearMedia(deleteManual, deletePlayback)
+            mutable.value = MetadataProgress()
+            changed()
+        }
+    }
     suspend fun restoreProgress(locale: String) = withContext(Dispatchers.IO) {
         if (!lock.tryLock()) return@withContext
         try { mutable.value = metadataProgress(db.metadataCounts(locale), false) }
@@ -354,9 +362,11 @@ internal class LibraryMetadata(private val context: Context, private val db: Cat
         EmbyClient.fromSettings(context, profile).use { it.page(EmbyLocation(EmbySection.LIBRARIES)).items }
     }
     suspend fun importServer(profile: ServerProfile, library: String): String = withContext(Dispatchers.IO) {
+        val generation = db.catalogGeneration
+        val importer = ServerCatalogImporter(db, generation)
         val result = EmbyClient.fromSettings(context, profile).use { api ->
             api.verifyServer()
-            ServerCatalogImporter(db).run(profile, library, { offset ->
+            importer.run(profile, library, { offset ->
                 val current = profiles().firstOrNull { it.id == profile.id }
                 if (current?.updatedAt != profile.updatedAt || current.embyUserId != profile.embyUserId) throw MetadataFailure("source")
                 api.catalogPage(library, offset)
@@ -364,6 +374,7 @@ internal class LibraryMetadata(private val context: Context, private val db: Cat
         }
         var after = 0L
         while (true) {
+            if (generation != db.catalogGeneration) return@withContext "partial"
             ensureActive(); val ids = db.metadataIds(after); if (ids.isEmpty()) break
             for (id in ids) {
                 val input = db.metadataInput(id) ?: continue
